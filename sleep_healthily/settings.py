@@ -32,7 +32,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',
-                 'https://sleep-healthily-12a12155ea31.herokuapp.com/']
+                 'sleep-healthily-12a12155ea31.herokuapp.com']
 
 
 # Application definition
