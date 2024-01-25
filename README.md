@@ -1,39 +1,296 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Sleep Healthily
 
-Welcome,
+Sleep Healthily is an e-commerce website that focuses on selling products to help you sleep better.
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Planning and Design
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+###  Site objective
 
-## Codeanywhere Reminders
+Sleep Healthily's objective
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+###  Opportunities
 
-`python3 -m http.server`
+Being a Developer myself, I have a lot of feature ideas for the Stackportfol.io platform. I have listed them in the table below, rating them by their importance and difficulty. The rating system is based on the MoSCoW method of prioritisation.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+| Feature                | Importance | Difficulty | Project priority |
+| ---------------------- | ---------- | ---------- | ---------------- |
+| **Account Features**   |            |            |                  |
+| Account login          |            |            |                  |
+| Account logout         |            |            |                  |
+| Account creation       |            |            |                  |
+| Account deletion       |            |            |                  |
+| Account update         |            |            |                  |
+| **User Features**      |            |            |                  |
+| User profiles          |            |            |                  |
+| **Product Features**   |            |            |                  |
+| Product creation       |            |            |                  |
+| Product update         |            |            |                  |
+| Product deletion       |            |            |                  |
+| **Review Features**    |            |            |                  |
+| Review creation        |            |            |                  |
+| Review update          |            |            |                  |
+| Review deletion        |            |            |                  |
+| **Blog Post Features** |            |            |                  |
+| Blog post creation     |            |            |                  |
+| Blog post update       |            |            |                  |
+| Blog post deletion     |            |            |                  |
+| **Comment Features**   |            |            |                  |
+| Comment creation       |            |            |                  |
+| Comment update         |            |            |                  |
+| Comment deletion       |            |            |                  |
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+<details>
+  <summary>Click here to expand the priority descriptions and percentages</summary>
 
-`http_server`
+| Priority    | Percentage | Description                                                                                                                                                            |
+| ----------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Must have   |            | These are the features that are essential for the site to be usable. If any of these features are missing, the site will not be usable.                                |
+| Should have |            | These are the features that are important, but not essential. If any of these features are missing, the site will still be usable.                                     |
+| Could have  |            | These are the features that are nice to have, but not essential. If any of these features are missing, the site will still be usable.                                  |
+| Won't have  |            | These are the features that are not essential and will not be implemented in the current project. If any of these features are missing, the site will still be usable. |
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+</details>
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+### Scope
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### User stories and Epics
 
-To log into the Heroku toolbelt CLI:
+#### Account management
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+#### User profiles
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+#### Product management
 
----
+#### Review management
 
-Happy coding!
+#### Blog post management
+
+#### Comment management
+
+###  Wireframes
+
+I have created wireframes for the main pages of the site. I have used [Figma](https://figma.com) to create the wireframes. Here are the wireframes for the main pages:
+
+<details>
+  <summary>Homepage - Desktop (click to expand)</summary>
+
+![Homepage - Desktop](./documentation/design/wireframes/desktop-homepage.png)
+
+</details>
+
+<details>
+  <summary>Homepage - Mobile (click to expand)</summary>
+
+![Homepage - Mobile](./documentation/design/wireframes/mobile-homepage.png)
+
+</details>
+<br>
+<details>
+  <summary>Blog List Page - Desktop (click to expand)</summary>
+
+![Blog List Page - Desktop](./documentation/design/wireframes/desktop-blog-list-page.png)
+
+</details>
+
+<details>
+  <summary>Blog List Page - Mobile (click to expand)</summary>
+
+![Blog List Page - Mobile](./documentation/design/wireframes/mobile-blog-list-page.png)
+
+</details>
+
+<br>
+<details>
+  <summary>Blog Post Page - Desktop (click to expand)</summary>
+
+![Blog Post Page - Desktop](./documentation/design/wireframes/desktop-blog-post-page.png)
+
+</details>
+
+<details>
+  <summary>Blog Post Page - Mobile (click to expand)</summary>
+
+![Blog Post Page - Mobile](./documentation/design/wireframes/mobile-blog-post-page.png)
+
+</details>
+
+<br>
+<details>
+  <summary>Cart Page - Desktop (click to expand)</summary>
+
+![Cart Page - Desktop](./documentation/design/wireframes/desktop-cart-page.png)
+
+</details>
+
+<details>
+  <summary>Cart Page - Mobile (click to expand)</summary>
+
+![Cart Page - Mobile](./documentation/design/wireframes/mobile-cart-page.png)
+
+</details>
+
+<br>
+<details>
+  <summary>Checkout Page - Desktop (click to expand)</summary>
+
+![Checkout Page - Desktop](./documentation/design/wireframes/desktop-checkout-page.png)
+
+</details>
+
+<details>
+  <summary>Checkout Page - Mobile (click to expand)</summary>
+
+![Checkout Page - Mobile](./documentation/design/wireframes/mobile-checkout-page.png)
+
+</details>
+
+<br>
+<details>
+  <summary>Collection Page - Desktop (click to expand)</summary>
+
+![Collection Page - Desktop](./documentation/design/wireframes/desktop-collection-page.png)
+
+</details>
+
+<details>
+  <summary>Collection Page - Mobile (click to expand)</summary>
+
+![Collection Page - Mobile](./documentation/design/wireframes/mobile-collection-page.png)
+
+</details>
+
+<br>
+<details>
+  <summary>Featured Blog Posts - Desktop (click to expand)</summary>
+
+![Featured Blog Posts - Desktop](./documentation/design/wireframes/desktop-featured-blog-posts.png)
+
+</details>
+
+<details>
+  <summary>Featured Blog Posts - Mobile (click to expand)</summary>
+
+![Featured Blog Posts - Mobile](./documentation/design/wireframes/mobile-featured-blog-posts.png)
+
+</details>
+
+<br>
+<details>
+  <summary>Order Summary Page - Desktop (click to expand)</summary>
+
+![Order Summary Page - Desktop](./documentation/design/wireframes/desktop-order-summary-page.png)
+
+</details>
+
+<details>
+  <summary>Order Summary Page - Mobile (click to expand)</summary>
+
+![Order Summary Page - Mobile](./documentation/design/wireframes/mobile-order-summary-page.png)
+
+</details>
+
+<br>
+<details>
+  <summary>Product Page - Desktop (click to expand)</summary>
+
+![Product Page - Desktop](./documentation/design/wireframes/desktop-product-page.png)
+
+</details>
+
+<details>
+  <summary>Product Page - Mobile (click to expand)</summary>
+
+![Product Page - Mobile](./documentation/design/wireframes/mobile-product-page.png)
+
+</details>
+
+<br>
+<details>
+  <summary>Profile Page - Desktop (click to expand)</summary>
+
+![Profile Page - Desktop](./documentation/design/wireframes/desktop-profile-page.png)
+
+</details>
+
+<details>
+  <summary>Profile Page - Mobile (click to expand)</summary>
+
+![Profile Page - Mobile](./documentation/design/wireframes/mobile-profile-page.png)
+
+</details>
+
+### Colours and Fonts
+
+#### Colours
+
+The colours used on the site are:
+
+[#572b9e] (Primary)
+[#ffeafd] (Background light, text light)
+[#8546e5] (Secondary)
+[#653d73] (Background dark)
+[#7a0ea0] (Accent)
+
+Here is a screenshot of the palette from Cooolors:
+
+![Colour palette](./documentation/design/sleep-healthily-palette.png)
+
+#### Fonts
+
+Fonts for the site
+
+### User flowchart
+
+The user flowchart was created using [Draw.io](https://app.diagrams.net/). The flowchart shows the different paths that a user can take through the site.
+
+![User flowchart](./documentation/design/diagrams/sleep-healthily-flowchart.png)
+
+## Development
+
+### Site Features
+
+Site features go here when developed
+
+### Entity Relationship Diagram
+
+The Entity Relationship Diagram (ERD) was created using [Draw.io](https://app.diagrams.net/). The ERD is a visual representation of the database structure. It shows the tables, the columns in each table, and the relationships between the tables. Here is the ERD from my planning:
+
+![Entity Relationship Diagram](./documentation/design/diagrams/sleep-healthily-erd.png)
+
+</details>
+
+### Technologies used
+
+This will list the technologies used on the project once completed.
+
+## Deployment
+
+This will include the steps for deployment once established.
+
+## Testing and Agile notes
+
+### Testing documentation
+
+I documented all automated and manual tests in the [TESTING.md](./TESTING.md) file.
+
+### Agile notes
+
+I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) file.
+
+## Credits
+
+### Resources Used
+
+#### Design and Wireframing
+
+- [Figma for designing the wireframes](https://www.figma.com/)
+- [Draw.io for ERD and Flowchart](https://app.diagrams.net/)
+- [Cooolors for colour palette](https://coolors.co/)
+
+#### Hosting and Deployment
+
+- [Heroku](https://www.heroku.com/)
+
+### Acknowledgements
+
+Acknowledgements go here when completed.
