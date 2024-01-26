@@ -1,6 +1,6 @@
 name: Epic Issue Template
 description: Template for creating a new Epic
-title: "Epic: <Brief description of the epic>"
+title: "EPIC: <Brief description of the epic>"
 labels: ["epic"]
 projects: ["stephendawsondev/5"]
 assignees:
