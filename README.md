@@ -69,10 +69,12 @@ I have listed the features users will want and need in the table below, rating t
 - As a **user**, I can **log out of my account** so that I can **ensure my account is secure when I'm not using it**.
 - As a **user**, I can **update my account/profile** so that I can **keep my personal information up to date for checking out**.
 - As a **user**, I can **delete my account** so that I can **remove my personal data from the platform**.
+- As a **user**, I can **access and view my user profile** so that I can **see my personal information, order history, and manage my account settings**.
 
 #### User Features (Registered Customer)
 
 - As a **registered customer**, I can **view a summary of my orders** so that I can **keep track of my purchases**.
+- As a **user**, I want to **add products to a wishlist** so that I can **save them for future consideration or purchase**.
 
 #### Product Features (Staff)
 
@@ -104,20 +106,6 @@ I have listed the features users will want and need in the table below, rating t
 - As a **registered customer**, I can **create comments on blog posts** so that I can **engage in discussions and share my thoughts**.
 - As a **registered customer**, I can **update my comments** so that I can **change my input or correct mistakes**.
 - As a **registered customer**, I can **delete my comments** so that I can **remove my input if I change my mind**.
-
-#### Account management
-
-#### User management features
-
-#### Product management
-
-#### Cart/Checkout features
-
-#### Review management
-
-#### Blog post management
-
-#### Comment management
 
 ###  Wireframes
 
