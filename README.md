@@ -277,7 +277,11 @@ Here is a screenshot of the palette from Cooolors:
 
 #### Fonts
 
-Fonts for the site
+**Ingrid Darling** is chosen as the main title font for its elegant and inviting appearance. It embodies a sense of comfort and tranquility, which is perfectly suited for a sleepy theme. It sets a calming tone right from the first glance to encourage rest and relaxation.
+
+**Inter** is used for headings. It is a highly readable typeface designed specifically for user interfaces. Its clean and neutral design ensures that headings are clear and easy to navigate, enhancing the usability of the site.Inter allows for a balance between aesthetic appeal and clarity.
+
+I selected **Roboto** for body text because is a versatile and modern font that has great legibility. Longer texts such as product descriptions and user guides are easy to read and digest, which is important since there will be a blog on the site. Roboto's straightforward style supports the overall clean and user-focused design, making it an ideal choice for the body text.
 
 ### User flowchart
 
