@@ -10,44 +10,51 @@ Sleep Healthily's objective
 
 ###  Opportunities
 
-Being a Developer myself, I have a lot of feature ideas for the Stackportfol.io platform. I have listed them in the table below, rating them by their importance and difficulty. The rating system is based on the MoSCoW method of prioritisation.
+I have listed the features users will want and need in the table below, rating them by their importance and difficulty. The rating system is based on the MoSCoW method of prioritisation.
 
-| Feature                | Importance | Difficulty | Project priority |
-| ---------------------- | ---------- | ---------- | ---------------- |
-| **Account Features**   |            |            |                  |
-| Account login          |            |            |                  |
-| Account logout         |            |            |                  |
-| Account creation       |            |            |                  |
-| Account deletion       |            |            |                  |
-| Account update         |            |            |                  |
-| **User Features**      |            |            |                  |
-| User profiles          |            |            |                  |
-| **Product Features**   |            |            |                  |
-| Product creation       |            |            |                  |
-| Product update         |            |            |                  |
-| Product deletion       |            |            |                  |
-| **Review Features**    |            |            |                  |
-| Review creation        |            |            |                  |
-| Review update          |            |            |                  |
-| Review deletion        |            |            |                  |
-| **Blog Post Features** |            |            |                  |
-| Blog post creation     |            |            |                  |
-| Blog post update       |            |            |                  |
-| Blog post deletion     |            |            |                  |
-| **Comment Features**   |            |            |                  |
-| Comment creation       |            |            |                  |
-| Comment update         |            |            |                  |
-| Comment deletion       |            |            |                  |
+| Feature                                    | Importance | Difficulty | Project priority |
+| ------------------------------------------ | ---------- | ---------- | ---------------- |
+| **Account Features**                       |            |            |                  |
+| Account login                              | 4          | 1          | Must have        |
+| Account logout                             | 4          | 1          | Must have        |
+| Account creation                           | 4          | 1          | Must have        |
+| Account deletion                           | 4          | 1          | Must have        |
+| Account/Profile update                     | 4          | 2          | Must have        |
+| User profile                               | 4          | 3          | Must have        |
+| **User Features (Registered customer)**    |            |            |                  |
+| Summary of orders                          | 3          | 3          | Should have      |
+| Product wishlist                           | 1          | 4          | Won't have       |
+| **Product Features (Staff)**               |            |            |                  |
+| Product creation                           | 5          | 3          | Must have        |
+| Product update                             | 5          | 3          | Must have        |
+| Product deletion                           | 5          | 3          | Must have        |
+| **Cart/Checkout features**                 |            |            |                  |
+| Add product to cart                        | 5          | 3          | Must have        |
+| Remove product from cart                   | 5          | 2          | Must have        |
+| See order summary                          | 5          | 2          | Must have        |
+| Pay and complete checkout                  | 5          | 3          | Must have        |
+| **Review Features (Registered customer)**  |            |            |                  |
+| Review creation                            | 3          | 3          | Must have        |
+| Review update                              | 2          | 3          | Should have      |
+| Review deletion                            | 2          | 3          | Should have      |
+| **Blog Post Features (Staff)**             |            |            |                  |
+| Blog post creation                         | 2          | 3          | Should have      |
+| Blog post update                           | 2          | 3          | Should have      |
+| Blog post deletion                         | 2          | 3          | Should have      |
+| **Comment Features (Registered customer)** |            |            |                  |
+| Comment creation                           | 1          | 3          | Could have       |
+| Comment update                             | 1          | 3          | Could have       |
+| Comment deletion                           | 1          | 3          | Could have       |
 
 <details>
   <summary>Click here to expand the priority descriptions and percentages</summary>
 
 | Priority    | Percentage | Description                                                                                                                                                            |
 | ----------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Must have   |            | These are the features that are essential for the site to be usable. If any of these features are missing, the site will not be usable.                                |
-| Should have |            | These are the features that are important, but not essential. If any of these features are missing, the site will still be usable.                                     |
-| Could have  |            | These are the features that are nice to have, but not essential. If any of these features are missing, the site will still be usable.                                  |
-| Won't have  |            | These are the features that are not essential and will not be implemented in the current project. If any of these features are missing, the site will still be usable. |
+| Must have   | 59%        | These are the features that are essential for the site to be usable. If any of these features are missing, the site will not be usable.                                |
+| Should have | 25%        | These are the features that are important, but not essential. If any of these features are missing, the site will still be usable.                                     |
+| Could have  | 12%        | These are the features that are nice to have, but not essential. If any of these features are missing, the site will still be usable.                                  |
+| Won't have  | 4%         | These are the features that are not essential and will not be implemented in the current project. If any of these features are missing, the site will still be usable. |
 
 </details>
 
@@ -55,11 +62,56 @@ Being a Developer myself, I have a lot of feature ideas for the Stackportfol.io 
 
 ### User stories and Epics
 
+#### Account Features
+
+- As a **user**, I can **create an account** so that I can **access personalised features and save my preferences**.
+- As a **user**, I can **log into my account** so that I can **access my personal settings and history, or prefill my details at checkout**.
+- As a **user**, I can **log out of my account** so that I can **ensure my account is secure when I'm not using it**.
+- As a **user**, I can **update my account/profile** so that I can **keep my personal information up to date for checking out**.
+- As a **user**, I can **delete my account** so that I can **remove my personal data from the platform**.
+
+#### User Features (Registered Customer)
+
+- As a **registered customer**, I can **view a summary of my orders** so that I can **keep track of my purchases**.
+
+#### Product Features (Staff)
+
+- As a **staff member**, I can **create new products** so that I can **offer more choices to customers**.
+- As a **staff member**, I can **update product details** so that I can **ensure all information about the products is current and accurate**.
+- As a **staff member**, I can **delete products** so that I can **remove items that are no longer available or relevant**.
+
+#### Cart/Checkout Features
+
+- As a **customer**, I can **add products to my cart** so that I can **purchase them**.
+- As a **customer**, I can **remove products from my cart** so that I can **manage items before finalizing my purchase**.
+- As a **customer**, I can **see an order summary in the cart** so that I can **review my order before completing the purchase**.
+- As a **customer**, I can **complete the checkout process and pay** so that I can **finalize my order**.
+
+#### Review Features (Registered Customer)
+
+- As a **registered customer**, I can **create reviews for products** so that I can **share my experience with others**.
+- As a **registered customer**, I can **update my reviews** so that I can **modify my feedback if my opinion changes**.
+- As a **registered customer**, I can **delete my reviews** so that I can **remove my feedback if I no longer wish it to be displayed**.
+
+#### Blog Post Features (Staff)
+
+- As a **staff member**, I can **create blog posts** so that I can **provide valuable content to customers and visitors**.
+- As a **staff member**, I can **update blog posts** so that I can **keep the content current and relevant**.
+- As a **staff member**, I can **delete blog posts** so that I can **remove outdated or irrelevant content**.
+
+#### Comment Features (Registered Customer)
+
+- As a **registered customer**, I can **create comments on blog posts** so that I can **engage in discussions and share my thoughts**.
+- As a **registered customer**, I can **update my comments** so that I can **change my input or correct mistakes**.
+- As a **registered customer**, I can **delete my comments** so that I can **remove my input if I change my mind**.
+
 #### Account management
 
-#### User profiles
+#### User management features
 
 #### Product management
+
+#### Cart/Checkout features
 
 #### Review management
 
