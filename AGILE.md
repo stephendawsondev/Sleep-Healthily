@@ -26,8 +26,8 @@ I decided to break down the project into milestones. I have created 5 milestones
 - Sprint 1 (One week)
 - Sprint 2 (One week)
 - Sprint 3 (One week)
-- Sprint 4 (5 days)
-- Testing and Development Phase (5 days)
+- Sprint 4 (One week)
+- Testing and Development Phase (Two weeks)
 
 ### Issues
 
@@ -54,6 +54,17 @@ I utilised some existing labels and created a few labels to help me organise my 
 - `won't have` (custom) - Used to identify won't have issues
 - `pull request` (custom) - Used to more easily identify pull requests on the project board
 
+### Story Points
+
+Since they helped with estimations in a previous project, I decided to use story points to help me in this project too to estimate how long an issue will take to complete. I used the Fibonacci sequence to help me estimate the story points. I used the following story points:
+
+- 1
+- 2
+- 3
+- 5
+- 8
+- 13
+
 ### Workflows
 
 I enabled three of the set workflows on the project (two were already enabled):
@@ -63,6 +74,10 @@ I enabled three of the set workflows on the project (two were already enabled):
 - [Automatically move project cards to the done column when issues are closed](./documentation/workflows/workflow2.png)
 
 - [Automatically add any reopened issues to the Todo column](./documentation/workflows/workflow3.png)
+
+### Project Statuses
+
+I used the new [GitHub Project Statuses](https://github.com/users/stephendawsondev/projects/6/views/1?pane=info&statusUpdateId=2286) feature to add updates to my project board on how the project was going.
 
 ## Sprints - Notes and learnings
 
@@ -74,7 +89,7 @@ I enabled three of the set workflows on the project (two were already enabled):
 
 ### Sprint 2 notes
 
-> "This task also focuses on doing the must have tasks, as well as also taking on some should have tasks if possible."
+> "This Sprint also focuses on doing the must have tasks, as well as also taking on some should have tasks if possible."
 
 <!-- Screenshot of sprint 2 here -->
 
