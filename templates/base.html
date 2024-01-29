@@ -49,11 +49,32 @@
 </head>
 
 <body>
-  <header></header>
+  <header class="container-fluid fixed-top">
+    <ul class="nav">
+      <li class="nav-brand">Sleep Healthily</li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </header>
+  {% if messages %}
+  <div class="message-container"></div>
+  {% endif %}
+  {% block page_header %}{% endblock page_header %}
   <main>
-
+    {% block content %}{% endblock content %}
   </main>
   <footer></footer>
+  {% block post_load_js %}{% endblock post_load_js %}
 </body>
 
 </html>
