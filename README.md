@@ -331,6 +331,10 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 - [Draw.io for ERD and Flowchart](https://app.diagrams.net/)
 - [Cooolors for colour palette](https://coolors.co/)
 
+#### Code
+
+- [Bootstrap 4 components](https://getbootstrap.com/docs/4.0/components)
+
 #### Hosting and Deployment
 
 - [Heroku](https://www.heroku.com/)
