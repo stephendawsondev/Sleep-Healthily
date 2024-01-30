@@ -72,15 +72,51 @@
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-none my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
           </form>
         </div>
+
+        <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+          <li class="list-inline-item dropdown">
+            <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <div class="text-center">
+                <div><i class="fas fa-user fa-lg"></i></div>
+                <p class="my-0">My Account</p>
+              </div>
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+              {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+              {% comment %} <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+              {% endcomment %}
+              {% endif %}
+              {% comment %} <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a> {% endcomment %}
+              {% comment %} <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a> {% endcomment %}
+              {% else %}
+              <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+              <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+              {% endif %}
+            </div>
+          </li>
+          <li class="list-inline-item">
+            <a class="text-primary" href="#">
+              <div class="text-center">
+                <div><i class="fas fa-shopping-cart fa-lg"></i></div>
+                <p class="my-0">
+                  €0.00
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
+
       </div>
     </nav>
     <div
       class="free-shipping-banner d-flex justify-content-center align-items-center text-white bg-primary font-bold py-3">
-      <strong class="lead">Free shipping on orders over €75!</strong>
+      <strong class="lead text-bold">Free shipping on orders over €75!</strong>
     </div>
   </header>
   {% if messages %}
