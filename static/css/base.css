@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Ingrid+Darling&family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap");
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.navbar-brand {
+  font-family: "Ingrid Darling", cursive;
+  font-size: 3rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Inter", sans-serif;
+}
