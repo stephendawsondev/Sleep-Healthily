@@ -334,6 +334,11 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 #### Code
 
 - [Bootstrap 4 components](https://getbootstrap.com/docs/4.0/components)
+- [Starry sky hero taken from Code Pen](https://codepen.io/ani_davtyan/pen/KZoKmQ) - Credit Ani Davtyan (<https://codepen.io/ani_davtyan>)
+
+#### Assets
+
+- [DALLE for image generation](https://openai.com/dall-e-3)
 
 #### Hosting and Deployment
 
