@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+{% comment %}
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}"> {% endcomment %}
+{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="row">
+    {% comment %} Profile section {% endcomment %}
+    <div class="col-12 col-lg-6 mb-5">
+      <h2 class="logo-font mb-3">My Profile</h2>
+      <div class="bg-light p-4">
+        <form method="POST" id="profile-update-form">
+          {% csrf_token %}
+          {% crispy form %}
+          <button type="submit" class="btn btn-primary float-right">Update details</button>
+        </form>
+      </div>
+    </div>
+
+    {% comment %} Order history {% endcomment %}
+    <div class="col-12 col-lg-6">
+      <h2 class="logo-font mb-3">Order History</h2>
+      <div class="bg-light p-4">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
