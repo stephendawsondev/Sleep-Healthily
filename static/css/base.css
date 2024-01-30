@@ -1,8 +1,11 @@
+/* import fonts from Google */
 @import url("https://fonts.googleapis.com/css2?family=Ingrid+Darling&family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap");
 
+/* Global Styles */
 html,
 body {
   font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
 }
 
 .navbar-brand {
@@ -17,4 +20,163 @@ h4,
 h5,
 h6 {
   font-family: "Inter", sans-serif;
+}
+
+small {
+  font-size: 0.75rem;
+}
+
+.py-6 {
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+#btn-scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  z-index: 10;
+}
+
+/* Index styles */
+.site-title,
+.site-subtitle {
+  font-family: "Ingrid Darling", cursive;
+}
+
+/* Index - Starry sky styles */
+.hero,
+.newsletter-section {
+  margin: 0;
+  height: 50vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(
+    ellipse farthest-corner at 45px 45px,
+    #140131 0%,
+    #2b1a47 50%,
+    #44138d 95%
+  );
+}
+
+::after,
+::before {
+  content: " ";
+  display: block;
+}
+
+.sky,
+.star {
+  position: absolute;
+}
+
+.sky {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.star {
+  width: 3px;
+  height: 3px;
+  background-color: white;
+  border-radius: 50%;
+  animation: shine 800s infinite linear;
+}
+
+.star.scale1 {
+  transform: scale(1);
+}
+
+.star.scale2 {
+  transform: scale(0.5);
+}
+
+.star.scale3 {
+  transform: scale(1.3);
+}
+
+.star.animate1 {
+  animation-duration: 0.5s;
+}
+
+.star.animate2 {
+  animation-duration: 1s;
+}
+
+.star.animate3 {
+  animation-duration: 1.5s;
+}
+
+.star.animate4 {
+  animation-duration: 2s;
+}
+
+.star.opacity1 {
+  opacity: 1;
+}
+
+.star.opacity2 {
+  opacity: 0.5;
+}
+
+.star.opacity3 {
+  opacity: 0.2;
+}
+
+@keyframes shine {
+  0% {
+    box-shadow: 0 0 15px 0px rgba(255, 255, 255, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 15px 0px rgba(255, 255, 255, 0.05);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* Global */
+  .py-6 {
+    padding-top: 7em;
+    padding-bottom: 7em;
+  }
+
+  /* Homepage */
+  .hero {
+    height: 65vh;
+  }
+
+  .site-title {
+    font-size: 8rem;
+  }
+  .site-subtitle {
+    font-size: 6rem;
+  }
+
+  .cta-btn {
+    font-size: 1.25rem;
+    padding: 1rem 2rem;
+  }
+
+  /* Newsletter section */
+  .newsletter-section {
+    height: 300px;
+  }
+
+  .newsletter__text-container {
+    width: 50% !important;
+    padding-left: 10em;
+    padding-right: 10em;
+  }
+
+  /* Footer */
+  .footer {
+    padding-top: 3em;
+    padding-bottom: 3em;
+  }
 }

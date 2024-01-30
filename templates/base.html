@@ -50,6 +50,7 @@
 </head>
 
 <body class="bg-light text-primary">
+  {% comment %} Site Header {% endcomment %}
   <header>
     <nav class="container-fluid navbar navbar-expand-lg navbar-custom">
       <div class="container-fluid">
@@ -123,10 +124,86 @@
   <div class="message-container"></div>
   {% endif %}
   {% block page_header %}{% endblock page_header %}
-  <main class="py-5">
+
+  {% comment %} Main page content {% endcomment %}
+  <main>
     {% block content %}{% endblock content %}
   </main>
-  <footer></footer>
+
+  {% comment %} Newsletter section {% endcomment %}
+  <section class="position-relative newsletter-section overflow-hidden">
+    <div class="sky"></div>
+    <div class="bg-dark text-white w-100 h-100 opacity-50 newsletter__text-container">
+      <div class="container h-100 d-flex flex-column align-items-start justify-content-center newsletter__text">
+        <h3 class="h3">Sign up to our newsletter</h3>
+        <p>We only email once per month</p>
+
+        <div class="container row justify-content-start input-container">
+          <div class="col-8 col-md-9 px-0">
+            <input class="h-100 w-100" type="text" placeholder="Email">
+          </div>
+          <div class="col-4 col-md-3 px-0">
+            <button class="btn btn-primary w-100">Sign up</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {% comment %} Footer {% endcomment %}
+  <footer class="bg-primary text-light py-5">
+    <div class="container footer_menus">
+      <div class="row justify-content-between">
+        <div class="col-12 col-md-4 footer-menu">
+          <h4>List title</h4>
+          <ul class="list-unstyled px-0">
+            <li class="list-item">Item</li>
+            <li class="list-item">Item</li>
+            <li class="list-item">Item</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4 footer-menu">
+          <h4>List title</h4>
+          <ul class="list-unstyled px-0">
+            <li class="list-item">Item</li>
+            <li class="list-item">Item</li>
+            <li class="list-item">Item</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4 footer-menu">
+          <h4>List title</h4>
+          <ul class="list-unstyled px-0">
+            <li class="list-item">Item</li>
+            <li class="list-item">Item</li>
+            <li class="list-item">Item</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    {% comment %} Social icons and copyright {% endcomment %}
+    <div class="row mt-5">
+      <div class="col-12 text-center w-100">
+        <ul class="d-flex w-100 align-items-center justify-content-center list-unstyled">
+          <li class="social-icon"><i class="fa fa-xl fa-facebook"></i></li>
+          <li class="social-icon ml-3"><i class="fa fa-xl fa-instagram"></i></li>
+          <li class="social-icon ml-3"><i class="fa fa-xl fa-youtube"></i></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12 text-center w-100">
+        <p class="my-0">© {% now 'Y' %} Sleep Healthily</p>
+      </div>
+    </div>
+
+  </footer>
+
+  <button aria-label="Scroll back to top" type="button" class="btn btn-outline-secondary bg-light btn-floating btn-lg"
+    id="btn-scroll-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
   {% block post_load_js %}
   <script src="{% static 'js/script.js' %}"></script>
   {% endblock post_load_js %}
