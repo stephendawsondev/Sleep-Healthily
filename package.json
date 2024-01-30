@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "node-sass": "^9.0.0"
+  },
+  "scripts": {
+    "compile-scss": "node-sass static/scss/bootstrap.scss -o static/css/",
+    "watch-scss": "node-sass static/scss/bootstrap.scss -o static/css/ --watch --recursive"
+  }
+}

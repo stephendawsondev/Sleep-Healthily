@@ -1,0 +1,212 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  {% block meta %}
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% endblock %}
+
+  {% block extra_meta %}
+  {% endblock %}
+
+  {% block corecss %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ingrid+Darling&family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  {% endblock %}
+
+  {% block extra_css %}
+  {% endblock %}
+
+  {% block corejs %}
+  <script src="https://kit.fontawesome.com/65aa973f6f.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+  <!-- Stripe -->
+  <script src="https://js.stripe.com/v3/"></script>
+  {% endblock %}
+
+  {% block extra_js %}
+  {% endblock %}
+
+  <title>Sleep Healthily{% block extra_title %}{% endblock %}</title>
+</head>
+
+<body class="bg-light text-primary">
+  {% comment %} Site Header {% endcomment %}
+  <header>
+    <nav class="container-fluid navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Sleep Healthily</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sleep products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-none my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+
+        <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+          <li class="list-inline-item dropdown">
+            <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <div class="text-center">
+                <div><i class="fas fa-user fa-lg"></i></div>
+                <p class="my-0">My Account</p>
+              </div>
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+              {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+              {% comment %} <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+              {% endcomment %}
+              {% endif %}
+              {% comment %} <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a> {% endcomment %}
+              {% comment %} <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a> {% endcomment %}
+              {% else %}
+              <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+              <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+              {% endif %}
+            </div>
+          </li>
+          <li class="list-inline-item">
+            <a class="text-primary" href="#">
+              <div class="text-center">
+                <div><i class="fas fa-shopping-cart fa-lg"></i></div>
+                <p class="my-0">
+                  €0.00
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+    <div
+      class="free-shipping-banner d-flex justify-content-center align-items-center text-white bg-primary font-bold py-3">
+      <strong class="lead text-bold">Free shipping on orders over €75!</strong>
+    </div>
+  </header>
+  {% if messages %}
+  <div class="message-container"></div>
+  {% endif %}
+  {% block page_header %}{% endblock page_header %}
+
+  {% comment %} Main page content {% endcomment %}
+  <main>
+    {% block content %}{% endblock content %}
+  </main>
+
+  {% comment %} Newsletter section {% endcomment %}
+  <section class="position-relative newsletter-section overflow-hidden">
+    <div class="sky"></div>
+    <div class="bg-dark text-white w-100 h-100 opacity-50 newsletter__text-container">
+      <div class="container h-100 d-flex flex-column align-items-start justify-content-center newsletter__text">
+        <h3 class="h3">Sign up to our newsletter</h3>
+        <p>We only email once per month</p>
+
+        <div class="container row justify-content-start input-container">
+          <div class="col-8 col-md-9 px-0">
+            <input class="h-100 w-100" type="text" placeholder="Email">
+          </div>
+          <div class="col-4 col-md-3 px-0">
+            <button class="btn btn-primary w-100">Sign up</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {% comment %} Footer {% endcomment %}
+  <footer class="bg-primary text-light py-5">
+    <div class="container footer_menus">
+      <div class="row justify-content-between">
+        <div class="col-12 col-md-4 footer-menu">
+          <h4>List title</h4>
+          <ul class="list-unstyled px-0">
+            <li class="list-item">Item</li>
+            <li class="list-item">Item</li>
+            <li class="list-item">Item</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4 footer-menu">
+          <h4>List title</h4>
+          <ul class="list-unstyled px-0">
+            <li class="list-item">Item</li>
+            <li class="list-item">Item</li>
+            <li class="list-item">Item</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4 footer-menu">
+          <h4>List title</h4>
+          <ul class="list-unstyled px-0">
+            <li class="list-item">Item</li>
+            <li class="list-item">Item</li>
+            <li class="list-item">Item</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    {% comment %} Social icons and copyright {% endcomment %}
+    <div class="row mt-5">
+      <div class="col-12 text-center w-100">
+        <ul class="d-flex w-100 align-items-center justify-content-center list-unstyled">
+          <li class="social-icon"><i class="fa fa-xl fa-facebook"></i></li>
+          <li class="social-icon ml-3"><i class="fa fa-xl fa-instagram"></i></li>
+          <li class="social-icon ml-3"><i class="fa fa-xl fa-youtube"></i></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12 text-center w-100">
+        <p class="my-0">© {% now 'Y' %} Sleep Healthily</p>
+      </div>
+    </div>
+
+  </footer>
+
+  <button aria-label="Scroll back to top" type="button" class="btn btn-outline-secondary bg-light btn-floating btn-lg"
+    id="btn-scroll-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  {% block post_load_js %}
+  <script src="{% static 'js/script.js' %}"></script>
+  {% endblock post_load_js %}
+</body>
+
+</html>
