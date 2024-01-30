@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'django.contrib.staticfiles',
     'home',
+    'profiles',
 
     # third-party apps
     'crispy_forms',
