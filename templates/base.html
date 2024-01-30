@@ -49,7 +49,7 @@
   <title>Sleep Healthily{% block extra_title %}{% endblock %}</title>
 </head>
 
-<body class="bg-light text-primary">
+<body class="bg-light text-primary d-flex flex-column">
   {% comment %} Site Header {% endcomment %}
   <header>
     <nav class="container-fluid navbar navbar-expand-lg navbar-custom">
@@ -94,7 +94,7 @@
               {% endcomment %}
               {% endif %}
               {% comment %} <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a> {% endcomment %}
-              {% comment %} <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a> {% endcomment %}
+              <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
               {% else %}
               <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
               <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
@@ -121,7 +121,7 @@
     </div>
   </header>
   {% if messages %}
-  <div class="message-container"></div>
+  <div class="position-absolute message-container"></div>
   {% endif %}
   {% block page_header %}{% endblock page_header %}
 
@@ -131,7 +131,7 @@
   </main>
 
   {% comment %} Newsletter section {% endcomment %}
-  <section class="position-relative newsletter-section overflow-hidden">
+  <section class="position-relative newsletter-section overflow-hidden mt-auto">
     <div class="sky"></div>
     <div class="bg-dark text-white w-100 h-100 opacity-50 newsletter__text-container">
       <div class="container h-100 d-flex flex-column align-items-start justify-content-center newsletter__text">
