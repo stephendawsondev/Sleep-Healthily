@@ -8,6 +8,11 @@
 .btn-lg, .btn-group-lg > .btn {
   padding: 16px 24px; }
 
+.fa-bars,
+.fa-times {
+  color: #572b9e;
+  border-color: #572b9e; }
+
 /*!
  * Bootstrap v4.0.0 (https://getbootstrap.com)
  * Copyright 2011-2018 The Bootstrap Authors
