@@ -1,1 +1,1 @@
-web: gunicorn sleep_healthily.wsgi
+web: npm run compile-scss && gunicorn sleep_healthily.wsgi
