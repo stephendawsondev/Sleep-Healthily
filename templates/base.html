@@ -22,6 +22,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Ingrid+Darling&family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
   {% endblock %}
 
@@ -48,23 +49,39 @@
   <title>Sleep Healthily{% block extra_title %}{% endblock %}</title>
 </head>
 
-<body>
-  <header class="container-fluid fixed-top">
-    <ul class="nav">
-      <li class="nav-brand">Sleep Healthily</li>
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
+<body class="bg-light text-primary">
+  <header>
+    <nav class="container-fluid navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Sleep Healthily</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sleep products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div
+      class="free-shipping-banner d-flex justify-content-center align-items-center text-white bg-primary font-bold py-3">
+      <strong class="lead">Free shipping on orders over €75!</strong>
+    </div>
   </header>
   {% if messages %}
   <div class="message-container"></div>
@@ -74,7 +91,9 @@
     {% block content %}{% endblock content %}
   </main>
   <footer></footer>
-  {% block post_load_js %}{% endblock post_load_js %}
+  {% block post_load_js %}
+  <script src="{% static 'js/script.js' %}"></script>
+  {% endblock post_load_js %}
 </body>
 
 </html>
