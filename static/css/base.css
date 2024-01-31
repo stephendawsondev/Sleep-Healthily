@@ -59,8 +59,8 @@ a {
 .hero,
 .newsletter-section {
   margin: 0;
-  height: 50vh;
   width: 100%;
+  min-height: 300px;
   overflow: hidden;
   position: relative;
   background: radial-gradient(
@@ -69,6 +69,10 @@ a {
     #2b1a47 50%,
     #44138d 95%
   );
+}
+
+.hero {
+  height: 50vh;
 }
 
 ::after,
@@ -171,11 +175,6 @@ a {
   .cta-btn {
     font-size: 1.25rem;
     padding: 1rem 2rem;
-  }
-
-  /* Newsletter section */
-  .newsletter-section {
-    height: 300px;
   }
 
   /* Footer */
