@@ -108,7 +108,16 @@
             {% endif %}
           </div>
         </div>
-        <button type="submit" class="btn btn-primary float-right">Update details</button>
+        <div class="float-right">
+
+          <button type="submit" class="btn btn-primary ml-1">Update details</button>
+        </div>
+
+      </form>
+      <form action="{% url 'account_delete' %}" id="profile-delete-form-{{ user.id }}" method="post"
+        class="delete-form float-right" action="">
+        {% csrf_token %}
+        <button class="btn btn-danger text-white delete-link">Delete account</button>
       </form>
 
     </div>
@@ -120,5 +129,24 @@
       </div>
     </div>
   </div>
+
 </div>
+{% comment %} Delete confirmation modal {% endcomment %}
+<dialog id="delete-modal" class="bg-dark text-light">
+  <div class="modal-box p-3">
+    <h3 class="font-bold mb-3">Are you sure you want to delete your profile? This cannot be undone.</h3>
+    <p class="lead text-light">Please note that any orders associated with your account will no longer be accessible</p>
+    <div class="w-100">
+      <div class="row pt-4 justify-content-lg-end">
+        <div class="col-12 col-lg-3">
+          <button type="button" class="btn btn-outline-light delete-cancel-button w-100">No, don't delete.</button>
+        </div>
+        <div class="col-12 col-lg-3">
+          <button type="submit" class="btn btn-danger delete-confirm-button w-100 mt-2 mt-lg-0">Yes, delete my
+            account.</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</dialog>
 {% endblock %}

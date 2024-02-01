@@ -65,7 +65,16 @@ html {
 @-ms-viewport {
   width: device-width; }
 
-article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
   display: block; }
 
 body {
@@ -86,7 +95,12 @@ hr {
   height: 0;
   overflow: visible; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 0;
   margin-bottom: 0.5rem; }
 
@@ -122,7 +136,7 @@ dt {
   font-weight: 700; }
 
 dd {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   margin-left: 0; }
 
 blockquote {
@@ -146,10 +160,10 @@ sup {
   vertical-align: baseline; }
 
 sub {
-  bottom: -.25em; }
+  bottom: -0.25em; }
 
 sup {
-  top: -.5em; }
+  top: -0.5em; }
 
 a {
   color: #572b9e;
@@ -207,7 +221,7 @@ th {
 
 label {
   display: inline-block;
-  margin-bottom: .5rem; }
+  margin-bottom: 0.5rem; }
 
 button {
   border-radius: 0; }
@@ -273,7 +287,7 @@ legend {
   width: 100%;
   max-width: 100%;
   padding: 0;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   font-size: 1.5rem;
   line-height: inherit;
   color: inherit;

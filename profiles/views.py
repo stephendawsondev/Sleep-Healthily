@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404
 from .models import UserProfile
 from .forms import UserProfileForm, CustomUserEditForm
@@ -33,3 +34,17 @@ def profile(request):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def account_delete(request):
+    """ Deletes the user's account and logs them out."""
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        logout(request)
+        messages.success(
+            request, 'Your account has been successfully deleted.')
+        return redirect(reverse('home'))
+    else:
+        return redirect(reverse('profile'))

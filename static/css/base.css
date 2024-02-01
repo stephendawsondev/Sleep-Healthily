@@ -59,7 +59,7 @@ a {
 .message-container {
   position: fixed;
   top: 72px;
-  right: 15px;
+  left: 15px;
   z-index: 99999999999;
 }
 
