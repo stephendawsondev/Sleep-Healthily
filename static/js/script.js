@@ -87,7 +87,6 @@ const handleDeleteButton = () => {
   if (!document.querySelector(".delete-link")) return;
   const deleteButtons = document.querySelectorAll(".delete-link");
   const deleteModal = document.getElementById("delete-modal");
-  console.log(deleteModal);
   const deleteConfirmButton = document.querySelector(".delete-confirm-button");
   const deleteCancelButton = document.querySelector(".delete-cancel-button");
   let currentDeleteForm = null;
@@ -95,7 +94,6 @@ const handleDeleteButton = () => {
   if (deleteButtons.length === 0 || !deleteModal) return;
 
   for (const deleteButton of deleteButtons) {
-    console.log(deleteButton);
     deleteButton.addEventListener("click", (event) => {
       event.preventDefault();
       try {

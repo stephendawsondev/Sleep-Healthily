@@ -1,15 +1,44 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% comment %} Product list {% endcomment %}
 {% block content %}
 <section class="container p-5">
-  <div class="d-flex justify-items-between">
-    <h1 class="h1">All sleep products</h1>
-    <div class="filters">
-
+  <div class="d-flex justify-content-between">
+    <h1 class="h1 w-100">All sleep products</h1>
+    {% comment %} Sort {% endcomment %}
+    <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+      <div class="sort-select-wrapper w-50">
+        <select id="sort-selector"
+          class="custom-select custom-select-sm rounded border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+          <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+          <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)
+          </option>
+          <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)
+          </option>
+          {% comment %} TODO: When reviews have been added, revisit {% endcomment %}
+          {% comment %} <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating
+            (low to high)
+          </option>
+          <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to
+            low)</option> {% endcomment %}
+          <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+          <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+        </select>
+      </div>
     </div>
   </div>
+  <div class="col-12 col-md-6 px-md-0">
+    <p class="text-secondary mt-3 text-center text-md-left">
+      {% if search_term or current_sorting != 'None_None' %}
+      <a href="{% url 'products' %}">Reset products</a>
+      {% endif %}
+    </p>
+    <p class="text-secondary text-center text-md-left">Showing {{ products|length }} of {{ total_products }} products
+    </p>
+  </div>
   <div class="row my-5">
+    {% comment %} Product cards {% endcomment %}
     {% for product in products %}
     <div class="col-12 col-md-6 col-lg-3 mb-3">
       <div class="card border-0 bg-transparent">
@@ -38,3 +67,29 @@
   </div>
 </section>
 {% endblock content %}
+
+{% block post_load_js %}
+{{ block.super }}
+<script type="text/javascript">
+  $('#sort-selector').change(function () {
+    var selector = $(this);
+    var currentUrl = new URL(window.location);
+
+    var selectedVal = selector.val();
+    if (selectedVal != "reset") {
+      var sort = selectedVal.split("_")[0];
+      var direction = selectedVal.split("_")[1];
+
+      currentUrl.searchParams.set("sort", sort);
+      currentUrl.searchParams.set("direction", direction);
+
+      window.location.replace(currentUrl);
+    } else {
+      currentUrl.searchParams.delete("sort");
+      currentUrl.searchParams.delete("direction");
+
+      window.location.replace(currentUrl);
+    }
+  })
+</script>
+{% endblock %}
