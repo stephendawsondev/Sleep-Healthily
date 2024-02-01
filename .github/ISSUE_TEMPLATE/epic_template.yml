@@ -2,7 +2,7 @@ name: Epic Issue Template
 description: Template for creating a new Epic
 title: "EPIC: <Brief description of the epic>"
 labels: ["epic"]
-projects: ["stephendawsondev/5"]
+projects: ["stephendawsondev/6"]
 assignees:
   - stephendawsondev
 body:

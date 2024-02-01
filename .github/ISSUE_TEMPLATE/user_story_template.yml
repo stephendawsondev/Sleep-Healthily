@@ -1,8 +1,8 @@
 name: User story issue template
 description: The standard user story issue template for the project
-title: "User story - <Brief description of story>"
+title: "USER STORY: <Brief description of story>"
 labels: ["user story"]
-projects: ["stephendawsondev/5"]
+projects: ["stephendawsondev/6"]
 assignees:
   - stephendawsondev
 body:

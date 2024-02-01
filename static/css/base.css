@@ -19,7 +19,13 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   font-family: "Inter", sans-serif;
 }
 
@@ -47,6 +53,22 @@ a {
   right: 30px;
   display: none;
   z-index: 10;
+}
+
+/* Toasts */
+.message-container {
+  position: fixed;
+  top: 72px;
+  left: 15px;
+  z-index: 99999999999;
+}
+
+.custom-toast {
+  overflow: visible;
+}
+
+.toast-capper {
+  height: 2px;
 }
 
 /* Index styles */
