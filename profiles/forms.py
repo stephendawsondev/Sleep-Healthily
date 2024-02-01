@@ -1,8 +1,25 @@
 from django import forms
 from .models import UserProfile
+from django.contrib.auth.models import User
+
+
+class CustomUserEditForm(forms.ModelForm):
+    """ 
+    User form to output on the profile page
+    """
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email')
+        labels = {
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
+            'email': 'Email Address'
+        }
 
 
 class UserProfileForm(forms.ModelForm):
+    """ Form for user profile page """
     class Meta:
         model = UserProfile
         exclude = ('user',)
@@ -20,17 +37,27 @@ class UserProfileForm(forms.ModelForm):
             'default_street_address1': 'Street Address 1',
             'default_street_address2': 'Street Address 2',
             'default_county': 'County, State or Locality',
+            'default_country': 'Country'
+        }
+
+        labels = {
+            'default_phone_number': 'Phone Number',
+            'default_postcode': 'Postal Code',
+            'default_town_or_city': 'Town or City',
+            'default_street_address1': 'Street Address 1',
+            'default_street_address2': 'Street Address 2',
+            'default_county': 'County, State or Locality',
+            'default_country': 'Country'
         }
 
         self.fields['default_phone_number'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            if field != 'default_country':
+            if field in placeholders:
                 if self.fields[field].required:
                     placeholder = f'{placeholders[field]} *'
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = ('border-black '
-                                                        'rounded-0 '
-                                                        'profile-form-input')
-            self.fields[field].label = False
+            if field in labels:
+                self.fields[field].label = labels[field]
+            self.fields[field].widget.attrs['class'] = 'rounded'
