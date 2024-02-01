@@ -12,21 +12,110 @@
 {% block content %}
 <div class="container my-5">
   <div class="row">
-    {% comment %} Profile section {% endcomment %}
-    <div class="col-12 col-lg-6 mb-5">
-      <h2 class="logo-font mb-3">My Profile</h2>
-      <div class="bg-light p-4">
-        <form method="POST" id="profile-update-form">
-          {% csrf_token %}
-          {% crispy form %}
-          <button type="submit" class="btn btn-primary float-right">Update details</button>
-        </form>
-      </div>
+    <!-- Profile section -->
+    <div class="col-12 col-lg-6 mb-5 pl-0">
+      <h2 class="h2 mb-3">My Profile</h2>
+      <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+        {% csrf_token %}
+        <h3 class="h3 my-4">Personal Details</h3>
+
+        <!-- Manually render each field in the user form -->
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ user_form.first_name|as_crispy_field }}
+            {% if user_form.first_name.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ user_form.first_name.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ user_form.last_name|as_crispy_field }}
+            {% if user_form.last_name.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ user_form.last_name.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ user_form.email|as_crispy_field }}
+            {% if user_form.email.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ user_form.email.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+          <!-- Rendering the phone number from the profile form in the Personal Details section -->
+          <div class="form-group col-md-6 mb-0">
+            {{ form.default_phone_number|as_crispy_field }}
+            {% if form.default_phone_number.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ form.default_phone_number.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+
+
+        <h3 class="h3 my-4">Shipping Details</h3>
+        {{ form.default_street_address1|as_crispy_field }}
+        {% if form.default_street_address1.errors %}
+        <div class="alert alert-danger mt-2">
+          {{ form.default_street_address1.errors|striptags }}
+        </div>
+        {% endif %}
+        {{ form.default_street_address2|as_crispy_field }}
+        {% if form.default_street_address1.errors %}
+        <div class="alert alert-danger mt-2">
+          {{ form.default_street_address1.errors|striptags }}
+        </div>
+        {% endif %}
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ form.default_town_or_city|as_crispy_field }}
+            {% if form.default_town_or_city.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ form.default_town_or_city.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ form.default_postcode|as_crispy_field }}
+            {% if form.default_postcode.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ form.default_postcode.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ form.default_county|as_crispy_field }}
+            {% if form.default_county.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ form.default_county.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ form.default_country|as_crispy_field }}
+            {% if form.default_country.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ form.default_country.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary float-right">Update details</button>
+      </form>
+
     </div>
 
     {% comment %} Order history {% endcomment %}
     <div class="col-12 col-lg-6">
-      <h2 class="logo-font mb-3">Order History</h2>
+      <h2 class="h2 mb-3">Order History</h2>
       <div class="bg-light p-4">
       </div>
     </div>
