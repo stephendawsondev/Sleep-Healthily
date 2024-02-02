@@ -90,8 +90,7 @@
             <div class="dropdown-menu border-0" aria-labelledby="user-options">
               {% if request.user.is_authenticated %}
               {% if request.user.is_superuser %}
-              {% comment %} <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
-              {% endcomment %}
+              <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
               {% endif %}
               <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
               <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
@@ -122,7 +121,7 @@
     </nav>
     <div
       class="free-shipping-banner d-flex justify-content-center align-items-center text-white bg-primary font-bold py-3">
-      <strong class="lead text-bold">Free shipping on orders over €75!</strong>
+      <strong class="lead text-bold">Free shipping on orders over €{{ free_shipping_threshold }}!</strong>
     </div>
   </header>
   {% if messages %}

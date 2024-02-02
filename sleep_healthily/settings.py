@@ -106,6 +106,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.contexts.cart_contents',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
@@ -116,6 +117,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'sleep_healthily.wsgi.application'
+
+FREE_SHIPPING_THRESHOLD = 80
+STANDARD_SHIPPING_PERCENTAGE = 10
 
 
 # Database
