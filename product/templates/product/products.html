@@ -41,10 +41,13 @@
   <div class="row my-5">
     {% comment %} Product cards {% endcomment %}
     {% for product in products %}
-    <div class="col-12 col-md-6 col-lg-3 mb-3">
+    <div class="col-12 col-md-6 col-lg-4 mb-3">
       <div class="card border-0 bg-transparent">
-        <a href="/media/pillow-spray.webp" target="_blank"></a>
-        <img class="card-img-top" src="/media/pillow-spray.webp" alt="{{ product.name }}">
+        {% if product.image %}
+        <a href="{{ product.image.url }}" target="_blank">
+          <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+        </a>
+        {% endif %}
         <div class="card-body px-0">
           <h5 class="card-title">{{ product.name }}</h5>
           <p class="card-text">€ {{ product.price }}</p>
