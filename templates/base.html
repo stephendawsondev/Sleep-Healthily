@@ -102,11 +102,16 @@
             </div>
           </li>
           <li class="list-inline-item">
-            <a class="text-primary" href="#">
+            <a class="{% if cart_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+              href="{% url 'view_cart' %}">
               <div class="text-center">
                 <div><i class="fas fa-shopping-cart fa-lg"></i></div>
                 <p class="my-0">
+                  {% if cart_total %}
+                  €{{ cart_total|floatformat:2 }}
+                  {% else %}
                   €0.00
+                  {% endif %}
                 </p>
               </div>
             </a>
@@ -197,7 +202,7 @@
 
     </div>
     {% comment %} Social icons and copyright {% endcomment %}
-    <div class="row mt-5">
+    <div class="rmt-5">
       <div class="col-12 text-center w-100">
         <ul class="d-flex w-100 align-items-center justify-content-center list-unstyled">
           <li class="social-icon"><i class="fa fa-xl fa-facebook"></i></li>
@@ -206,8 +211,8 @@
         </ul>
       </div>
     </div>
-    <div class="row mt-3">
-      <div class="col-12 text-center w-100">
+    <div class="mt-3">
+      <div class="text-center w-100">
         <p class="my-0">© {% now 'Y' %} Sleep Healthily</p>
       </div>
     </div>
