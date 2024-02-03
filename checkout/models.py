@@ -33,6 +33,38 @@ class Order(models.Model):
     stripe_pid = models.CharField(max_length=254, null=False, blank=False,
                                   default='')
 
+    def _generate_order_number(self):
+        """ Generate a random, unique order number using UUID """
+        return uuid.uuid4().hex.upper()
+
+    def update_total(self):
+        """
+        Update grand total each time a line item is added,
+        accounting for shipping costs.
+        """
+        self.order_subtotal = self.line_items.aggregate(Sum('line_item_total'))[
+            'line_item_total__sum'] or 0
+        if self.order_subtotal < settings.FREE_SHIPPING_THRESHOLD:
+            self.shipping_cost = self.order_subtotal * \
+                settings.STANDARD_SHIPPING_PERCENTAGE / 100
+        else:
+            self.shipping_cost = 0
+
+        self.order_total = self.order_subtotal + self.shipping_cost
+        self.save()
+
+    def save(self, *args, **kwargs):
+        """ 
+        Override the original save method to add the order
+        number if it hasn't already been set.
+        """
+        if not self.order_number:
+            self.order_number = self._generate_order_number()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.order_number
+
 
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False,
