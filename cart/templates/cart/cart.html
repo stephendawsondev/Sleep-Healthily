@@ -30,7 +30,10 @@
             </th>
             <td class="align-middle font-weight-normal text-center">€{{ line_item.product.price }}</td>
             <td class="align-middle font-weight-normal text-center">
-              {% include 'includes/snippets/quantity_selector.html' with quantity=line_item.quantity product=line_item.product %}
+              <form class="form update-form" method="POST" action="{% url 'adjust_cart' line_item.product.id %}">
+                {% csrf_token %}
+                {% include 'includes/snippets/quantity_selector.html' with quantity=line_item.quantity product=line_item.product %}
+              </form>
             </td>
             <td class="align-middle font-weight-normal text-right">€{{ line_item.line_total }} </td>
           </tr>
@@ -49,12 +52,13 @@
         {% if free_shipping %}
         <span class="h5">Free</span>
         {% else %}
-        <span class="h5">€{{ shipping }}</span>
+        <span class="h5">€{{ shipping|floatformat:2 }}</span>
         {% endif %}
       </div>
+      <hr class="bg-primary">
       <div class="d-flex justify-content-between align-items-center total-container">
         <h4 class="h4 w-100"><strong>Total</strong></h4>
-        <span class="h5 total-price">€{{ cart_total }}</span>
+        <span class="h5 total-price">€{{ cart_total|floatformat:2 }}</span>
       </div>
       <h5 class="h5 mt-4">Order note</h5>
       <textarea name="cart-order-note" id="cart-order-note" class="w-100" cols="20" rows="5"></textarea>
