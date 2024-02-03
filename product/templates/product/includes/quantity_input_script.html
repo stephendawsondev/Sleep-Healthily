@@ -1,0 +1,49 @@
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    // Disable +/- buttons outside 1-99 range
+    const handleEnableDisable = (input) => {
+      const currentValue = parseInt(input.value);
+      const itemId = input.dataset.itemid;
+      const decrementBtn = document.querySelector(`.decrement-qty_${itemId}`);
+      const incrementBtn = document.querySelector(`.increment-qty_${itemId}`);
+
+      decrementBtn.disabled = currentValue <= 1;
+      incrementBtn.disabled = currentValue >= 99;
+    };
+
+    // Initialize all quantity inputs and their corresponding +/- buttons
+    const allQtyInputs = document.querySelectorAll(".qty_input");
+    allQtyInputs.forEach(input => {
+      handleEnableDisable(input);
+
+      // Check enable/disable every time the input is changed
+      input.addEventListener('change', () => handleEnableDisable(input));
+    });
+
+    // Increment quantity
+    document.querySelectorAll(".increment-qty").forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const closestInput = button.closest(".input-group").querySelector(".qty_input");
+        let currentValue = parseInt(closestInput.value);
+        if (currentValue < 99) {
+          closestInput.value = currentValue + 1;
+          handleEnableDisable(closestInput);
+        }
+      });
+    });
+
+    // Decrement quantity
+    document.querySelectorAll(".decrement-qty").forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const closestInput = button.closest(".input-group").querySelector(".qty_input");
+        let currentValue = parseInt(closestInput.value);
+        if (currentValue > 1) {
+          closestInput.value = currentValue - 1;
+          handleEnableDisable(closestInput);
+        }
+      });
+    });
+  });
+</script>
