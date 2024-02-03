@@ -37,15 +37,32 @@ a {
   display: inline-block;
 }
 
+/* Override quantity input spinner */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .asteriskField {
   display: inline-block;
   margin-left: 0.25em;
 }
 
+/* Custom padding */
+
 .py-6 {
   padding-top: 3em;
   padding-bottom: 3em;
 }
+
+/* Scroll to top button */
 
 #btn-scroll-to-top {
   position: fixed;
@@ -58,8 +75,7 @@ a {
 /* Toasts */
 .message-container {
   position: fixed;
-  top: 72px;
-  left: 15px;
+  top: 10%;
   z-index: 99999999999;
 }
 
@@ -69,6 +85,12 @@ a {
 
 .toast-capper {
   height: 2px;
+}
+
+.cart-notification-wrapper {
+  height: 100px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Index styles */
@@ -175,7 +197,7 @@ a {
   }
 }
 
-/* Product Form */
+/* Product Form - File input */
 
 .btn-file {
   position: relative;
@@ -210,6 +232,12 @@ a {
   .py-6 {
     padding-top: 7em;
     padding-bottom: 7em;
+  }
+
+  /* Toasts */
+  .message-container {
+    top: 5%;
+    right: 5%;
   }
 
   /* Homepage */

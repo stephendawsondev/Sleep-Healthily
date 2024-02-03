@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   handleDeleteButton();
+  displayToastMessage();
   const navbarToggler = document.querySelector(".navbar-toggler");
   const navbarTogglerIcon = navbarToggler.querySelector("i");
 
@@ -23,6 +24,10 @@ window.onscroll = function () {
   scrollFunction();
 };
 
+/**
+ * Scroll to top button function
+ * @returns {void}
+ */
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     scrollToTopButton.style.display = "block";
@@ -38,7 +43,11 @@ function scrollToTop() {
   document.documentElement.scrollTop = 0;
 }
 
-// Starry night script
+/**
+ * Function to initialise the stars animation for
+ * the hero and newsletter sections
+ * @returns {void}
+ */
 function init() {
   const styles = ["animate4", "animate1", "animate2", "animate3"];
   const scales = ["scale1", "scale2", "scale3"];
@@ -127,3 +136,29 @@ const handleDeleteButton = () => {
     });
   }
 };
+
+/**
+ * Display toast messages
+ * @returns {void}
+ */
+function displayToastMessage() {
+  const toast = document.querySelector(".toast");
+  toast.classList.add("show");
+  dismissToast();
+}
+
+/**
+ * Function to add event listener to the
+ * toast close button to dismiss the toast
+ * @returns {void}
+ */
+function dismissToast() {
+  const toastCloseButton = document.querySelector("[data-dismiss='toast']");
+  if (toastCloseButton) {
+    toastCloseButton.addEventListener("click", () => {
+      const toast = document.querySelector(".toast");
+      toast.classList.remove("show");
+      toast.remove();
+    });
+  }
+}

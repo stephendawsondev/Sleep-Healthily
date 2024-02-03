@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
 <section class="container py-5 featured-product-section">
   <div class="row justify-content-center section-content featured-product__content ">
@@ -23,17 +22,12 @@
       <p class="product-price">€ {{ product.price }}</p>
       {% include 'product/includes/reviews_stars.html' %}
       <p class="mt-3 product__description">{{ product.description }}</p>
-      <div class="quantity-selector-container">
-        {% comment %} TODO: Placeholder until I properly add a quantity selector snippet {% endcomment %}
-        <div class="quantity-selector">
-          <button class="btn btn-outline-primary quantity-selector__btn">-</button>
-          <input type="number" class="quantity-selector__input" value="1" min="1">
-          <button class="btn btn-primary quantity-selector__btn">+</button>
-        </div>
-      </div>
-      <div class="mt-3 buttons-container">
-        <button class="btn btn-primary">Add to cart</button>
-      </div>
+      <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
+        {% csrf_token %}
+        {% include 'includes/snippets/quantity_selector.html' %}
+        {% include 'product/includes/add_to_cart_buttons.html' %}
+        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+      </form>
     </div>
   </div>
 </section>
@@ -59,3 +53,8 @@
 </dialog>
 {% endif %}
 {% endblock content %}
+
+{% block post_load_js %}
+{{ block.super }}
+{% include 'product/includes/quantity_input_script.html' %}
+{% endblock %}

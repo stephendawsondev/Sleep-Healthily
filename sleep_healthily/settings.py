@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'home',
     'profiles',
     'product',
+    'cart',
 
     # third-party apps
     'crispy_forms',
@@ -105,6 +106,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.contexts.cart_contents',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
@@ -116,16 +118,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sleep_healthily.wsgi.application'
 
+FREE_SHIPPING_THRESHOLD = 80
+STANDARD_SHIPPING_PERCENTAGE = 10
+
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 if os.path.isfile('env.py'):
     DATABASES = {
