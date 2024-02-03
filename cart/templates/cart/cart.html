@@ -71,8 +71,8 @@
       <h5 class="h5 mt-4">Order note</h5>
       <textarea name="cart-order-note" id="cart-order-note" class="w-100" cols="20" rows="5"></textarea>
       <div class="d-flex flex-column w-100 buttons-container">
-        <a href="" class="btn btn-primary w-100">Checkout</a>
-        <a href="" class="btn btn-outline-primary w-100 mt-1">Continue shopping</a>
+        <a href="{% url 'view_checkout' %}" class="btn btn-primary w-100">Checkout</a>
+        <a href="{% url 'products' %}" class="btn btn-outline-primary w-100 mt-1">Continue shopping</a>
       </div>
     </div>
   </div>
