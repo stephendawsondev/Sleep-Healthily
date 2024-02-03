@@ -75,8 +75,7 @@ input[type="number"] {
 /* Toasts */
 .message-container {
   position: fixed;
-  top: 72px;
-  left: 15px;
+  top: 10%;
   z-index: 99999999999;
 }
 
@@ -86,6 +85,12 @@ input[type="number"] {
 
 .toast-capper {
   height: 2px;
+}
+
+.cart-notification-wrapper {
+  height: 100px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Index styles */
@@ -192,7 +197,7 @@ input[type="number"] {
   }
 }
 
-/* Product Form */
+/* Product Form - File input */
 
 .btn-file {
   position: relative;
@@ -227,6 +232,12 @@ input[type="number"] {
   .py-6 {
     padding-top: 7em;
     padding-bottom: 7em;
+  }
+
+  /* Toasts */
+  .message-container {
+    top: 5%;
+    right: 5%;
   }
 
   /* Homepage */
