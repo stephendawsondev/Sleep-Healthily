@@ -2,5 +2,120 @@
 {% load static %}
 
 {% block content %}
+<section class="">
+  <div class="row">
+    <!-- Profile section -->
+    <div class="col-12 col-lg-6 mb-5 my-5 px-lg-5">
+      <h1 class="h2 mb-3">Complete your order</h1>
+      <form action="" method="POST" id="checkout-form">
+        {% csrf_token %}
+        <h3 class="h3 my-4">Personal Details</h3>
+        <!-- Manually render each field in the order form -->
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ order_form.first_name|as_crispy_field }}
+            {% if order_form.first_name.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ order_form.first_name.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ order_form.last_name|as_crispy_field }}
+            {% if order_form.last_name.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ order_form.last_name.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ order_form.email|as_crispy_field }}
+            {% if order_form.email.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ order_form.email.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ order_form.phone_number|as_crispy_field }}
+            {% if order_form.phone_number.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ order_form.phone_number.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
 
+        <h3 class="h3 my-4">Shipping Details</h3>
+        {{ order_form.street_address1|as_crispy_field }}
+        {% if order_form.street_address1.errors %}
+        <div class="alert alert-danger mt-2">
+          {{ order_form.street_address1.errors|striptags }}
+        </div>
+        {% endif %}
+        {{ order_form.street_address2|as_crispy_field }}
+        {% if order_form.street_address1.errors %}
+        <div class="alert alert-danger mt-2">
+          {{ order_form.street_address1.errors|striptags }}
+        </div>
+        {% endif %}
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ order_form.town_or_city|as_crispy_field }}
+            {% if order_form.town_or_city.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ order_form.town_or_city.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ order_form.postcode|as_crispy_field }}
+            {% if order_form.postcode.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ order_form.postcode.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ order_form.county|as_crispy_field }}
+            {% if order_form.county.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ order_form.county.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ order_form.country|as_crispy_field }}
+            {% if order_form.country.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ order_form.country.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <h3 class="h3 my-4">Payment</h3>
+        {% comment %} Stripe form goes here {% endcomment %}
+
+        <div class="form-buttons w-100 d-flex justify-content-between">
+          <a href="{% url 'view_cart' %}" class="w-100 btn btn-outline-primary">
+            <i class="fas fa-chevron-left fa-xs"></i> Edit
+            cart</a>
+          <button class="w-100 btn btn-primary ml-5">Complete checkout</button>
+        </div>
+      </form>
+    </div>
+
+    {% comment %} Order Summary {% endcomment %}
+    <div class="col-12 col-lg-6 bg-dark text-light">
+      <div class="py-5 order-summary-content">
+        <h2 class="h2 mb-3">Order Summary</h2>
+      </div>
+    </div>
+  </div>
+
+</section>
 {% endblock %}
