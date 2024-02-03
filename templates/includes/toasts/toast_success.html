@@ -10,10 +10,12 @@
     <div class="row">
       <div class="col">
         {{ message }}
+        {% if cart_total and not on_profile_page and not on_cart_page %}
         <hr class="mt-1 mb-3">
+        {% endif %}
       </div>
     </div>
-    {% if cart_total and not on_profile_page %}
+    {% if cart_total and not on_profile_page and not on_cart_page %}
     <p class="logo-font py-1">Cart quantity ({{ product_count }})</p>
     <div class="cart-notification-wrapper">
       {% for item in cart_items %}
@@ -41,12 +43,12 @@
           </p>
         </strong>
         {% if free_shipping_remainder > 0 %}
-        <p class="mb-0 p-2 bg-warning shadow-sm text-black text-center">
-          Spend <strong>€{{ free_shipping_remainder }}</strong> more to get free shipping!
+        <p class="my-3 p-2 bg-dark text-light shadow-sm text-center">
+          Spend €{{ free_shipping_remainder }} more to get free shipping!
         </p>
         {% endif %}
         <a href="{% url 'view_cart' %}" class="btn btn-primary rounded">
-          <span class="text-uppercase">View cart</span>
+          <span class="float-right">View cart</span>
         </a>
       </div>
     </div>

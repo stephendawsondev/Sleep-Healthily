@@ -1,6 +1,14 @@
 <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
-    // Disable +/- buttons outside 1-99 range
+    // Check if on cart page because it should
+    // not submit on the product page
+    const isCartPage = window.location.pathname.includes('/cart');
+
+    // setting the timeout id to handle
+    // clicks in quick succession
+    let timeoutId;
+
+    // Function to disable/enable buttons based on the quantity
     const handleEnableDisable = (input) => {
       const currentValue = parseInt(input.value);
       const itemId = input.dataset.itemid;
@@ -11,16 +19,30 @@
       incrementBtn.disabled = currentValue >= 99;
     };
 
+    // Function to submit the form with a delay, using debounce to handle rapid clicks
+    const delayedFormSubmit = (input) => {
+      if (timeoutId) clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(() => {
+        input.form.submit();
+      }, 500);
+    };
+
+
     // Initialize all quantity inputs and their corresponding +/- buttons
-    const allQtyInputs = document.querySelectorAll(".qty_input");
-    allQtyInputs.forEach(input => {
+    document.querySelectorAll(".qty_input").forEach(input => {
       handleEnableDisable(input);
 
-      // Check enable/disable every time the input is changed
-      input.addEventListener('change', () => handleEnableDisable(input));
+      // Check enable/disable and submit form with delay every time the input is changed
+      input.addEventListener('change', () => {
+        handleEnableDisable(input);
+        if (isCartPage) {
+          delayedFormSubmit(input);
+        }
+      });
     });
 
-    // Increment quantity
+    // Increment quantity and submit form with delay
     document.querySelectorAll(".increment-qty").forEach(button => {
       button.addEventListener('click', (e) => {
         e.preventDefault();
@@ -29,11 +51,14 @@
         if (currentValue < 99) {
           closestInput.value = currentValue + 1;
           handleEnableDisable(closestInput);
+          if (isCartPage) {
+            delayedFormSubmit(closestInput);
+          }
         }
       });
     });
 
-    // Decrement quantity
+    // Decrement quantity and submit form with delay
     document.querySelectorAll(".decrement-qty").forEach(button => {
       button.addEventListener('click', (e) => {
         e.preventDefault();
@@ -42,8 +67,12 @@
         if (currentValue > 1) {
           closestInput.value = currentValue - 1;
           handleEnableDisable(closestInput);
+          if (isCartPage) {
+            delayedFormSubmit(closestInput);
+          }
         }
       });
     });
+
   });
 </script>
