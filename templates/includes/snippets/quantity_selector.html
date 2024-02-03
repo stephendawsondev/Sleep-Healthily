@@ -1,5 +1,5 @@
 {% if not quantity %}<p class="mt-3"><strong>Quantity:</strong></p>{% endif %}
-<div class="form-group w-{% if quantity %}100{% else %}50{% endif %}">
+<div class="w-{% if quantity %}100{% else %}50{% endif %}">
   <div class="input-group input-group-{{ product.id }}">
     <div class="input-group-prepend">
       <button class="decrement-qty btn btn-outline-primary py-1 decrement-qty_{{ product.id }}"
