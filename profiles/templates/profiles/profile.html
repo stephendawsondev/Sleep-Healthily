@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container my-5">
+<section class="container my-5">
   <div class="row">
     <!-- Profile section -->
     <div class="col-12 col-lg-6 mb-5 pl-lg-0">
@@ -129,8 +129,7 @@
       </div>
     </div>
   </div>
-
-</div>
+</section>
 {% if request.user == user %}
 {% comment %} Delete confirmation modal {% endcomment %}
 <dialog id="delete-modal" class="bg-dark text-light">
