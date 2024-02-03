@@ -3,6 +3,13 @@ $secondary: #8546e5;
 $light: #ffeafd;
 $dark: #653d73;
 
+/* Tables */
+
+table.table th,
+table.table td {
+  border-top-color: $primary;
+}
+
 .btn {
   display: inline-flex;
   padding: 8px 16px;
