@@ -53,3 +53,8 @@
 </dialog>
 {% endif %}
 {% endblock content %}
+
+{% block post_load_js %}
+{{ block.super }}
+{% include 'product/includes/quantity_input_script.html' %}
+{% endblock %}
