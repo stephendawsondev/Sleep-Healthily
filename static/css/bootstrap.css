@@ -13,6 +13,22 @@ table.table td {
 .btn-lg, .btn-group-lg > .btn {
   padding: 16px 24px; }
 
+.btn.btn-primary:focus, .btn.btn-primary.focus {
+  border-color: #8546e5;
+  background-color: #8546e5; }
+
+.btn.btn-primary:hover {
+  background-color: #8546e5;
+  border-color: #8546e5; }
+
+.btn.btn-secondary:focus, .btn.btn-secondary.focus {
+  border-color: #572b9e;
+  background-color: #572b9e; }
+
+.btn.btn-secondary:hover {
+  background-color: #572b9e;
+  border-color: #572b9e; }
+
 .fa-bars,
 .fa-times {
   color: #572b9e;
