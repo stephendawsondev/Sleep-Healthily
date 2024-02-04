@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Checkout{% endblock %}
+
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+
 {% block content %}
 <section id="checkout-section ">
   <div class="row mw-100">
@@ -9,7 +17,7 @@
       <div class="row justify-content-end">
         <div class="col-12 col-lg-10 checkout-form-container">
           <h1 class="h2 mb-3">Complete your order</h1>
-          <form action="" method="POST" id="checkout-form">
+          <form action="" method="POST" id="payment-form">
             {% csrf_token %}
             <h3 class="h3 my-4">Personal Details</h3>
             <!-- Manually render each field in the order form -->
@@ -100,8 +108,11 @@
               </div>
             </div>
             <h3 class="h3 my-4">Payment</h3>
-            {% comment %} Stripe form goes here {% endcomment %}
-
+            <div>
+              <div class="mb-3" id="card-element"></div>
+              <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+              <input type="hidden" value="{{ client_secret }}" name="client_secret">
+            </div>
             <div class="form-buttons w-100 d-flex justify-content-between">
               <div class="w-100">
                 <a href="{% url 'view_cart' %}" class="w-100 btn btn-outline-primary">
@@ -167,12 +178,17 @@
                 <p class="h6 text-right">€{{ cart_total|floatformat:2 }}</p>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+{% endblock %}
+
+{% block post_load_js %}
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
