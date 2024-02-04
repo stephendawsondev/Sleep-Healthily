@@ -4,19 +4,20 @@
 {% block title %}Order Summary{% endblock %}
 
 {% block content %}
-<section id="order-summary-page" class="py-5">
+<section id="order-summary-page" class="container-fluid p-5">
   <h1 class="h1">Thank you!</h1>
-  <hr class="hr">
+  <hr class="hr border-primary my-4">
   <p>A confirmation email has been sent to <em>{{ order.email }}</em></p>
-
-  <div class="row order-summary-container ">
-    <div class="col-12 col-lg-8 order-summary border border-primary p-4">
+  <div class="row order-summary-container mx-0">
+    <div class="col-12 col-lg-6 order-summary border border-primary p-4">
       <h2 class="h2">Order Summary</h2>
-      <div class="order-number-container d-flex justify-content-between align-items-center">
+      <div
+        class="d-flex flex-column flex-lg-row align-items-start justify-content-between align-items-lg-center mt-4 order-number-container">
         <span><strong>Order Number:</strong></span>
         <span>{{ order }}</span>
       </div>
-      <div class="order-date-container d-flex justify-content-between align-items-center">
+      <div
+        class="d-flex flex-column flex-lg-row align-items-start justify-content-between align-items-lg-center mb-3 order-date-container">
         <span><strong>Order date:</strong></span>
         <span>{{ order.date }}</span>
       </div>
@@ -24,16 +25,16 @@
       <table class="table text-primary table-borderless">
         <thead>
           <tr>
-            <th scope="col">Product</th>
-            <th scope="col" class="text-center">Price</th>
-            <th scope="col" class="text-center">Quantity</th>
-            <th scope="col" class="text-right">Total</th>
+            <th scope="col" class="border-primary"><strong>Product</strong></th>
+            <th scope="col" class="text-center border-primary"><strong>Price</strong></th>
+            <th scope="col" class="text-center border-primary"><strong>Quantity</strong></th>
+            <th scope="col" class="text-right border-primary"><strong>Total</strong></th>
           </tr>
         </thead>
         <tbody>
           {% for line_item in order.line_items.all %}
           <tr>
-            <th scope="row align-middle font-weight-normal">
+            <th scope="row align-middle" class="font-weight-normal">
               {% comment %}
               Alt tag left blank here to avoid screen reader noise.
               The image is of the product, but as a line item in a table,
@@ -51,6 +52,23 @@
           {% endfor %}
         </tbody>
       </table>
+      <hr class="hr mt-4 border-primary">
+      <div class="row justify-content-end">
+        <div class="col-2 col-lg-6">
+
+        </div>
+        <div class="col-6 col-lg-4">
+          <p class="h6 text-right"><strong>Subtotal</strong></p>
+          <p class="h6 text-right"><strong>Shipping</strong></p>
+          <p class="h6 text-right"><strong>Total</strong></p>
+        </div>
+        <div class="col-4 col-lg-2 pr-4">
+          <p class="h6 text-right">€{{ order.order_subtotal }}</p>
+          <p class="h6 text-right">€{{ order.shipping_cost|floatformat:2 }}
+          </p>
+          <p class="h6 text-right">€{{ order.order_total|floatformat:2 }}</p>
+        </div>
+      </div>
     </div>
 
   </div>
