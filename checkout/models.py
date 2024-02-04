@@ -3,6 +3,8 @@ from django.db import models
 from django.db.models import Sum
 from django.conf import settings
 from django_countries.fields import CountryField
+import datetime
+
 from product.models import Product
 from profiles.models import UserProfile
 
@@ -52,6 +54,15 @@ class Order(models.Model):
 
         self.order_total = self.order_subtotal + self.shipping_cost
         self.save()
+
+    def estimated_delivery_date(self):
+        """ 
+        Calculate the estimated delivery date based on the order date.
+        Date adds on three days to the order date.
+        """
+        # add three days to delivery date and format as date only
+        delivery_date = self.date + datetime.timedelta(days=3)
+        return delivery_date.date()
 
     def save(self, *args, **kwargs):
         """ 
