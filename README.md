@@ -330,6 +330,7 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 - [Figma for designing the wireframes](https://www.figma.com/)
 - [Draw.io for ERD and Flowchart](https://app.diagrams.net/)
 - [Cooolors for colour palette](https://coolors.co/)
+- [Favicon.io](https://favicon.io/favicon-generator/) - For the favicon generator
 
 #### Code
 
@@ -341,7 +342,7 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 
 #### Assets
 
-- [DALLE for image generation](https://openai.com/dall-e-3)
+- [DALLE for product image generation](https://openai.com/dall-e-3)
 - [Stripe Elements Script](https://stripe.com/docs/stripe-js) - For payment processing
 
 #### Hosting and Deployment
