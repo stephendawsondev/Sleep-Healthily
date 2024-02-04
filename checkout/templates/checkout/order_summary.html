@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Order Summary{% endblock %}
+
+{% block content %}
+<section id="order-summary-page" class="py-5">
+  <h1 class="h1">Thank you!</h1>
+  <hr class="hr">
+  <p>A confirmation email has been sent to <em>{{ order.email }}</em></p>
+
+  <div class="row order-summary-container ">
+    <div class="col-12 col-lg-8 order-summary border border-primary p-4">
+      <h2 class="h2">Order Summary</h2>
+      <div class="order-number-container d-flex justify-content-between align-items-center">
+        <span><strong>Order Number:</strong></span>
+        <span>{{ order }}</span>
+      </div>
+      <div class="order-date-container d-flex justify-content-between align-items-center">
+        <span><strong>Order date:</strong></span>
+        <span>{{ order.date }}</span>
+      </div>
+      {% comment %} Order summary table {% endcomment %}
+      <table class="table text-primary table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col" class="text-center">Price</th>
+            <th scope="col" class="text-center">Quantity</th>
+            <th scope="col" class="text-right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for line_item in order.line_items.all %}
+          <tr>
+            <th scope="row align-middle font-weight-normal">
+              {% comment %}
+              Alt tag left blank here to avoid screen reader noise.
+              The image is of the product, but as a line item in a table,
+              it is decorative and does not need to be read out.
+              {% endcomment %}
+              <img width="90" height="90" src="{{ line_item.product.image.url }}" alt=""
+                class="img-fluid mr-3 font-weight-normal">{{ line_item.product.name }}
+            </th>
+            <td class="align-middle font-weight-normal text-center">€{{ line_item.product.price }}</td>
+            <td class="align-middle font-weight-normal text-center">
+              {{ line_item.quantity }}
+            </td>
+            <td class="align-middle font-weight-normal text-right">€{{ line_item.line_item_total }} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
