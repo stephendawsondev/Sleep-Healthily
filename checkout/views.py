@@ -15,6 +15,7 @@ def view_checkout(request):
 
     context = {
         'order_form': order_form,
+        'on_checkout_page': True
     }
 
     return render(request, template, context)
