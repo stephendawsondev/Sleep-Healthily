@@ -85,7 +85,15 @@ I used the new [GitHub Project Statuses](https://github.com/users/stephendawsond
 
 > "Sprint 1 will be where the first must haves are tackled. It will involve tackling the most important tasks, which are marked as must have and potentially should have."
 
-<!-- Screenshot of sprint 1 here -->
+This was my first Sprint and I was cautious about the number of issues I thought I would be able to do. As it turns out, I was able to get complete a lot more than I had originally intended. For Sprint 2, I will adjust the story points and number of issues I think I can complete. Here are some notes on this sprint:
+
+1. The initial setup took longer than I anticipated. I knew that I wanted to use Bootstrap with my colour scheme, so it took some time to figure out how to override the default Bootstrap class colours. In the end, I was able to do it using SCSS. Because of using SCSS, I also ran into some issues with my deploy, because I needed to add the Node.js buildpack.
+2. I started with the Account Management Epic. Since I used `django-allauth`, I was able to get a lot of the functionality more easily than I though. I also didn't deviate from the basic functionality, so I was able to complete it quickly. On the other hand, I wasn't able to finish the Profile stories within the Account Management Epic. While I could add the form, the order summary came much later, so I couldn't close it off until that was added.
+3. I was able to complete the Product Management Epic. I was able to add the product list and product detail pages. I also added the product management page, which was a should have.
+4. I was able to complete the Cart Management Epic. I was able to add the cart page and the cart management page. I also added the order summary page, but it was at the end. If I had more time, I would have gone back and done the Account Management tasks, but those will be pushed to Sprint 2.
+5. I also started using `feat:`, `fix:`, `docs:`, `style:` and `task:` in my commit messages, which is something I hadn't adopted in previous projects. I missed some near the beginning, but I'll be using them moving forward.
+
+![Screenshot of Sprint 1 closed issues](./documentation/sprints/sprint1.png)
 
 ### Sprint 2 notes
 
