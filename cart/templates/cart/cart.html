@@ -11,16 +11,16 @@
       <table class="table text-primary table-borderless">
         <thead>
           <tr>
-            <th scope="col">Product</th>
-            <th scope="col" class="text-center">Price</th>
-            <th scope="col" class="text-center">Quantity</th>
-            <th scope="col" class="text-right">Total</th>
+            <th scope="col" class="border-primary">Product</th>
+            <th scope="col" class="text-center border-primary">Price</th>
+            <th scope="col" class="text-center border-primary">Quantity</th>
+            <th scope="col" class="text-right border-primary">Total</th>
           </tr>
         </thead>
         <tbody>
           {% for line_item in cart_items %}
           <tr>
-            <th scope="row align-middle font-weight-normal">
+            <th scope="row align-middle" class="font-weight-normal">
               {% comment %}
               Alt tag left blank here to avoid screen reader noise.
               The image is of the product, but as a line item in a table,
