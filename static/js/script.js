@@ -142,6 +142,7 @@ const handleDeleteButton = () => {
  * @returns {void}
  */
 function displayToastMessage() {
+  if (!document.querySelector(".toast")) return;
   const toast = document.querySelector(".toast");
   toast.classList.add("show");
   dismissToast();

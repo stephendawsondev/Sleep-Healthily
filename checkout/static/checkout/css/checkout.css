@@ -1,0 +1,145 @@
+.StripeElement,
+.stripe-style-input,
+select.form-control:not([size]):not([multiple]) {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  background-color: white;
+  /* Roboto */
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active {
+  box-shadow: 0 1px 2px 0 rgba(87, 43, 158, 0.4);
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.stripe-style-input::placeholder {
+  color: #aab7c4;
+}
+
+#payment-form .form-control,
+#card-element {
+  color: #572b9e;
+}
+
+select,
+select option {
+  color: #572b9e;
+}
+
+select:invalid,
+select option[value=""] {
+  color: #aab7c4 !important;
+}
+
+#loading-overlay {
+  display: none;
+  height: 100vh;
+  min-height: 100% !important;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+
+#loading-overlay {
+  background-color: rgba(87, 43, 158, 1);
+}
+
+.loading-title {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffeafd;
+  font-size: 5rem;
+}
+
+#pillow {
+  background-color: #fff;
+  border-radius: 70px;
+  border-bottom: 40px solid #e1e1e1;
+  box-shadow: 0 30px 5px -10px rgba(0, 0, 0, 0.2);
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  transform: translate(-50%, -50%);
+}
+
+.corner {
+  background-color: #fff;
+  border-radius: 20px;
+  height: 50px;
+  position: absolute;
+  width: 50px;
+  z-index: 1;
+}
+
+.top-left,
+.top-right {
+  top: 0;
+}
+
+.top-right,
+.bottom-right {
+  right: 0;
+}
+
+.bottom-right,
+.bottom-left {
+  background-color: #e1e1e1;
+  bottom: -45px;
+}
+
+.zzz {
+  animation-name: zzz;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+  animation-direction: forwards;
+  color: rgba(160, 84, 246, 1);
+  font-weight: bold;
+  position: absolute;
+  z-index: 100;
+  transform: translateY(100%);
+}
+
+.zzz-z {
+  animation-delay: 0s;
+  right: 10px;
+  color: #ffeafd;
+}
+.zzz-zz {
+  animation-delay: 0.5s;
+  right: -20px;
+  color: #8546e5;
+}
+.zzz-zzz {
+  animation-delay: 1s;
+  right: 0;
+  color: #653d73;
+}
+
+@keyframes zzz {
+  0% {
+    color: rgba(160, 84, 246, 0);
+    font-size: 30px;
+    transform: translateY(100%);
+  }
+  100% {
+    color: rgba(160, 84, 246, 1);
+    font-size: 72px;
+    transform: translateY(-100%);
+  }
+}

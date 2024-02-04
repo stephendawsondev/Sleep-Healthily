@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<section id="checkout-section">
+  <div class="row mw-100">
+    <!-- Checkout section -->
+    <div class="col-12 col-lg-6 my-5">
+      <div class="row justify-content-end">
+        <div class="col-12 col-lg-10 checkout-form-container">
+          <h1 class="h2 mb-3">Complete your order</h1>
+          <form action="" method="POST" id="payment-form">
+            {% csrf_token %}
+            <div
+              class="title-container d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center my-4">
+              <h3 class="h3">Personal Details</h3>
+              <p class="mb-0">
+                {% if not request.user.is_authenticated %}
+                Already have an account? <strong>
+                  <a href="{% url 'account_login' %}" class="text-secondary text-decoration-underline">Sign
+                    in</a>
+                </strong>
+                {% else %}
+                Hi {{ request.user.first_name }}!
+                <strong>
+                  <a href="{% url 'account_logout' %}" class="text-secondary text-decoration-underline">Sign
+                    out</a>
+                </strong>
+                {% endif %}
+              </p>
+            </div>
+            <!-- Manually render each field in the order form -->
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.first_name|as_crispy_field }}
+                {% if order_form.first_name.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.first_name.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.last_name|as_crispy_field }}
+                {% if order_form.last_name.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.last_name.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.email|as_crispy_field }}
+                {% if order_form.email.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.email.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.phone_number|as_crispy_field }}
+                {% if order_form.phone_number.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.phone_number.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+
+            <h3 class="h3 my-4">Shipping Details</h3>
+            {{ order_form.street_address1|as_crispy_field }}
+            {% if order_form.street_address1.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ order_form.street_address1.errors|striptags }}
+            </div>
+            {% endif %}
+            {{ order_form.street_address2|as_crispy_field }}
+            {% if order_form.street_address1.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ order_form.street_address1.errors|striptags }}
+            </div>
+            {% endif %}
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.town_or_city|as_crispy_field }}
+                {% if order_form.town_or_city.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.town_or_city.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.postcode|as_crispy_field }}
+                {% if order_form.postcode.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.postcode.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.county|as_crispy_field }}
+                {% if order_form.county.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.county.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.country|as_crispy_field }}
+                {% if order_form.country.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.country.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            <h3 class="h3 my-4">Payment</h3>
+            <div>
+              <div class="mb-3" id="card-element"></div>
+              <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+              <input type="hidden" value="{{ client_secret }}" name="client_secret">
+            </div>
+            <div class="form-buttons w-100 d-flex justify-content-between">
+              <div class="w-100">
+                <a href="{% url 'view_cart' %}" class="w-100 btn btn-outline-primary">
+                  <i class="fas fa-chevron-left fa-xs"></i> Edit cart
+                </a>
+              </div>
+              <div class="w-100 ml-3">
+                <button class="btn btn-primary w-100">Complete checkout</button>
+                <p class="small text-right text-primary my-1">
+                  <i class="fas fa-exclamation-circle"></i> Your card will be charged €{{ cart_total|floatformat:2 }}
+                </p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% comment %} Order Summary {% endcomment %}
+    <div class="col-12 col-lg-6 bg-dark text-light">
+      <div class="row justify-content-start">
+        <div class="col-12 col-lg-10">
+          <div class="py-5 order-summary-content">
+            <h2 class="h2 mb-3">Order Summary ({{ product_count }})</h2>
+            <div class="mt-4 container-fluid order-summary__line-items">
+              {% for item in cart_items %}
+              <div class="row mt-4 align-items-center order-summary__line-item">
+                <div class="col-2 px-0">
+                  <div class="position-relative image-container">
+                    <img width="80" height="80" src="{{ item.product.image.url }}" alt="" class="img-fluid w-100">
+                    <span
+                      class="position-absolute bg-light text-secondary border-secondary rounded-circle p-1 quantity-bubble">{{ item.quantity }}
+                    </span>
+                  </div>
+                </div>
+                <div class="col-7 px-0">
+                  <div class="ml-3">
+                    <h3 class="h6 ml-3">{{ item.product.name }}</h3>
+                  </div>
+                </div>
+                <div class="col-3 px-0">
+                  <div class="text-right">
+                    <p class="h6 mb-0">€{{ item.line_total }}</p>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <hr class="bg-light my-4 ml-0 px-0">
+            <div class="row justify-content-end">
+              <div class="col-6 px-0">
+
+              </div>
+              <div class="col-4 px-0">
+                <p class="h6 text-right"><strong>Subtotal</strong></p>
+                <p class="h6 text-right"><strong>Shipping</strong></p>
+                <p class="h6 text-right"><strong>Total</strong></p>
+              </div>
+              <div class="col-2">
+                <p class="h6 text-right">€{{ subtotal }}</p>
+                <p class="h6 text-right">{% if free_shipping %}Free
+                  {% else %}€{{ shipping|floatformat:2 }}{% endif %}
+                </p>
+                <p class="h6 text-right">€{{ cart_total|floatformat:2 }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div id="loading-overlay">
+  <div id="container">
+    <span class="text-center w-100 mt-5 loading-title site-title"><strong>Loading...</strong></span>
+    <div id="pillow">
+      <div class="zzz zzz-zzz">Z</div>
+      <div class="zzz zzz-zz">Z</div>
+      <div class="zzz zzz-z">Z</div>
+      <div class="corner top-left"></div>
+      <div class="corner top-right"></div>
+      <div class="corner bottom-right"></div>
+      <div class="corner bottom-left"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block post_load_js %}
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+{% endblock %}

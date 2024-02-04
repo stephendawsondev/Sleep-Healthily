@@ -330,6 +330,7 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 - [Figma for designing the wireframes](https://www.figma.com/)
 - [Draw.io for ERD and Flowchart](https://app.diagrams.net/)
 - [Cooolors for colour palette](https://coolors.co/)
+- [Favicon.io](https://favicon.io/favicon-generator/) - For the favicon generator
 
 #### Code
 
@@ -337,10 +338,13 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 - [Starry sky hero taken from Code Pen](https://codepen.io/ani_davtyan/pen/KZoKmQ) - Credit Ani Davtyan (<https://codepen.io/ani_davtyan>)
 - [W3Schools to remove spinner from quantity input](https://w3schools.com/howto/howto_css_hide_arrow_number.asp)
 - [Code Institute Boutique Ado Project](https://github.com/Code-Institute-Solutions/boutique_ado_v1) - For guidance and code snippets
+- [Stripe for payments processing](https://stripe.com)
+- [Adding dates in Python Stackoverflow thread](https://stackoverflow.com/questions/6871016/adding-days-to-a-date-in-python)
 
 #### Assets
 
-- [DALLE for image generation](https://openai.com/dall-e-3)
+- [DALLE for product image generation](https://openai.com/dall-e-3)
+- [Stripe Elements Script](https://stripe.com/docs/stripe-js) - For payment processing
 
 #### Hosting and Deployment
 
