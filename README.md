@@ -340,6 +340,7 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 - [Code Institute Boutique Ado Project](https://github.com/Code-Institute-Solutions/boutique_ado_v1) - For guidance and code snippets
 - [Stripe for payments processing](https://stripe.com)
 - [Adding dates in Python Stackoverflow thread](https://stackoverflow.com/questions/6871016/adding-days-to-a-date-in-python)
+- [Pillow and zzz loading screen Codepen](https://codepen.io/Charlie-93/pen/mqxWWJ) - Credit Charlie-93 (<https://codepen.io/Charlie-93>)
 
 #### Assets
 
