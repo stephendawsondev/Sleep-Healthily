@@ -50,6 +50,11 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+strong::before,
+strong::after {
+  display: initial;
+}
+
 .asteriskField {
   display: inline-block;
   margin-left: 0.25em;
@@ -225,6 +230,19 @@ input[type="number"] {
   border-radius: 0;
 }
 
+/* Checkout - Order Summary */
+/* Line item quantity bubble */
+.quantity-bubble {
+  font-size: 0.8rem;
+  width: 20px;
+  height: 20px;
+  top: -12px;
+  right: -12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Media Queries */
 
 @media screen and (min-width: 768px) {
@@ -261,6 +279,16 @@ input[type="number"] {
   .footer {
     padding-top: 3em;
     padding-bottom: 3em;
+  }
+
+  /* Checkout form */
+  .checkout-form-container {
+    padding-right: 6em;
+  }
+
+  /* Checkout - Order Summary */
+  .order-summary-content {
+    padding-left: 6em;
   }
 }
 

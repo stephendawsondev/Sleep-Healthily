@@ -2,120 +2,177 @@
 {% load static %}
 
 {% block content %}
-<section class="">
-  <div class="row">
-    <!-- Profile section -->
-    <div class="col-12 col-lg-6 mb-5 my-5 px-lg-5">
-      <h1 class="h2 mb-3">Complete your order</h1>
-      <form action="" method="POST" id="checkout-form">
-        {% csrf_token %}
-        <h3 class="h3 my-4">Personal Details</h3>
-        <!-- Manually render each field in the order form -->
-        <div class="form-row">
-          <div class="form-group col-md-6 mb-0">
-            {{ order_form.first_name|as_crispy_field }}
-            {% if order_form.first_name.errors %}
-            <div class="alert alert-danger mt-2">
-              {{ order_form.first_name.errors|striptags }}
+<section id="checkout-section ">
+  <div class="row mw-100">
+    <!-- Checkout section -->
+    <div class="col-12 col-lg-6 my-5">
+      <div class="row justify-content-end">
+        <div class="col-12 col-lg-10 checkout-form-container">
+          <h1 class="h2 mb-3">Complete your order</h1>
+          <form action="" method="POST" id="checkout-form">
+            {% csrf_token %}
+            <h3 class="h3 my-4">Personal Details</h3>
+            <!-- Manually render each field in the order form -->
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.first_name|as_crispy_field }}
+                {% if order_form.first_name.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.first_name.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.last_name|as_crispy_field }}
+                {% if order_form.last_name.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.last_name.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
             </div>
-            {% endif %}
-          </div>
-          <div class="form-group col-md-6 mb-0">
-            {{ order_form.last_name|as_crispy_field }}
-            {% if order_form.last_name.errors %}
-            <div class="alert alert-danger mt-2">
-              {{ order_form.last_name.errors|striptags }}
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.email|as_crispy_field }}
+                {% if order_form.email.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.email.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.phone_number|as_crispy_field }}
+                {% if order_form.phone_number.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.phone_number.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
             </div>
-            {% endif %}
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6 mb-0">
-            {{ order_form.email|as_crispy_field }}
-            {% if order_form.email.errors %}
-            <div class="alert alert-danger mt-2">
-              {{ order_form.email.errors|striptags }}
-            </div>
-            {% endif %}
-          </div>
-          <div class="form-group col-md-6 mb-0">
-            {{ order_form.phone_number|as_crispy_field }}
-            {% if order_form.phone_number.errors %}
-            <div class="alert alert-danger mt-2">
-              {{ order_form.phone_number.errors|striptags }}
-            </div>
-            {% endif %}
-          </div>
-        </div>
 
-        <h3 class="h3 my-4">Shipping Details</h3>
-        {{ order_form.street_address1|as_crispy_field }}
-        {% if order_form.street_address1.errors %}
-        <div class="alert alert-danger mt-2">
-          {{ order_form.street_address1.errors|striptags }}
-        </div>
-        {% endif %}
-        {{ order_form.street_address2|as_crispy_field }}
-        {% if order_form.street_address1.errors %}
-        <div class="alert alert-danger mt-2">
-          {{ order_form.street_address1.errors|striptags }}
-        </div>
-        {% endif %}
-        <div class="form-row">
-          <div class="form-group col-md-6 mb-0">
-            {{ order_form.town_or_city|as_crispy_field }}
-            {% if order_form.town_or_city.errors %}
+            <h3 class="h3 my-4">Shipping Details</h3>
+            {{ order_form.street_address1|as_crispy_field }}
+            {% if order_form.street_address1.errors %}
             <div class="alert alert-danger mt-2">
-              {{ order_form.town_or_city.errors|striptags }}
+              {{ order_form.street_address1.errors|striptags }}
             </div>
             {% endif %}
-          </div>
-          <div class="form-group col-md-6 mb-0">
-            {{ order_form.postcode|as_crispy_field }}
-            {% if order_form.postcode.errors %}
+            {{ order_form.street_address2|as_crispy_field }}
+            {% if order_form.street_address1.errors %}
             <div class="alert alert-danger mt-2">
-              {{ order_form.postcode.errors|striptags }}
+              {{ order_form.street_address1.errors|striptags }}
             </div>
             {% endif %}
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6 mb-0">
-            {{ order_form.county|as_crispy_field }}
-            {% if order_form.county.errors %}
-            <div class="alert alert-danger mt-2">
-              {{ order_form.county.errors|striptags }}
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.town_or_city|as_crispy_field }}
+                {% if order_form.town_or_city.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.town_or_city.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.postcode|as_crispy_field }}
+                {% if order_form.postcode.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.postcode.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
             </div>
-            {% endif %}
-          </div>
-          <div class="form-group col-md-6 mb-0">
-            {{ order_form.country|as_crispy_field }}
-            {% if order_form.country.errors %}
-            <div class="alert alert-danger mt-2">
-              {{ order_form.country.errors|striptags }}
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.county|as_crispy_field }}
+                {% if order_form.county.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.county.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{ order_form.country|as_crispy_field }}
+                {% if order_form.country.errors %}
+                <div class="alert alert-danger mt-2">
+                  {{ order_form.country.errors|striptags }}
+                </div>
+                {% endif %}
+              </div>
             </div>
-            {% endif %}
-          </div>
-        </div>
-        <h3 class="h3 my-4">Payment</h3>
-        {% comment %} Stripe form goes here {% endcomment %}
+            <h3 class="h3 my-4">Payment</h3>
+            {% comment %} Stripe form goes here {% endcomment %}
 
-        <div class="form-buttons w-100 d-flex justify-content-between">
-          <a href="{% url 'view_cart' %}" class="w-100 btn btn-outline-primary">
-            <i class="fas fa-chevron-left fa-xs"></i> Edit
-            cart</a>
-          <button class="w-100 btn btn-primary ml-5">Complete checkout</button>
+            <div class="form-buttons w-100 d-flex justify-content-between">
+              <div class="w-100">
+                <a href="{% url 'view_cart' %}" class="w-100 btn btn-outline-primary">
+                  <i class="fas fa-chevron-left fa-xs"></i> Edit cart
+                </a>
+              </div>
+              <div class="w-100 ml-3">
+                <button class="btn btn-primary w-100">Complete checkout</button>
+                <p class="small text-right text-primary my-1">
+                  <i class="fas fa-exclamation-circle"></i> Your card will be charged €{{ cart_total|floatformat:2 }}
+                </p>
+              </div>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
-
     {% comment %} Order Summary {% endcomment %}
     <div class="col-12 col-lg-6 bg-dark text-light">
-      <div class="py-5 order-summary-content">
-        <h2 class="h2 mb-3">Order Summary</h2>
+      <div class="row justify-content-start">
+        <div class="col-12 col-lg-10">
+          <div class="py-5 order-summary-content">
+            <h2 class="h2 mb-3">Order Summary ({{ product_count }})</h2>
+            <div class="mt-4 container-fluid order-summary__line-items">
+              {% for item in cart_items %}
+              <div class="row mt-4 align-items-center order-summary__line-item">
+                <div class="col-2 px-0">
+                  <div class="position-relative image-container">
+                    <img width="80" height="80" src="{{ item.product.image.url }}" alt="" class="img-fluid w-100">
+                    <span
+                      class="position-absolute bg-light text-secondary border-secondary rounded-circle p-1 quantity-bubble">{{ item.quantity }}
+                    </span>
+                  </div>
+                </div>
+                <div class="col-7 px-0">
+                  <div class="ml-3">
+                    <h3 class="h6 ml-3">{{ item.product.name }}</h3>
+                  </div>
+                </div>
+                <div class="col-3 px-0">
+                  <div class="text-right">
+                    <p class="h6 mb-0">€{{ item.line_total }}</p>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <hr class="bg-light my-4 ml-0 px-0">
+            <div class="row justify-content-end">
+              <div class="col-6 px-0">
+
+              </div>
+              <div class="col-4 px-0">
+                <p class="h6 text-right"><strong>Subtotal</strong></p>
+                <p class="h6 text-right"><strong>Delivery</strong></p>
+                <p class="h6 text-right"><strong>Total</strong></p>
+              </div>
+              <div class="col-2">
+                <p class="h6 text-right">€{{ subtotal }}</p>
+                <p class="h6 text-right">{% if free_shipping %}Free
+                  {% else %}€{{ shipping|floatformat:2 }}{% endif %}
+                </p>
+                <p class="h6 text-right">€{{ cart_total|floatformat:2 }}</p>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
 </section>
 {% endblock %}
