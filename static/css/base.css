@@ -50,13 +50,7 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-strong::before,
-strong::after {
-  display: initial;
-}
-
 .asteriskField {
-  display: inline-block;
   margin-left: 0.25em;
 }
 
@@ -122,12 +116,6 @@ strong::after {
 
 .hero {
   height: 50vh;
-}
-
-::after,
-::before {
-  content: " ";
-  display: block;
 }
 
 .sky,
