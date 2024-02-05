@@ -190,6 +190,17 @@ input[type="number"] {
   }
 }
 
+/* Profile/Order Summary page */
+.order-summary__order-number {
+  text-decoration: underline;
+}
+
+/* Products page */
+img,
+.card-img-top {
+  border-radius: 2%;
+}
+
 /* Product Form - File input */
 
 .btn-file {

@@ -126,6 +126,32 @@
     <div class="col-12 col-lg-6">
       <h2 class="h2 mb-3">Order History</h2>
       <div class="bg-light p-4">
+        {% if orders %}
+        <table class="table text-primary table-borderless">
+          <thead>
+            <tr>
+              <th scope="col" class="border-0 align-middle">Order number</th>
+              <th scope="col" class="text-center border-0 align-middle">Date</th>
+              <th scope="col" class="text-right border-0 align-middle">Order total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in orders %}
+            <tr>
+              <th scope="row" class="font-weight-normal align-middle border-0">
+                <a href="{% url 'order_history' order.order_number %}" class="order-summary__order-number"
+                  aria-label="Navigate to order">{{ order.order_number|truncatechars:9 }}
+                </a>
+              </th>
+              <td class="align-middle font-weight-normal text-center border-0">{{ order.date|date:"M d, Y" }}</td>
+              <td class="align-middle font-weight-normal text-right border-0">€{{ order.order_total }} </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p class="lead">You haven't placed any orders.</p>
+        {% endif %}
       </div>
     </div>
   </div>
