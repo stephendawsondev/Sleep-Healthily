@@ -87,7 +87,16 @@
       <p>{{ order.estimated_delivery_date }}</p>
     </div>
   </div>
-
+  <div class="back-button mt-5">
+    {% if from_profile %}
+    <a href="{% url 'profile' %}" class="btn btn-primary"><i class="fa fa-chevron-left fa-sm"></i> Back to
+      profile</a>
+    {% else %}
+    <a href="{% url 'products' %}" class="btn btn-primary">
+      <i class="fa fa-chevron-left fa-sm"></i> Continue
+      shopping
+    </a>
+    {% endif %}
   </div>
 </section>
 

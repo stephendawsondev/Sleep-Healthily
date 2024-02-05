@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404
 from .models import UserProfile
+from checkout.models import Order
 from .forms import UserProfileForm, CustomUserEditForm
 
 
@@ -13,6 +14,7 @@ def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     user_form = CustomUserEditForm(instance=request.user)
     form = UserProfileForm(instance=profile)
+    orders = profile.orders.all()
 
     if request.method == 'POST':
         user_form = CustomUserEditForm(request.POST, instance=request.user)
@@ -30,7 +32,8 @@ def profile(request):
     context = {
         'user_form': user_form,
         'form': form,
-        'on_profile_page': True
+        'on_profile_page': True,
+        'orders': orders,
     }
 
     return render(request, template, context)
@@ -48,3 +51,20 @@ def account_delete(request):
         return redirect(reverse('home'))
     else:
         return redirect(reverse('profile'))
+
+
+def order_history(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+
+    messages.info(request, (
+        f'This is a past confirmation for order number {order_number}. '
+        'A confirmation email was sent on the order date.'
+    ))
+
+    template = 'checkout/order_summary.html'
+    context = {
+        'order': order,
+        'from_profile': True,
+    }
+
+    return render(request, template, context)
