@@ -10,6 +10,8 @@ table.table td {
   border-top-color: $primary;
 }
 
+/* Buttons */
+
 .btn {
   display: inline-flex;
   padding: 8px 16px;
@@ -52,6 +54,18 @@ table.table td {
 .fa-times {
   color: $primary;
   border-color: $primary;
+}
+
+/* Dropdown items */
+.dropdown-menu {
+  border-radius: 3%;
+  .dropdown-item {
+    color: $primary;
+    &:hover {
+      background-color: $primary;
+      color: $light;
+    }
+  }
 }
 
 @import "bootstrap_scss/bootstrap";

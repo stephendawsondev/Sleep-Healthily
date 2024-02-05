@@ -3,6 +3,7 @@ table.table th,
 table.table td {
   border-top-color: #572b9e; }
 
+/* Buttons */
 .btn {
   display: inline-flex;
   padding: 8px 16px;
@@ -33,6 +34,15 @@ table.table td {
 .fa-times {
   color: #572b9e;
   border-color: #572b9e; }
+
+/* Dropdown items */
+.dropdown-menu {
+  border-radius: 3%; }
+  .dropdown-menu .dropdown-item {
+    color: #572b9e; }
+    .dropdown-menu .dropdown-item:hover {
+      background-color: #572b9e;
+      color: #ffeafd; }
 
 /*!
  * Bootstrap v4.0.0 (https://getbootstrap.com)
