@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from .models import Review
 from product.models import Product
@@ -17,6 +18,35 @@ def create_review(request, product_id):
     """
     product = Product.objects.get(id=product_id)
     user = request.user
+    user_profile = user.userprofile
+
+    # checking if the user has any orders, because
+    # if they don't then there is no point continuing
+    if not user_profile.orders.all():
+        messages.error(
+            request, "You must have purchased this product to review it.")
+        return redirect('product_detail', product_id)
+
+    # check if the user has orders and the product is in
+    # one of the orders, if not then the user can't review
+    orders = user_profile.orders.all()
+    for order in orders:
+        if product in order.products.all():
+            break
+    else:
+        messages.error(
+            request, "You must have purchased this product to review it.")
+        return redirect('product_detail', product_id)
+
+    # check if the user has already reviewed the product
+    # if they have, then they can't review it again
+    review_exists = Review.objects.filter(product=product, user=user).exists()
+
+    if review_exists:
+        messages.error(
+            request, "You have already reviewed this product, "
+            "please update or delete your existing review.")
+        return redirect('product_detail', product_id)
 
     form = ReviewForm()
 
