@@ -80,8 +80,16 @@ def helpful_votes(request, review_id):
     """
     review = Review.objects.get(id=review_id)
     user = request.user
+
+    if not user.is_authenticated:
+        messages.error(request, "You must be logged in to upvote.")
+        return redirect('product_detail', review.product.id)
+
     if user in review.helpful_votes.all():
         review.helpful_votes.remove(user)
+        messages.success(request, "You have removed your upvote.")
     else:
         review.helpful_votes.add(user)
+        messages.success(request, "You have added your upvote.")
+
     return redirect('product_detail', review.product.id)
