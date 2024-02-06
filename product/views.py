@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
+from django.db.models import Avg, Count
 
 from .models import Product
 from review.models import Review
@@ -15,7 +16,14 @@ def products(request):
     A view to show all products. Also 
     includes sorting and search queries.
     """
-    products = Product.objects.all()
+    products = Product.objects.all().annotate(
+        reviews_average=Avg('review__rating'),
+        reviews_count=Count('review'))
+
+    for product in products:
+        if product.reviews_average is not None:
+            product.reviews_average = round(product.reviews_average)
+
     query = None
     sort = None
     direction = None
@@ -71,10 +79,20 @@ def product_detail(request, id):
     """
     product = get_object_or_404(Product, pk=id)
     reviews = Review.objects.filter(product=product).order_by('-created_at')
+    reviews_count = reviews.count()
+    reviews_average = 0
+    if reviews_count > 0:
+        reviews_total = 0
+        for review in reviews:
+            reviews_total += review.rating
+        # round to 1 decimal place
+        reviews_average = int(round(reviews_total / reviews_count, 1))
 
     context = {
         'product': product,
         'reviews': reviews,
+        'reviews_count': reviews_count,
+        'reviews_average': reviews_average,
     }
 
     return render(request, 'product/product_detail.html', context)

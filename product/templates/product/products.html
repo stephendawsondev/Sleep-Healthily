@@ -62,7 +62,7 @@
             {% endif %}
           </div>
           <p class="card-text">€ {{ product.price }}</p>
-          {% include 'product/includes/reviews_stars.html' %}
+          {% include 'product/includes/reviews_stars.html' with reviews_count=product.reviews_count reviews_average=product.reviews_average %}
           <a href="{% url 'product_detail' product.id %}" class="btn btn-primary w-100 mt-3">View product</a>
         </div>
       </div>

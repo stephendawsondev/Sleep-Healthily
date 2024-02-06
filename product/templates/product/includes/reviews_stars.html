@@ -1,11 +1,14 @@
+{% load helper_tags %}
+
 <div class="container w-100 row align-items-center reviews-container">
   <div class="reviews__stars">
-    <i class="fa fa-star reviews_star"></i>
-    <i class="fa fa-star reviews_star"></i>
-    <i class="fa fa-star reviews_star"></i>
-    <i class="fa fa-star reviews_star"></i>
-    <i class="fa fa-star reviews_star"></i>
+    {% if reviews_average %}
+    {% for _ in reviews_average|get_range %}
+    <i class="fa fa-star fa-sm reviews_star"></i>
+    {% endfor %}
+    {% endif %}
   </div>
-  <small class="font-xs ml-2">(Based on 17
-    reviews)</small>
+  {% if reviews_count %}
+  <small class="font-xs ml-2">(Based on {{ reviews_count }} review{% if reviews_count > 1 %}s{% endif %})</small>
+  {% endif %}
 </div>
