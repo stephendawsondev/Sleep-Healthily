@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% load helper_tags %}
 
-{% block title %}Add a review{% endblock %}
+{% block title %}Edit review{% endblock %}
 
 {% block extra_css %}
 {{ block.super }}
@@ -9,23 +10,22 @@
 {% endblock %}
 
 {% block content %}
-<section class="container py-5" id="create-review-section">
-  <h1 class="h1">Add a review</h1>
+<section class="container py-5" id="edit-review-section">
+  <h1 class="h1">Edit your review</h1>
   <div class="row">
     <div class="col-12 col-md-6">
-      <form method="POST" action="{% url 'create_review' product.id %}" class="form mb-2">
+      <form method="POST" action="{% url 'edit_review' review.id %}" class="form mb-2">
         {% csrf_token %}
         {% for field in form %}
         {% if field.name == 'rating' %}
         <div class="form-group">
           <label for="{{ field.id_for_label }}">Rating *</label>
           <div class="rating mb-3">
-            <i class="fa-regular fa-star fa-xl" data-value="1"></i>
-            <i class="fa-regular fa-star fa-xl" data-value="2"></i>
-            <i class="fa-regular fa-star fa-xl" data-value="3"></i>
-            <i class="fa-regular fa-star fa-xl" data-value="4"></i>
-            <i class="fa-regular fa-star fa-xl" data-value="5"></i>
-            <input type="hidden" name="rating" id="rating">
+            {% for i in 5|get_range %}
+            <i class="fa-{% if review.rating < i|add:1 %}regular{% else %}solid{% endif %} fa-star fa-xl"
+              data-value="{{ i|add:1 }}"></i>
+            {% endfor %}
+            <input type="hidden" name="rating" id="rating" value="{{review.rating}}">
           </div>
           {% else %}
           {{ field|as_crispy_field }}
