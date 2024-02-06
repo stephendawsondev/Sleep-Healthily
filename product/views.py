@@ -70,7 +70,7 @@ def product_detail(request, id):
     A view to show a specific product.
     """
     product = get_object_or_404(Product, pk=id)
-    reviews = Review.objects.filter(product=product)
+    reviews = Review.objects.filter(product=product).order_by('-created_at')
 
     context = {
         'product': product,
