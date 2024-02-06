@@ -62,6 +62,8 @@ def create_review(request, product_id):
             rating=rating
         )
         review.save()
+
+        messages.success(request, "Your review has been added.")
         return redirect('product_detail', product_id)
 
     context = {
@@ -70,6 +72,43 @@ def create_review(request, product_id):
     }
 
     return render(request, 'review/create_review.html', context)
+
+
+@login_required
+def edit_review(request, review_id):
+    """
+    View to edit a review. The review is retrieved
+    from the database and the form is pre-populated
+    with the review data. The review is then updated
+    and saved to the database.
+    """
+    review = Review.objects.get(id=review_id)
+    product = review.product
+    form = ReviewForm(initial={
+        'title': review.title,
+        'text': review.text,
+        'rating': review.rating
+    })
+
+    if request.method == 'POST':
+        title = request.POST['title']
+        text = request.POST['text']
+        rating = request.POST['rating']
+        review.title = title
+        review.text = text
+        review.rating = rating
+        review.save()
+
+        messages.success(request, "Your review has been updated.")
+        return redirect('product_detail', product.id)
+
+    context = {
+        'product': product,
+        'form': form,
+        'review': review,
+    }
+
+    return render(request, 'review/edit_review.html', context)
 
 
 def helpful_votes(request, review_id):

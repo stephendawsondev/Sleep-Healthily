@@ -59,7 +59,7 @@
                 <div class="ml-3 profile-actions">
                   <p class="m-0">{{ review.user.first_name }} {{ review.user.last_name|slice:":1" }}</p>
                   {% if request.user == review.user %}
-                  Hi
+                  <a href="{% url 'edit_review' review.id %}" class="text-light">Edit</a>
                   {% endif %}
                 </div>
               </div>
