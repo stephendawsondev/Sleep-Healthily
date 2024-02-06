@@ -341,6 +341,8 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 - [Stripe for payments processing](https://stripe.com)
 - [Adding dates in Python Stackoverflow thread](https://stackoverflow.com/questions/6871016/adding-days-to-a-date-in-python)
 - [Pillow and zzz loading screen Codepen](https://codepen.io/Charlie-93/pen/mqxWWJ) - Credit Charlie-93 (<https://codepen.io/Charlie-93>)
+- [Get range template filter](https://www.djangosnippets.org/snippets/1357/) - Credit: [Django Snippets](https://www.djangosnippets.org/)
+- [Minlength validator for Django Text Field](https://stackoverflow.com/questions/15845116/how-to-set-min-length-for-models-textfield)
 
 #### Assets
 

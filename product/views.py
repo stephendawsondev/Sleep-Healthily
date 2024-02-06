@@ -2,8 +2,11 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-from .models import Product
 from django.db.models.functions import Lower
+
+from .models import Product
+from review.models import Review
+
 from .forms import ProductForm
 
 
@@ -67,9 +70,11 @@ def product_detail(request, id):
     A view to show a specific product.
     """
     product = get_object_or_404(Product, pk=id)
+    reviews = Review.objects.filter(product=product).order_by('-created_at')
 
     context = {
         'product': product,
+        'reviews': reviews,
     }
 
     return render(request, 'product/product_detail.html', context)
