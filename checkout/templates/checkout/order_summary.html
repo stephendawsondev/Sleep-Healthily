@@ -76,7 +76,9 @@
       <address>
         <p class="mb-1">{{ order.first_name }} {{ order.last_name }}</p>
         <p class="mb-1">{{ order.street_address1 }}</p>
+        {% if order.street_address2 %}
         <p class="mb-1">{{ order.street_address2 }}</p>
+        {% endif %}
         <p class="mb-1">{{ order.town_or_city }}</p>
         <p class="mb-1">{{ order.postcode }}</p>
         <p class="mb-1">{{ order.county }}</p>
