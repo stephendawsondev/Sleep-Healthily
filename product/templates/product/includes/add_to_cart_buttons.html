@@ -1,9 +1,17 @@
 <div class="col-12 col-md-6 d-flex px-0 mt-3">
+  {% if not is_featured_product %}
   <a href="{% url 'products' %}" class="btn btn-outline-primary rounded">
     <strong class="icon">
       <i class="fas fa-chevron-left fa-xs"></i>
       All products
     </strong>
   </a>
+  {% else %}
+  <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-primary rounded">
+    <strong class="icon">
+      View product
+    </strong>
+  </a>
+  {% endif %}
   <input type="submit" class="btn btn-primary rounded ml-2 font-weight-bold w-100" value="Add to cart">
 </div>

@@ -88,50 +88,43 @@ window.onload = init;
 window.onresize = init;
 
 /**
- * Check for delete profile button and add
- * event listener to display modal
+ * Check for delete buttons and add event listener to display modal
  * @returns {void}
  */
 const handleDeleteButton = () => {
-  if (!document.querySelector(".delete-link")) return;
   const deleteButtons = document.querySelectorAll(".delete-link");
   const deleteModal = document.getElementById("delete-modal");
-  const deleteConfirmButton = document.querySelector(".delete-confirm-button");
-  const deleteCancelButton = document.querySelector(".delete-cancel-button");
-  let currentDeleteForm = null;
+  const deleteModalForm = deleteModal.querySelector("form");
+  const deleteModalMessage = deleteModal.querySelector("#delete-modal-message");
+  const deleteCancelButton = deleteModal.querySelector(".delete-cancel-button");
 
   if (deleteButtons.length === 0 || !deleteModal) return;
 
-  for (const deleteButton of deleteButtons) {
+  deleteButtons.forEach((deleteButton) => {
     deleteButton.addEventListener("click", (event) => {
       event.preventDefault();
-      try {
-        if (!(deleteButton.parentElement instanceof HTMLFormElement)) return;
-        const formId = deleteButton.parentElement.getAttribute("id");
-        if (formId) {
-          currentDeleteForm = document.getElementById(formId);
-        }
 
-        // @ts-ignore
-        deleteModal.showModal();
-      } catch (error) {
-        console.error(error);
-      }
+      // Determine if the delete button is for a review or a product
+      const isReview = deleteButton.classList.contains("delete-review-link");
+      const message = isReview
+        ? "Are you sure you want to delete this review? This cannot be undone."
+        : "Are you sure you want to delete this product? This cannot be undone.";
+
+      // Update the modal message
+      deleteModalMessage.textContent = message;
+
+      // Update the form action to the href of the delete button
+      deleteModalForm.setAttribute("action", deleteButton.getAttribute("href"));
+
+      // Show the modal
+      deleteModal.showModal();
     });
-  }
+  });
 
-  if (deleteConfirmButton) {
-    deleteConfirmButton.addEventListener("click", () => {
-      if (currentDeleteForm instanceof HTMLFormElement) {
-        currentDeleteForm.submit();
-      }
-    });
-  }
-
-  if (deleteCancelButton && deleteModal) {
+  // Handle the cancel button click
+  if (deleteCancelButton) {
     deleteCancelButton.addEventListener("click", (event) => {
       event.preventDefault();
-      // @ts-ignore
       deleteModal.close();
     });
   }
