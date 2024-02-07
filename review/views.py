@@ -112,6 +112,19 @@ def edit_review(request, review_id):
     return render(request, 'review/edit_review.html', context)
 
 
+def delete_review(request, review_id):
+    """
+    View to delete a review. The review is retrieved
+    from the database and then deleted.
+    """
+    review = Review.objects.get(id=review_id)
+    product = review.product
+    review.delete()
+
+    messages.success(request, "Your review has been deleted.")
+    return redirect('product_detail', product.id)
+
+
 def helpful_votes(request, review_id):
     """
     View to toggle helpful votes on a review. If the 

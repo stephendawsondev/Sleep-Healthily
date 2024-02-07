@@ -2,6 +2,14 @@
 {% load static %}
 {% load helper_tags %}
 
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'product/css/product.css' %}">
+{% endblock %}
+
+
 {% block content %}
 <section class="container py-5 featured-product-section">
   <div class="row justify-content-center section-content featured-product__content ">
@@ -59,7 +67,8 @@
                 <div class="ml-3 profile-actions">
                   <p class="m-0">{{ review.user.first_name }} {{ review.user.last_name|slice:":1" }}</p>
                   {% if request.user == review.user %}
-                  <a href="{% url 'edit_review' review.id %}" class="text-light">Edit</a>
+                  <a href="{% url 'edit_review' review.id %}" class="text-light review-action-link">Edit</a> |
+                  <a href="{% url 'delete_review' review.id %}" class="text-light review-action-link">Delete</a>
                   {% endif %}
                 </div>
               </div>
