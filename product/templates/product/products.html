@@ -70,27 +70,25 @@
     {% endfor %}
   </div>
 </section>
-{% endblock content %}
 {% comment %} Delete confirmation modal {% endcomment %}
-{% if request.user.is_superuser %}
 <dialog id="delete-modal" class="bg-dark text-light">
   <div class="modal-box p-3">
-    <h3 class="font-bold mb-3">Are you sure you want to delete this product? This cannot be undone.</h3>
+    <h3 id="delete-modal-message" class="font-bold mb-3">Are you sure you want to proceed? This action cannot be undone.
+    </h3>
     <div class="row pt-4 justify-content-lg-end">
       <div class="col-12 col-lg-3">
-        <button type="button" class="btn btn-outline-light delete-cancel-button w-100">No, don't delete.</button>
+        <button type="button" class="btn btn-outline-light delete-cancel-button w-100">No, cancel.</button>
       </div>
       <div class="col-12 col-lg-3">
-        <form action="{% url 'delete_product' product.id %}" method="post">
+        <form id="delete-modal-form" action="" method="post">
           {% csrf_token %}
-          <button type="submit" class="btn btn-danger delete-confirm-button w-100 mt-2 mt-lg-0">Yes, delete
-            this product.</button>
+          <button type="submit" class="btn btn-danger delete-confirm-button w-100 mt-2 mt-lg-0">Yes, proceed.</button>
         </form>
       </div>
     </div>
   </div>
 </dialog>
-{% endif %}
+{% endblock content %}
 {% block post_load_js %}
 {{ block.super }}
 <script type="text/javascript">
