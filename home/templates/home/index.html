@@ -14,3 +14,8 @@
 </section>
 {% include 'includes/snippets/product_content.html' with product=featured_product is_featured_product=True show_reviews=False %}
 {% endblock content %}
+
+{% block post_load_js %}
+{{ block.super }}
+{% include 'product/includes/quantity_input_script.html' %}
+{% endblock %}
