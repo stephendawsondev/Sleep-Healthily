@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-from django.db.models.functions import Lower
+from django.db.models.functions import Lower, Round
 from django.db.models import Avg, Count
 
 from .models import Product
@@ -20,10 +20,6 @@ def products(request):
         reviews_average=Avg('review__rating'),
         reviews_count=Count('review'))
 
-    for product in products:
-        if product.reviews_average is not None:
-            product.reviews_average = round(product.reviews_average)
-
     query = None
     sort = None
     direction = None
@@ -35,11 +31,19 @@ def products(request):
         if sortkey == 'name':
             sortkey = 'lower_name'
             products = products.annotate(lower_name=Lower('name'))
+
+        if sortkey == 'rating':
+            sortkey = 'reviews_average'
+
         if 'direction' in request.GET:
             direction = request.GET['direction']
             if direction == 'desc':
                 sortkey = f'-{sortkey}'
         products = products.order_by(sortkey)
+
+    for product in products:
+        if product.reviews_average is not None:
+            product.reviews_average = round(product.reviews_average)
 
     # Queries
     if request.GET:
@@ -78,7 +82,8 @@ def product_detail(request, id):
     A view to show a specific product.
     """
     product = get_object_or_404(Product, pk=id)
-    reviews = Review.objects.filter(product=product).order_by('-created_at')
+    reviews = Review.objects.filter(product=product).order_by(
+        '-created_at')
     reviews_count = reviews.count()
     reviews_average = 0
     if reviews_count > 0:

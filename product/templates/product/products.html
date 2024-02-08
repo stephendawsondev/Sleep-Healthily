@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}All sleep products{% endblock %}
+
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'product/css/product.css' %}">
+{% endblock %}
+
 {% comment %} Product list {% endcomment %}
 {% block content %}
 <section class="container p-5">
@@ -16,12 +23,11 @@
           </option>
           <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)
           </option>
-          {% comment %} TODO: When reviews have been added, revisit {% endcomment %}
-          {% comment %} <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating
+          <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating
             (low to high)
           </option>
           <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to
-            low)</option> {% endcomment %}
+            low)</option>
           <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
           <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
         </select>
@@ -49,20 +55,20 @@
         </a>
         {% endif %}
         <div class="card-body px-0">
-          <div class="d-flex">
-            <h5 class="h5 w-100 card-title">{{ product.name }}</h5>
+          <div class="d-flex align-items-center">
+            <h5 class="h5 w-100 mb-0 card-title">{{ product.name }}</h5>
             {% if request.user.is_superuser %}
             <div class="action-button-container d-flex">
               <a class="btn btn-primary btn-sm edit-button" href="{% url 'edit_product' product.id %}">Edit</a>
-              <form class="ml-2" action="{% url 'delete_product' product.id %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger btn-sm delete-link">Delete</button>
-              </form>
+              <a href="{% url 'delete_product' product.id %}" type="submit"
+                class="btn btn-danger btn-sm delete-link ml-2">Delete</a>
             </div>
             {% endif %}
           </div>
-          <p class="card-text">€ {{ product.price }}</p>
-          {% include 'product/includes/reviews_stars.html' with reviews_count=product.reviews_count reviews_average=product.reviews_average %}
+          <p class="card-text mt-2 mb-0">€ {{ product.price }}</p>
+          <div class="fixed-height-div">
+            {% include 'product/includes/reviews_stars.html' with reviews_count=product.reviews_count reviews_average=product.reviews_average %}
+          </div>
           <a href="{% url 'product_detail' product.id %}" class="btn btn-primary w-100 mt-3">View product</a>
         </div>
       </div>
