@@ -4,7 +4,11 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
+
 from .models import BlogPost
+
+from .forms import BlogPostForm
 
 User = get_user_model()
 
@@ -96,3 +100,33 @@ def blog_posts(request):
     }
 
     return render(request, 'blog/blog_posts.html', context)
+
+
+@login_required
+def add_blog_post(request):
+    """ 
+    Add a blog post to the store 
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can access that.')
+        return redirect(reverse('blog_posts'))
+
+    if request.method == 'POST':
+        form = BlogPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            blog_post = form.save()
+            messages.success(request, 'Successfully added blog post!')
+            return redirect(reverse('blog_post_detail', args=[blog_post.id]))
+        else:
+            messages.error(request,
+                           ('Failed to add blog post. '
+                            'Please ensure the form is valid.'))
+    else:
+        form = BlogPostForm()
+
+    template = 'blog/add_blog_post.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
