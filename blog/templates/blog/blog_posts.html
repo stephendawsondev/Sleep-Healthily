@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}- {{ blog_post.title }}{% endblock %}
+
+{% comment %} blog_post post detail {% endcomment %}
+{% block content %}
+<section class="container p-5">
+  <div class="d-flex justify-content-between">
+    <h1 class="h1 w-100">Blog</h1>
+    {% comment %} Sort {% endcomment %}
+    <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+      <div class="sort-select-wrapper w-50">
+        <select id="sort-selector"
+          class="custom-select custom-select-sm rounded border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+          <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+          <option value="title_asc" {% if current_sorting == 'title_asc' %}selected{% endif %}>Title (A-Z)</option>
+          <option value="title_desc" {% if current_sorting == 'title_desc' %}selected{% endif %}>Title (Z-A)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 px-md-0">
+    <p class="text-secondary mt-3 text-center text-md-left">
+      {% if search_term or current_sorting != 'None_None' %}
+      <a href="{% url 'blog_posts' %}">Reset blog_posts</a>
+      {% endif %}
+    </p>
+    <p class="text-secondary text-center text-md-left">Showing {{ blog_posts|length }} of {{ total_blog_posts_number }}
+      posts
+    </p>
+  </div>
+  <div class="row my-5">
+    {% comment %} Blog post cards {% endcomment %}
+    {% for blog_post in blog_posts %}
+    <div class="col-12 col-md-6 col-lg-4 mb-3">
+      <div class="card border-0 bg-transparent">
+        {% if blog_post.featured_image %}
+        <a href="{{ blog_post.featured_image.url }}" target="_blank">
+          <img class="card-img-top" src="{{ blog_post.featured_image.url }}" alt="{{ blog_post.title }}">
+        </a>
+        {% endif %}
+        <div class="card-body px-0">
+          <div class="d-flex align-items-center">
+            <h5 class="h5 w-100 mb-0 card-title">{{ blog_post.title }}</h5>
+            {% if request.user.is_superuser %}
+            {% comment %} <div class="action-button-container d-flex">
+              <a class="btn btn-primary btn-sm edit-button" href="{% url 'edit_blog_post' blog_post.id %}">Edit</a>
+              <a href="{% url 'delete_blog_post' blog_post.id %}" type="submit"
+                class="btn btn-danger btn-sm delete-link ml-2">Delete</a>
+            </div> {% endcomment %}
+            {% endif %}
+          </div>
+          <a href="{% url 'blog_post_detail' blog_post.id %}" class="btn btn-primary w-100 mt-3">View full blog post</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
