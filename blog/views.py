@@ -12,7 +12,7 @@ def blog_posts(request):
     A view to show all blogposts. Also 
     includes sorting and search queries.
     """
-    blog_posts = BlogPost.objects.all()
+    blog_posts = BlogPost.objects.all().filter(status=1)
 
     query = None
     sort = None
@@ -31,10 +31,6 @@ def blog_posts(request):
             if direction == 'desc':
                 sortkey = f'-{sortkey}'
         blog_posts = blog_posts.order_by(sortkey)
-
-    for blog_post in blog_posts:
-        if blog_post.reviews_average is not None:
-            blog_post.reviews_average = round(blog_post.reviews_average)
 
     # Queries
     if request.GET:
