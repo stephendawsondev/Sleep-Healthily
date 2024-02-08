@@ -1,0 +1,15 @@
+.blog-post__featured-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 150px;
+}
+
+.blog-post__featured-image {
+  object-fit: fill;
+}
+
+@media screen and (min-width: 768px) {
+  .blog-post__featured-image-container {
+    height: 300px;
+  }
+}

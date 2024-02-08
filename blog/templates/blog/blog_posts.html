@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}- {{ blog_post.title }}{% endblock %}
+{% block title %}- Blog posts{% endblock %}
 
-{% comment %} blog_post post detail {% endcomment %}
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+{% endblock %}
+
+
+{% comment %} Blog post list {% endcomment %}
 {% block content %}
 <section class="container p-5">
   <div class="d-flex justify-content-between">
@@ -34,15 +40,14 @@
     {% comment %} Blog post cards {% endcomment %}
     {% for blog_post in blog_posts %}
     <div class="col-12 col-md-6 col-lg-4 mb-3">
-      <div class="card border-0 bg-transparent">
+      <a href="{% url 'blog_post_detail' blog_post.id %}" class="card blog-post-card"
+        aria-label="Navigate to {{ blog_post.title }}">
         {% if blog_post.featured_image %}
-        <a href="{{ blog_post.featured_image.url }}" target="_blank">
-          <img class="card-img-top" src="{{ blog_post.featured_image.url }}" alt="{{ blog_post.title }}">
-        </a>
+        <img class="card-img-top rounded-0" src="{{ blog_post.featured_image.url }}" alt="{{ blog_post.title }}">
         {% endif %}
-        <div class="card-body px-0">
+        <div class="card-body bg-primary text-light p-4 mb-0">
           <div class="d-flex align-items-center">
-            <h5 class="h5 w-100 mb-0 card-title">{{ blog_post.title }}</h5>
+            <h5 class="h5 w-100 mb-3 card-title">{{ blog_post.title }}</h5>
             {% if request.user.is_superuser %}
             {% comment %} <div class="action-button-container d-flex">
               <a class="btn btn-primary btn-sm edit-button" href="{% url 'edit_blog_post' blog_post.id %}">Edit</a>
@@ -51,9 +56,24 @@
             </div> {% endcomment %}
             {% endif %}
           </div>
-          <a href="{% url 'blog_post_detail' blog_post.id %}" class="btn btn-primary w-100 mt-3">View full blog post</a>
+          {% if blog_post.excerpt %}
+          {{ blog_post.excerpt|truncatechars:100|safe }}
+          {% endif %}
         </div>
-      </div>
+        <div class="card-footer bg-primary border-0 text-light text-right w-100">
+          <small>
+            <strong>
+              By {{ blog_post.author_name}}
+            </strong>
+          </small>
+          <br>
+          <small>
+            <strong>
+              {{ blog_post.created_on|date:"d/m/y" }}
+            </strong>
+          </small>
+        </div>
+      </a>
     </div>
     {% endfor %}
   </div>
