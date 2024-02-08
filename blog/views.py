@@ -3,8 +3,40 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-
+from django.contrib.auth import get_user_model
 from .models import BlogPost
+
+User = get_user_model()
+
+
+def get_user_full_name(user):
+    """ 
+    A function to get the full name of a user.
+    """
+    first_name = user.first_name
+    last_name = user.last_name
+
+    if first_name and last_name:
+        full_name = f'{first_name} {last_name[0]}'
+    else:
+        full_name = user.username
+
+    return full_name
+
+
+def blog_post_detail(request, id):
+    """ 
+    A view to show a specific blog post.
+    """
+    blog_post = get_object_or_404(BlogPost, pk=id)
+    author_name = get_user_full_name(blog_post.author.user)
+
+    context = {
+        'blog_post': blog_post,
+        'author_name': author_name,
+    }
+
+    return render(request, 'blog/blog_post_detail.html', context)
 
 
 def blog_posts(request):
@@ -13,6 +45,8 @@ def blog_posts(request):
     includes sorting and search queries.
     """
     blog_posts = BlogPost.objects.all().filter(status=1)
+    for blog_post in blog_posts:
+        blog_post.author_name = get_user_full_name(blog_post.author.user)
 
     query = None
     sort = None
@@ -62,16 +96,3 @@ def blog_posts(request):
     }
 
     return render(request, 'blog/blog_posts.html', context)
-
-
-def blog_post_detail(request, id):
-    """ 
-    A view to show a specific blog post.
-    """
-    blog_post = get_object_or_404(BlogPost, pk=id)
-
-    context = {
-        'blog_post': blog_post,
-    }
-
-    return render(request, 'blog/blog_post_detail.html', context)
