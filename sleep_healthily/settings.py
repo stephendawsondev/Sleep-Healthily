@@ -58,7 +58,8 @@ INSTALLED_APPS = [
 
     # third-party apps
     'crispy_forms',
-    'storages'
+    'storages',
+    'django_summernote',
 ]
 
 AUTHENTICATION_BACKENDS = [
