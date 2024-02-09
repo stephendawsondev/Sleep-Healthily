@@ -67,6 +67,14 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+SUMMERNOTE_THEME = 'bs4'
+
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'width': '100%',
+    },
+}
+
 SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
