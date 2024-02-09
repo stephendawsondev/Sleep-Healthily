@@ -14,17 +14,17 @@
   {% if blog_post.featured_image %}
   <div class="w-100 blog-post__featured-image-container">
     <img src="{{ blog_post.featured_image.url }}" alt="{{ blog_post.title }}"
-      class="img-fluid blog-post__featured-image">
+      class="w-100 img-fluid blog-post__featured-image">
   </div>
+  {% endif %}
   <div class="container content-container">
     <div
       class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-lg-between title-container mt-4">
       <h1 class="h3 blog-post__titlemb-0 ">{{ blog_post.title }}</h1>
       <p class="mb-0 blog-post__date">{{ blog_post.created_on|date:"d/m/y" }}</p>
     </div>
-    <p class="author-details">By {{ author_name }}</p>
+    <p class="author-details"><strong>By {{ author_name }}</strong></p>
     {{ blog_post.content|safe }}
   </div>
-  {% endif %}
 </section>
 {% endblock %}
