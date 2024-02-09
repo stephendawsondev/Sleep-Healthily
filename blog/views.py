@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 
 from .models import BlogPost
+from profiles.models import UserProfile
 
 from .forms import BlogPostForm
 
@@ -33,6 +34,17 @@ def blog_post_detail(request, id):
     A view to show a specific blog post.
     """
     blog_post = get_object_or_404(BlogPost, pk=id)
+
+    if blog_post.status == 0:
+        if (
+            not request.user.is_superuser
+            and not request.user == blog_post.author.user
+        ):
+            messages.error(
+                request, 'Sorry, this blog post is not available to view.'
+            )
+            return redirect(reverse('blog_posts'))
+
     author_name = get_user_full_name(blog_post.author.user)
 
     context = {
@@ -113,8 +125,11 @@ def add_blog_post(request):
 
     if request.method == 'POST':
         form = BlogPostForm(request.POST, request.FILES)
+        user_profile = UserProfile.objects.get(user=request.user)
         if form.is_valid():
-            blog_post = form.save()
+            blog_post = form.save(commit=False)
+            blog_post.author = user_profile
+            blog_post.save()
             messages.success(request, 'Successfully added blog post!')
             return redirect(reverse('blog_post_detail', args=[blog_post.id]))
         else:
