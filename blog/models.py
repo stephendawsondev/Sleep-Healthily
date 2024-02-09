@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 
 from profiles.models import UserProfile
 
@@ -53,6 +54,12 @@ class BlogPost(models.Model):
 
     def get_delete_url(self):
         return reverse('delete_blog_post', args=[self.id])
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        if not self.excerpt:
+            self.excerpt = self.content[:200]
+        super(BlogPost, self).save(*args, **kwargs)
 
 
 class Tag(models.Model):
