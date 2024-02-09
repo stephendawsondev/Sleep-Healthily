@@ -61,8 +61,6 @@ def blog_posts(request):
     includes sorting and search queries.
     """
     blog_posts = BlogPost.objects.all().filter(status=1)
-    for blog_post in blog_posts:
-        blog_post.author_name = get_user_full_name(blog_post.author.user)
 
     query = None
     sort = None
@@ -96,6 +94,9 @@ def blog_posts(request):
             blog_posts = blog_posts.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
+
+    for blog_post in blog_posts:
+        blog_post.author_name = get_user_full_name(blog_post.author.user)
 
     def total_blog_posts_number():
         """ 
@@ -145,3 +146,48 @@ def add_blog_post(request):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def edit_blog_post(request, id):
+    """ Edit a blog post in the store """
+    blog_post = get_object_or_404(BlogPost, pk=id)
+
+    if not request.user.is_superuser and not request.user == BlogPost.author:
+        messages.error(request, 'Only blog post owners can edit blog posts.')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = BlogPostForm(request.POST, request.FILES, instance=blog_post)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated blog post')
+            return redirect(reverse('blog_post_detail', args=[blog_post.id]))
+        else:
+            messages.error(request,
+                           ('Failed to update product. '
+                            'Please ensure the form is filled out correctly.'))
+    else:
+        form = BlogPostForm(instance=blog_post)
+        messages.info(request, f'You are editing {blog_post.title}')
+
+    template = 'blog/edit_blog_post.html'
+    context = {
+        'form': form,
+        'blog_post': blog_post,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_blog_post(request, blog_post_id):
+    """ Delete a blog post from the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Only blog post owners can delete posts.')
+        return redirect(reverse('home'))
+
+    blog_post = get_object_or_404(BlogPost, pk=blog_post_id)
+    blog_post.delete()
+    messages.success(request, 'Blog post deleted')
+    return redirect(reverse('blog_posts'))

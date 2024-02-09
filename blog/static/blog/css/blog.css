@@ -8,6 +8,10 @@
   object-fit: fill;
 }
 
+.blog-post-card {
+  min-height: 600px;
+}
+
 @media screen and (min-width: 768px) {
   .blog-post__featured-image-container {
     height: 300px;
