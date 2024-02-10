@@ -37,6 +37,10 @@ a {
   display: inline-block;
 }
 
+.text-underline {
+  text-decoration: underline;
+}
+
 /* Override quantity input spinner */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

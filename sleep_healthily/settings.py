@@ -54,16 +54,26 @@ INSTALLED_APPS = [
     'cart',
     'checkout',
     'review',
+    'blog',
 
     # third-party apps
     'crispy_forms',
-    'storages'
+    'storages',
+    'django_summernote',
 ]
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+SUMMERNOTE_THEME = 'bs4'
+
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'width': '100%',
+    },
+}
 
 SITE_ID = 1
 

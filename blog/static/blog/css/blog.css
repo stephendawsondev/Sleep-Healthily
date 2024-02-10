@@ -1,0 +1,23 @@
+.blog-post__featured-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 150px;
+}
+
+.blog-post__featured-image {
+  object-fit: fill;
+}
+
+.blog-post-card {
+  min-height: 600px;
+}
+
+.blog-post__link {
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+  .blog-post__featured-image-container {
+    height: 300px;
+  }
+}
