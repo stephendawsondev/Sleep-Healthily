@@ -12,6 +12,10 @@
   min-height: 600px;
 }
 
+.blog-post__link {
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 768px) {
   .blog-post__featured-image-container {
     height: 300px;

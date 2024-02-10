@@ -342,12 +342,13 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 - [Adding dates in Python Stackoverflow thread](https://stackoverflow.com/questions/6871016/adding-days-to-a-date-in-python)
 - [Pillow and zzz loading screen Codepen](https://codepen.io/Charlie-93/pen/mqxWWJ) - Credit Charlie-93 (<https://codepen.io/Charlie-93>)
 - [Get range template filter](https://www.djangosnippets.org/snippets/1357/) - Credit: [Django Snippets](https://www.djangosnippets.org/)
-- [Minlength validator for Django Text Field](https://stackoverflow.com/questions/15845116/how-to-set-min-length-for-models-textfield)
 - [Django Summernote](https://pypi.org/project/django-summernote/) - For the blog post editor
 
 #### Code issues and solutions
 
+- [Minlength validator for Django Text Field](https://stackoverflow.com/questions/15845116/how-to-set-min-length-for-models-textfield)
 - [Making editor full width Django Summernote](https://stackoverflow.com/questions/61657061/how-do-i-resize-the-width-of-summernote)
+- [Pagination in a function-based view](https://www.makeuseof.com/pagination-in-django)
 
 #### Assets
 

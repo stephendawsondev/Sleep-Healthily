@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
+from django.core.paginator import Paginator
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
@@ -57,10 +58,11 @@ def blog_post_detail(request, id):
 
 def blog_posts(request):
     """ 
-    A view to show all blogposts. Also 
+    A view to show all blog posts. Also 
     includes sorting and search queries.
     """
     blog_posts = BlogPost.objects.all().filter(status=1)
+    paginated = Paginator(blog_posts, 6)
 
     query = None
     sort = None
@@ -98,6 +100,9 @@ def blog_posts(request):
     for blog_post in blog_posts:
         blog_post.author_name = get_user_full_name(blog_post.author.user)
 
+    page_number = request.GET.get('page')
+    page = paginated.get_page(page_number)
+
     def total_blog_posts_number():
         """ 
         A function to return the total number of blog_posts
@@ -107,6 +112,7 @@ def blog_posts(request):
 
     context = {
         'blog_posts': blog_posts,
+        'page': page,
         'search_term': query,
         'current_sorting': current_sorting,
         'total_blog_posts_number': total_blog_posts_number,
