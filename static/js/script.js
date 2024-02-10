@@ -106,9 +106,21 @@ const handleDeleteButton = () => {
 
       // Determine if the delete button is for a review or a product
       const isReview = deleteButton.classList.contains("delete-review-link");
-      const message = isReview
-        ? "Are you sure you want to delete this review? This cannot be undone."
-        : "Are you sure you want to delete this product? This cannot be undone.";
+
+      // Determine if link is a blog post link
+      const isBlogPost = deleteButton.classList.contains(
+        "blog-post__delete-link"
+      );
+
+      let message = "Are you sure you want to delete this item?";
+
+      if (isReview) {
+        message = "Are you sure you want to delete this review?";
+      } else if (isBlogPost) {
+        message = "Are you sure you want to delete this blog post?";
+      } else {
+        message = "Are you sure you want to delete this product?";
+      }
 
       // Update the modal message
       deleteModalMessage.textContent = message;
