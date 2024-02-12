@@ -197,3 +197,26 @@ def delete_blog_post(request, blog_post_id):
     blog_post.delete()
     messages.success(request, 'Blog post deleted')
     return redirect(reverse('blog_posts'))
+
+
+@login_required
+def add_comment(request, blog_post_id):
+    """
+    A view to handle the submission of comments
+    that are associated with a specific blog post.
+    """
+    blog_post = get_object_or_404(BlogPost, pk=blog_post_id)
+    user_profile = UserProfile.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        comment = request.POST['comment']
+        if comment:
+            blog_post.comments.create(
+                user=user_profile,
+                comment=comment,
+            )
+            messages.success(request, 'Comment added successfully')
+        else:
+            messages.error(request, 'Failed to add comment. Please try again.')
+
+    return redirect(reverse('blog_post_detail', args=[blog_post.id]))

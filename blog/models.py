@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils.text import slugify
 
 from profiles.models import UserProfile
+from django.contrib.auth.models import User
 
 STATUS = ((0, 'Draft'), (1, 'Published'))
 
@@ -110,9 +111,15 @@ class Comment(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     is_approved = models.BooleanField(default=False)
+    comment_upvotes = models.ManyToManyField(
+        User, related_name='comment_upvotes', blank=True)
 
     class Meta:
         ordering = ['created_on']
+
+    def approve(self):
+        self.is_approved = True
+        self.save()
 
     def __str__(self):
         return f'Comment by {self.author} on {self.blog_post}'
