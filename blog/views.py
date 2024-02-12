@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 
-from .models import BlogPost
+from .models import BlogPost, Comment
 from profiles.models import UserProfile
 
 from .forms import BlogPostForm
@@ -197,3 +197,30 @@ def delete_blog_post(request, blog_post_id):
     blog_post.delete()
     messages.success(request, 'Blog post deleted')
     return redirect(reverse('blog_posts'))
+
+
+@login_required
+def add_comment(request, blog_post_id):
+    """
+    A view to handle the submission of comments
+    that are associated with a specific blog post.
+    """
+    blog_post = get_object_or_404(BlogPost, pk=blog_post_id)
+    user_profile = UserProfile.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        author = user_profile
+        content = request.POST['content']
+        blog_post = blog_post
+        comment = Comment(
+            author=author,
+            content=content,
+            blog_post=blog_post
+        )
+        comment.save()
+
+        messages.success(request, "Your comment has been added.")
+    else:
+        messages.error(request, "Failed to add comment. Please try again.")
+
+    return redirect(reverse('blog_post_detail', args=[blog_post.id]))

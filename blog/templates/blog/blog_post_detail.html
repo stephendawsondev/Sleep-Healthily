@@ -26,5 +26,36 @@
     <p class="author-details"><strong>By {{ author_name }}</strong></p>
     {{ blog_post.content|safe }}
   </div>
+
+  <div class="blog-comments mt-5">
+    <h3 class="h4">Comments</h3>
+    <div class="comments-container">
+      <div class="comment-form-container">
+        {% if user.is_authenticated %}
+        <form action="{% url 'add_comment' blog_post.id %}" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="content">Leave a comment</label>
+            <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+            <button type="submit" class="btn btn-primary mt-3 float-right">Add comment</button>
+          </div>
+        </form>
+        {% else %}
+        <p>You must <a href="{% url 'account_login' %}" class="text-underline text-secondary">log
+            in</a> to leave a
+          comment
+        </p>
+        {% endif %}
+      </div>
+      <div class="comments-list py-4">
+        {% for comment in comments %}
+        <div class="comment">
+          <p class="comment-content">{{ comment.content }}</p>
+          <p class="comment-author">By {{ comment.author }} on {{ comment.updated_on|date:"d/m/y" }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 </section>
 {% endblock %}
