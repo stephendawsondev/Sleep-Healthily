@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 
-from .models import BlogPost
+from .models import BlogPost, Comment
 from profiles.models import UserProfile
 
 from .forms import BlogPostForm
@@ -209,14 +209,18 @@ def add_comment(request, blog_post_id):
     user_profile = UserProfile.objects.get(user=request.user)
 
     if request.method == 'POST':
-        comment = request.POST['comment']
-        if comment:
-            blog_post.comments.create(
-                user=user_profile,
-                comment=comment,
-            )
-            messages.success(request, 'Comment added successfully')
-        else:
-            messages.error(request, 'Failed to add comment. Please try again.')
+        author = user_profile
+        content = request.POST['content']
+        blog_post = blog_post
+        comment = Comment(
+            author=author,
+            content=content,
+            blog_post=blog_post
+        )
+        comment.save()
+
+        messages.success(request, "Your comment has been added.")
+    else:
+        messages.error(request, "Failed to add comment. Please try again.")
 
     return redirect(reverse('blog_post_detail', args=[blog_post.id]))
