@@ -99,7 +99,15 @@ This was my first Sprint and I was cautious about the number of issues I thought
 
 > "This Sprint also focuses on doing the must have tasks, as well as also taking on some should have tasks if possible."
 
-<!-- Screenshot of sprint 2 here -->
+I made good progress with Sprint 2, starting with finishing off the Account Management Epics. I also got ot added the **Reviews** functionality so that a user can add, update or delete a review on a product page. Additionally, other registered users can like a review, so the review score increases based on the numberof likes.
+
+On of the big challenges I had with my **Reviews** was related to migrations. I had already migrated some reviews, but then realised I needed to add or update some fields. When I did that, it broke my migrations. Luckily, I was able to resolve the issue and learned a lot about migrations in the process.
+
+In Sprint 2, I also completed the blog posts part of my **Blog** app. I was able to add the blog list and blog detail pages. I also added the blog management page, which allows a staff member to add a blog post.
+
+Between the main tasks, I also made some small UI/UX improvement on the site, which allowed me to visualise the larger tasks better.
+
+![Screenshot of Sprint 2 closed issues](./documentation/sprints/sprint2.png)
 
 ### Sprint 3 notes
 
