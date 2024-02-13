@@ -12,6 +12,8 @@ urlpatterns = [
          views.add_comment, name='add_comment'),
     path('comment/edit/<int:comment_id>/',
          views.edit_comment, name='edit_comment'),
+    path('comment/delete/<int:comment_id>/',
+         views.delete_comment, name='delete_comment'),
     path('comment_upvote/<int:comment_id>/',
          views.comment_upvote, name='comment_upvote'),
 ]
