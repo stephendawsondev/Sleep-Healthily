@@ -35,6 +35,7 @@ def blog_post_detail(request, id):
     A view to show a specific blog post.
     """
     blog_post = get_object_or_404(BlogPost, pk=id)
+    comments = Comment.objects.filter(blog_post=blog_post)
 
     if blog_post.status == 0:
         if (
@@ -51,6 +52,7 @@ def blog_post_detail(request, id):
     context = {
         'blog_post': blog_post,
         'author_name': author_name,
+        'comments': comments,
     }
 
     return render(request, 'blog/blog_post_detail.html', context)
@@ -224,3 +226,27 @@ def add_comment(request, blog_post_id):
         messages.error(request, "Failed to add comment. Please try again.")
 
     return redirect(reverse('blog_post_detail', args=[blog_post.id]))
+
+
+@login_required
+def comment_upvote(request, comment_id):
+    """
+    View to toggle helpful votes on a comment. If the 
+    user has already voted, the vote is removed. If the
+    user hasn't voted, the vote is added.
+    """
+    comment = Comment.objects.get(id=comment_id)
+    user = request.user
+
+    if not user.is_authenticated:
+        messages.error(request, "You must be logged in to upvote.")
+        return redirect('blog_post_detail', comment.blog_post.id)
+
+    if user in comment.comment_upvotes.all():
+        comment.comment_upvotes.remove(user)
+        messages.success(request, "You have removed your upvote.")
+    else:
+        comment.comment_upvotes.add(user)
+        messages.success(request, "You have added your upvote.")
+
+    return redirect('blog_post_detail', comment.blog_post.id)

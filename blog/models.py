@@ -121,5 +121,8 @@ class Comment(models.Model):
         self.is_approved = True
         self.save()
 
+    def get_comment_upvotes(self):
+        return self.comment_upvotes.count()
+
     def __str__(self):
         return f'Comment by {self.author} on {self.blog_post}'

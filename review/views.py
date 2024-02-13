@@ -112,6 +112,7 @@ def edit_review(request, review_id):
     return render(request, 'review/edit_review.html', context)
 
 
+@login_required
 def delete_review(request, review_id):
     """
     View to delete a review. The review is retrieved
@@ -125,6 +126,7 @@ def delete_review(request, review_id):
     return redirect('product_detail', product.id)
 
 
+@login_required
 def helpful_votes(request, review_id):
     """
     View to toggle helpful votes on a review. If the 
