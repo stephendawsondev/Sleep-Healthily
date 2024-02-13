@@ -36,6 +36,10 @@ def blog_post_detail(request, id):
     """
     blog_post = get_object_or_404(BlogPost, pk=id)
     comments = Comment.objects.filter(blog_post=blog_post)
+    editing_comment_id = request.GET.get('editing_comment_id', None)
+
+    if editing_comment_id:
+        editing_comment_id = int(editing_comment_id)
 
     if blog_post.status == 0:
         if (
@@ -53,6 +57,7 @@ def blog_post_detail(request, id):
         'blog_post': blog_post,
         'author_name': author_name,
         'comments': comments,
+        'editing_comment_id': editing_comment_id,
     }
 
     return render(request, 'blog/blog_post_detail.html', context)
@@ -225,6 +230,44 @@ def add_comment(request, blog_post_id):
     else:
         messages.error(request, "Failed to add comment. Please try again.")
 
+    return redirect(reverse('blog_post_detail', args=[blog_post.id]))
+
+
+@login_required
+def edit_comment(request, comment_id):
+    """
+    A view to handle the editing of comments
+    that are associated with a specific blog post.
+    """
+    comment = get_object_or_404(Comment, pk=comment_id)
+    blog_post = comment.blog_post
+
+    print(blog_post)
+
+    if request.method == 'POST':
+        content = request.POST['content']
+        comment.content = content
+        comment.save()
+
+        messages.success(request, "Your comment has been updated.")
+        return redirect(reverse('blog_post_detail', args=[blog_post.id]))
+
+    comment_id = comment.id
+
+    return redirect(f'{reverse("blog_post_detail", args=[blog_post.id])}?editing_comment_id={comment.id}')
+
+
+@login_required
+def delete_comment(request, comment_id):
+    """
+    A view to handle the deletion of comments
+    that are associated with a specific blog post.
+    """
+    comment = get_object_or_404(Comment, pk=comment_id)
+    blog_post = comment.blog_post
+    comment.delete()
+
+    messages.success(request, "Your comment has been deleted.")
     return redirect(reverse('blog_post_detail', args=[blog_post.id]))
 
 
