@@ -112,12 +112,16 @@ const handleDeleteButton = () => {
         "blog-post__delete-link"
       );
 
+      const isComment = deleteButton.classList.contains("comment-action-link");
+
       let message = "Are you sure you want to delete this item?";
 
       if (isReview) {
         message = "Are you sure you want to delete this review?";
       } else if (isBlogPost) {
         message = "Are you sure you want to delete this blog post?";
+      } else if (isComment) {
+        message = "Are you sure you want to delete this comment?";
       } else {
         message = "Are you sure you want to delete this product?";
       }
