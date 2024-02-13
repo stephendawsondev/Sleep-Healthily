@@ -47,11 +47,49 @@
         </p>
         {% endif %}
       </div>
-      <div class="comments-list py-4">
+      <div class="comments-list py-4 mt-5">
         {% for comment in comments %}
-        <div class="comment">
-          <p class="comment-content">{{ comment.content }}</p>
-          <p class="comment-author">By {{ comment.author }} on {{ comment.updated_on|date:"d/m/y" }}</p>
+        <div class="comments-container mt-3">
+          <div class=" mt-3 bg-dark text-light p-4 comment-card rounded">
+            <div class="comment-body">
+              <p class="mt-2">{{ comment.content }}</p>
+            </div>
+            <hr class="bg-light my-2">
+            <div class="comment-footer d-flex justify-content-between align-items-center">
+              <div class="profile-details d-flex align-items-center">
+                {% if comment.author.user.image %}
+                <img width="60" height="60" src="{{ comment.author.user.image.url }}"
+                  alt="{{ comment.author.user.first_name }} {{ comment.author.user.last_name|slice:":1" }} profile image">
+                {% else %}
+                <div width="60" height="60" class="bg-light text-secondary 5 p-3 rounded">
+                  <strong class="first-name-letter">
+                    {{ comment.author.user.first_name|slice:":1" }}
+                  </strong>
+                  <strong class="last-name-letter">
+                    {{ comment.author.user.last_name|slice:":1" }}
+                  </strong>
+                </div>
+                {% endif %}
+                <div class="ml-3 profile-actions">
+                  <p class="m-0">{{ comment.author.user.first_name }} {{ comment.author.user.last_name|slice:":1" }}</p>
+                  {% if request.user == comment.user %}
+                  {% comment %} <a href="{% url 'edit_comment' comment.id %}"
+                    class="text-light comment-action-link">Edit</a> |
+                  <a href="{% url 'delete_comment' comment.id %}"
+                    class="text-light delete-link comment-action-link">Delete</a> {% endcomment %}
+                  {% endif %}
+                </div>
+              </div>
+              <form class="d-flex flex-column align-items-center" action="{% url 'comment_upvote' comment.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn text-light border-0 mt-2">
+                  <i
+                    class="fa-{% if user in comment.comment_upvotes.all %}solid{% else %}regular{% endif %} fa-xl fa-thumbs-up"></i>
+                </button>
+                <small>{{ comment.get_comment_upvotes }} upvotes</small>
+              </form>
+            </div>
+          </div>
         </div>
         {% endfor %}
       </div>
