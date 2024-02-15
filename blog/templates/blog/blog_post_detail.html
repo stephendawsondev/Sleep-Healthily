@@ -30,7 +30,7 @@
   <div class="blog-comments mt-5">
     <h3 class="h4">Comments</h3>
     <div class="comments-container">
-      {% if not editing_comment %}
+      {% if not editing_comment_id %}
       <div class="comment-form-container">
         {% if user.is_authenticated %}
         <form action="{% url 'add_comment' blog_post.id %}" method="post">
@@ -52,6 +52,72 @@
       <div class="comments-list py-4 mt-5">
         {% for comment in comments %}
         <div class="comments-container mt-3">
+          {% if not comment.is_approved and request.user == comment.author.user %}
+          <div class="card-holder position-relative">
+            <div class="badge-pill badge-secondary text-white position-absolute comment-badge">Pending approval</div>
+            <div
+              class=" mt-3 bg-dark text-light p-4 comment-card rounded {% if not editing_comment_id %}opacity-50{% endif %}">
+              {% if comment.id == editing_comment_id %}
+              <!-- Display the edit form for this comment -->
+              <div class="comment-form-container">
+                <form action="{% url 'edit_comment' comment.id %}" method="post">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label for="content">Edit your comment</label>
+                    <textarea class="form-control" id="content" name="content" rows="3"
+                      required>{{ comment.content }}</textarea>
+                    <div class="button-container d-flex justify-content-end mt-3">
+                      <a href="{% url 'blog_post_detail' blog_post.id %}"
+                        class="btn btn-outline-light text-light mr-2">Cancel</a>
+                      <button type="submit" class="btn btn-light text-primary">Update comment</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              {% else %}
+              <!-- Display the comment content as usual -->
+              <div class="comment-body">
+                <p class="mt-2">{{ comment.content }}</p>
+              </div>
+              {% endif %}
+              <hr class="bg-light my-2">
+              <div class="comment-footer d-flex justify-content-between align-items-center">
+                <div class="profile-details d-flex align-items-center">
+                  {% if comment.author.user.image %}
+                  <img width="60" height="60" src="{{ comment.author.user.image.url }}"
+                    alt="{{ comment.author.user.first_name }} {{ comment.author.user.last_name|slice:":1" }} profile image">
+                  {% else %}
+                  <div width="60" height="60" class="bg-light text-secondary 5 p-3 rounded">
+                    <strong class="first-name-letter">
+                      {{ comment.author.user.first_name|slice:":1" }}
+                    </strong>
+                    <strong class="last-name-letter">
+                      {{ comment.author.user.last_name|slice:":1" }}
+                    </strong>
+                  </div>
+                  {% endif %}
+                  <div class="ml-3 profile-actions">
+                    <p class="m-0">{{ comment.author.user.first_name }} {{ comment.author.user.last_name|slice:":1" }}
+                    </p>
+                    {% if request.user == comment.author.user %}
+                    <a href="{% url 'edit_comment' comment.id %}" class="text-light comment-action-link">Edit</a> |
+                    <a href="{% url 'delete_comment' comment.id %}"
+                      class="text-light delete-link comment-action-link">Delete</a>
+                    {% endif %}
+                  </div>
+                </div>
+                <form class="d-flex flex-column align-items-center" action="{% url 'comment_upvote' comment.id %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn text-light border-0 mt-2">
+                    <i
+                      class="fa-{% if user in comment.comment_upvotes.all %}solid{% else %}regular{% endif %} fa-xl fa-thumbs-up"></i>
+                  </button>
+                  <small>{{ comment.get_comment_upvotes }} upvotes</small>
+                </form>
+              </div>
+            </div>
+          </div>
+          {% elif comment.is_approved %}
           <div class=" mt-3 bg-dark text-light p-4 comment-card rounded">
             {% if comment.id == editing_comment_id %}
             <!-- Display the edit form for this comment -->
@@ -111,6 +177,7 @@
               </form>
             </div>
           </div>
+          {% endif %}
         </div>
         {% endfor %}
       </div>

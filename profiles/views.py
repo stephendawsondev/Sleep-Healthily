@@ -3,8 +3,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404
+
 from .models import UserProfile
 from checkout.models import Order
+from blog.models import BlogPost, Comment
+
 from .forms import UserProfileForm, CustomUserEditForm
 
 
@@ -15,6 +18,9 @@ def profile(request):
     user_form = CustomUserEditForm(instance=request.user)
     form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
+    user_blog_posts = BlogPost.objects.filter(author=profile)
+    unapproved_blog_post_comments = Comment.objects.filter(
+        blog_post__author=profile, is_approved=False)
 
     if request.method == 'POST':
         user_form = CustomUserEditForm(request.POST, instance=request.user)
@@ -34,6 +40,8 @@ def profile(request):
         'form': form,
         'on_profile_page': True,
         'orders': orders,
+        'profile': profile,
+        'unapproved_blog_post_comments': unapproved_blog_post_comments,
     }
 
     return render(request, template, context)

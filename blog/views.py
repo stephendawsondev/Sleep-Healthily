@@ -35,7 +35,8 @@ def blog_post_detail(request, id):
     A view to show a specific blog post.
     """
     blog_post = get_object_or_404(BlogPost, pk=id)
-    comments = Comment.objects.filter(blog_post=blog_post)
+    comments = Comment.objects.filter(
+        blog_post=blog_post)
     editing_comment_id = request.GET.get('editing_comment_id', None)
 
     if editing_comment_id:
@@ -226,7 +227,9 @@ def add_comment(request, blog_post_id):
         )
         comment.save()
 
-        messages.success(request, "Your comment has been added.")
+        messages.success(
+            request, "Your comment is pending approval. It will appear "
+            "once it has been approved by the blog post owner.")
     else:
         messages.error(request, "Failed to add comment. Please try again.")
 
@@ -293,3 +296,21 @@ def comment_upvote(request, comment_id):
         messages.success(request, "You have added your upvote.")
 
     return redirect('blog_post_detail', comment.blog_post.id)
+
+
+@login_required
+def approve_comment(request, comment_id):
+    """
+    A view to approve comments that are associated with a specific blog post.
+    """
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Only superusers can approve comments.')
+        return redirect(reverse('home'))
+
+    comment.is_approved = True
+    comment.save()
+
+    messages.success(request, "The comment has been approved.")
+    return redirect(reverse('profile'))
