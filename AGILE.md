@@ -113,7 +113,9 @@ Between the main tasks, I also made some small UI/UX improvement on the site, wh
 
 > "Sprint 3 will focus on coding, but it will be used to finishing up and must haves or should haves from previous sprints, while also tackling could haves if time allows."
 
-<!-- Screenshot of sprint 3 here -->
+In Sprint 3, I had a friend visiting and didn't have much time to dedicate to the project, but that was predicted and I got what I needed to get done finished. I completed the Blog and Comment User stories and Epics. I still have some final touches to do, but I will do that in Sprint 4.
+
+[Click here to see the Sprint 3 closed issues](./documentation/sprints/sprint3.png)
 
 ### Sprint 4 notes
 
