@@ -358,6 +358,7 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 
 - [DALLE for product image generation](https://openai.com/dall-e-3)
 - [Chat GPT](https://openai.com/chatgpt) - For the blog post text content
+- [Termly for Privacy Policy](https://termly.io)
 
 #### Hosting and Deployment
 
