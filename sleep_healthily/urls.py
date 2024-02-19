@@ -2,7 +2,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import handler404, privacy_policy, shipping_policy
+from . import views
+
+# <li class="list-item">
+#   <a href="{% url 'about' %}" class="text-light text-decoration-none">About us</a>
+# </li>
+# <li class="list-item">
+#   <a href="{% url 'contact' %}" class="text-light
+#     text-decoration-none">Contact</a>
+# </li>
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,8 +23,11 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('review/', include('review.urls')),
     path('blog/', include('blog.urls')),
-    path('policies/privacy/', privacy_policy, name='privacy_policy'),
-    path('policies/shipping/', shipping_policy, name='shipping_policy'),
+    path('policies/privacy/', views.privacy_policy, name='privacy_policy'),
+    path('policies/shipping/', views.shipping_policy, name='shipping_policy'),
+    path('contact/', views.contact, name='contact'),
+    path('about/', views.about, name='about'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'sleep_healthily.views.handler404'

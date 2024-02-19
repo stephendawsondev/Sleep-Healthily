@@ -14,3 +14,13 @@ def privacy_policy(request):
 def shipping_policy(request):
     """ Shipping Policy """
     return render(request, "policies/shipping_policy.html")
+
+
+def contact(request):
+    """ Contact """
+    return render(request, "contact.html")
+
+
+def about(request):
+    """ About us """
+    return render(request, "about.html")

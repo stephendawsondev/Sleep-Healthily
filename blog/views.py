@@ -250,9 +250,11 @@ def edit_comment(request, comment_id):
     if request.method == 'POST':
         content = request.POST['content']
         comment.content = content
+        comment.is_approved = False
         comment.save()
 
-        messages.success(request, "Your comment has been updated.")
+        messages.success(
+            request, "Your comment has been updated and is pending approval.")
         return redirect(reverse('blog_post_detail', args=[blog_post.id]))
 
     comment_id = comment.id
