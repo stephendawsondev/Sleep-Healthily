@@ -59,6 +59,7 @@ def blog_post_detail(request, id):
         'author_name': author_name,
         'comments': comments,
         'editing_comment_id': editing_comment_id,
+        'on_blog_page': True,
     }
 
     return render(request, 'blog/blog_post_detail.html', context)
