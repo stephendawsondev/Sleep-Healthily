@@ -11,11 +11,11 @@
 
 {% block content %}
 <section id="checkout-section">
-  <div class="row mw-100">
+  <div class="d-md-flex mw-100">
     <!-- Checkout section -->
-    <div class="col-12 col-lg-6 my-5">
-      <div class="row justify-content-end">
-        <div class="col-12 col-lg-10 checkout-form-container">
+    <div class="col-lg-6 my-5">
+      <div class="d-flex justify-content-end">
+        <div class="col-lg-10 checkout-form-container">
           <h1 class="h2 mb-3">Complete your order</h1>
           <form action="" method="POST" id="payment-form">
             {% csrf_token %}
@@ -148,9 +148,9 @@
       </div>
     </div>
     {% comment %} Order Summary {% endcomment %}
-    <div class="col-12 col-lg-6 bg-dark text-light">
-      <div class="row justify-content-start">
-        <div class="col-12 col-lg-10">
+    <div class="col-lg-6 bg-dark text-light">
+      <div class="d-flex justify-content-start">
+        <div class="col-lg-10">
           <div class="py-5 order-summary-content">
             <h2 class="h2 mb-3">Order Summary ({{ product_count }})</h2>
             <div class="mt-4 container-fluid order-summary__line-items">
@@ -158,7 +158,9 @@
               <div class="row mt-4 align-items-center order-summary__line-item">
                 <div class="col-2 px-0">
                   <div class="position-relative image-container">
+                    {% if item.product.image %}
                     <img width="80" height="80" src="{{ item.product.image.url }}" alt="" class="img-fluid w-100">
+                    {% endif %}
                     <span
                       class="position-absolute bg-light text-secondary border-secondary rounded-circle p-1 quantity-bubble">{{ item.quantity }}
                     </span>
@@ -178,8 +180,8 @@
               {% endfor %}
             </div>
             <hr class="bg-light my-4 ml-0 px-0">
-            <div class="row justify-content-end">
-              <div class="col-6 px-0">
+            <div class="d-flex justify-content-end">
+              <div class="col-4 px-0">
 
               </div>
               <div class="col-4 px-0">
@@ -187,7 +189,7 @@
                 <p class="h6 text-right"><strong>Shipping</strong></p>
                 <p class="h6 text-right"><strong>Total</strong></p>
               </div>
-              <div class="col-2">
+              <div class="col-4">
                 <p class="h6 text-right">€{{ subtotal }}</p>
                 <p class="h6 text-right">{% if free_shipping %}Free
                   {% else %}€{{ shipping|floatformat:2 }}{% endif %}

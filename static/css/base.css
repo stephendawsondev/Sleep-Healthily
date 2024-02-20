@@ -305,11 +305,6 @@ img,
   .checkout-form-container {
     padding-right: 6em;
   }
-
-  /* Checkout - Order Summary */
-  .order-summary-content {
-    padding-left: 6em;
-  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -341,5 +336,10 @@ img,
   .review-card {
     height: 300px;
     max-height: 300px;
+  }
+
+  /* Checkout - Order Summary */
+  .order-summary-content {
+    padding-left: 6em;
   }
 }
