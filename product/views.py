@@ -57,6 +57,9 @@ def products(request):
             queries = Q(name__icontains=query) | Q(
                 description__icontains=query)
             products = products.filter(queries)
+            for product in products:
+                if product.reviews_average is not None:
+                    product.reviews_average = round(product.reviews_average)
 
     current_sorting = f'{sort}_{direction}'
 
