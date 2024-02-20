@@ -3,7 +3,7 @@
 
 {% block content %}
 <section class="container py-5" id="add-blog-section">
-  <h1 class="h1">Edit "{{ blog_post.title }}</h1>
+  <h1 class="h1">Edit "{{ blog_post.title }}"</h1>
   <div class="row">
     <div class="col-12">
       <form method="POST" action="{% url 'edit_blog_post' blog_post.id %}" class="form mb-2"
