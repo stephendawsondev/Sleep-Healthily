@@ -116,7 +116,7 @@
       <form action="{% url 'account_delete' %}" id="profile-delete-form-{{ user.id }}" method="post"
         class="delete-form float-right">
         {% csrf_token %}
-        <button class="btn btn-danger text-white delete-link">Delete account</button>
+        <button class="btn btn-danger text-white delete-link profile-delete-link">Delete account</button>
       </form>
       {% endif %}
 
@@ -125,8 +125,8 @@
     {% comment %} Order history {% endcomment %}
     <div class="col-12 col-lg-6">
       <div class="order-history">
-        <h2 class="h2 mb-3">Order History</h2>
-        <div class="bg-light p-4">
+        <h2 class="h2 mb-3 pl-2">Order History</h2>
+        <div class="bg-light p-0 overflow-auto">
           {% if orders %}
           <table class="table text-primary table-borderless">
             <thead>
@@ -157,8 +157,8 @@
       </div>
       {% if profile.blog_posts and unapproved_blog_post_comments %}
       <div class="comments-pending-approval">
-        <h2 class="h2">Comment approval</h2>
-        <div class="bg-light p-4">
+        <h2 class="h2 pl-2">Comment approval</h2>
+        <div class="bg-light p-0 overflow-auto">
           <table class="table text-primary table-borderless">
             <thead>
               <tr>
