@@ -363,6 +363,7 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 #### Hosting and Deployment
 
 - [Heroku](https://www.heroku.com/)
+- [Mailchimp](https://mailchimp.com/) - For the newsletter signup form
 
 ### Acknowledgements
 
