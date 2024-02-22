@@ -198,7 +198,7 @@ def edit_blog_post(request, id):
 @login_required
 def delete_blog_post(request, blog_post_id):
     """ Delete a blog post from the store """
-    if not request.user.is_superuser:
+    if not request.user.is_superuser and not request.user == BlogPost.author:
         messages.error(request, 'Only blog post owners can delete posts.')
         return redirect(reverse('home'))
 
@@ -245,8 +245,11 @@ def edit_comment(request, comment_id):
     """
     comment = get_object_or_404(Comment, pk=comment_id)
     blog_post = comment.blog_post
+    comment_owner = comment.author.user
 
-    print(blog_post)
+    if not request.user == comment_owner:
+        messages.error(request, 'Only the comment owner can edit comments.')
+        return redirect(reverse('blog_post_detail', args=[blog_post.id]))
 
     if request.method == 'POST':
         content = request.POST['content']
@@ -271,6 +274,12 @@ def delete_comment(request, comment_id):
     """
     comment = get_object_or_404(Comment, pk=comment_id)
     blog_post = comment.blog_post
+    comment_owner = comment.author.user
+
+    if not request.user == comment_owner:
+        messages.error(request, 'Only the comment owner can delete comments.')
+        return redirect(reverse('blog_post_detail', args=[blog_post.id]))
+
     comment.delete()
 
     messages.success(request, "Your comment has been deleted.")
