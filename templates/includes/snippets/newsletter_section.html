@@ -4,15 +4,14 @@
   <div class="sky"></div>
   <div class="bg-dark text-white w-100 h-100 newsletter__text-container">
     <div class="h-100 d-flex flex-column align-items-start justify-content-center newsletter__text">
-      <h3 class="h3">Sign up to our newsletter</h3>
-      <p>We only email once per month</p>
-
-      <div class="container">
-        <div class="row justify-content-start input-container">
+      <div class="container newsletter_content">
+        <h3 class="h3">Sign up to our newsletter</h3>
+        <p>We only email once per month</p>
+        <div class="form-container">
           <form
             action="https://herokuapp.us22.list-manage.com/subscribe/post?u=5a6bfff012a1e25e252598c31&amp;id=31e6c2cf6a&amp;f_id=0080c2e1f0"
             method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-            class="validate w-100 row justify-content-start input-container" target="_self" novalidate="">
+            class="validate w-100 d-flex justify-content-start input-container" target="_self" novalidate="">
             <div class="col-8 col-md-9 px-0">
               <input type="email" name="EMAIL" class="required email h-100 w-100" id="mce-EMAIL" required=""
                 placeholder="Email">
@@ -22,19 +21,18 @@
               <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary w-100"
                 value="Sign up">
             </div>
-            <div id="mce-responses" class="clear foot" style="display:none;">
-              <div class="response" id="mce-error-response" style="display: none;"></div>
-              <div class="response" id="mce-success-response" style="display: none;"></div>
-            </div>
-            <div aria-hidden="true" style="position: absolute; left: -5000px;">
-              <input type="text" name="b_5a6bfff012a1e25e252598c31_31e6c2cf6a" tabindex="-1" value="">
-            </div>
           </form>
+          <div id="mce-responses" class="clear foot mt-2" style="display:none;">
+            <div class="response" id="mce-error-response" style="display: none;"></div>
+            <div class="response" id="mce-success-response" style="display: none;"></div>
+          </div>
+          <div aria-hidden="true" style="position: absolute; left: -5000px;">
+            <input type="text" name="b_5a6bfff012a1e25e252598c31_31e6c2cf6a" tabindex="-1" value="">
+          </div>
         </div>
       </div>
-
-
     </div>
+
   </div>
 </section>
 {% endif %}
