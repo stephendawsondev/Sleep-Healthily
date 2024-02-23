@@ -161,12 +161,11 @@
         <div class="col-12 col-md-4 footer-menu">
           <h4>Useful links</h4>
           <ul class="list-unstyled px-0">
-            <li class="list-item">
-              <a href="{% url 'about' %}" class="text-light text-decoration-none">About us</a>
+            <li class="list-item mt-3">
+              <a href="{% url 'about' %}" class="text-light">About us</a>
             </li>
-            <li class="list-item">
-              <a href="{% url 'contact' %}" class="text-light
-                text-decoration-none">Contact</a>
+            <li class="list-item mt-3">
+              <a href="{% url 'contact' %}" class="text-light">Contact</a>
             </li>
           </ul>
         </div>
@@ -174,7 +173,7 @@
           <h4>Featured blog posts</h4>
           <ul class="list-unstyled px-0">
             {% for post in featured_posts %}
-            <li class="list-item">
+            <li class="list-item mt-3">
               <a href="{% url 'blog_post_detail' post.id %}" class="text-light">{{ post.title }}</a>
             </li>
             {% endfor %}
@@ -183,10 +182,10 @@
         <div class="col-12 col-md-4 footer-menu">
           <h4>Policies</h4>
           <ul class="list-unstyled px-0">
-            <li class="list-item">
+            <li class="list-item mt-3">
               <a href="{% url 'privacy_policy' %}" class="text-light">Privacy Policy</a>
             </li>
-            <li class="list-item">
+            <li class="list-item mt-3">
               <a href="{% url 'shipping_policy' %}" class="text-light">Shipping Policy</a>
             </li>
           </ul>
