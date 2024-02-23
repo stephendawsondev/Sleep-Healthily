@@ -58,7 +58,7 @@ select option[value=""] {
 
 .loading-title {
   position: absolute;
-  top: 30%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #ffeafd;
@@ -142,5 +142,11 @@ select option[value=""] {
     color: rgba(160, 84, 246, 1);
     font-size: 72px;
     transform: translateY(-100%);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .loading-title {
+    top: 30%;
   }
 }
