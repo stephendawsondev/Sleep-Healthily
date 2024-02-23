@@ -359,4 +359,10 @@ img,
   .order-summary-content {
     padding-left: 6em;
   }
+
+  /* Blog post detail */
+  #blog-detail-section .z-index-2 {
+    right: 3%;
+    top: 5%;
+  }
 }

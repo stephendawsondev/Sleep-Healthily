@@ -51,7 +51,7 @@
       <a href="{% url 'product_detail' product.id %}" aria-label="Navigate to {{ product.name }} product">
         <div class="card border-0 bg-transparent">
           {% if product.image %}
-          <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+          <img draggable="false" class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
           {% endif %}
           <div class=" card-body px-0">
             <div class="d-flex align-items-center">

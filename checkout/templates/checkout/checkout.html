@@ -159,7 +159,8 @@
                 <div class="col-2 px-0">
                   <div class="position-relative image-container">
                     {% if item.product.image %}
-                    <img width="80" height="80" src="{{ item.product.image.url }}" alt="" class="img-fluid w-100">
+                    <img draggable="false" width="80" height="80" src="{{ item.product.image.url }}" alt=""
+                      class="img-fluid w-100">
                     {% endif %}
                     <span
                       class="position-absolute bg-light text-secondary border-secondary rounded-circle p-1 quantity-bubble">{{ item.quantity }}

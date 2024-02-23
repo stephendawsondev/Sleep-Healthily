@@ -21,7 +21,7 @@
   </form>
   {% if blog_post.featured_image %}
   <div class="w-100 blog-post__featured-image-container">
-    <img src="{{ blog_post.featured_image.url }}" alt="{{ blog_post.title }}"
+    <img draggable="false" src="{{ blog_post.featured_image.url }}" alt="{{ blog_post.title }}"
       class="w-100 img-fluid blog-post__featured-image">
   </div>
   {% endif %}
@@ -92,7 +92,7 @@
               <div class="comment-footer d-flex justify-content-between align-items-center">
                 <div class="profile-details d-flex align-items-center">
                   {% if comment.author.user.image %}
-                  <img width="60" height="60" src="{{ comment.author.user.image.url }}"
+                  <img draggable="false" width="60" height="60" src="{{ comment.author.user.image.url }}"
                     alt="{{ comment.author.user.first_name }} {{ comment.author.user.last_name|slice:":1" }} profile image">
                   {% else %}
                   <div width="60" height="60" class="bg-light text-secondary 5 p-3 rounded">
@@ -154,7 +154,7 @@
             <div class="comment-footer d-flex justify-content-between align-items-center">
               <div class="profile-details d-flex align-items-center">
                 {% if comment.author.user.image %}
-                <img width="60" height="60" src="{{ comment.author.user.image.url }}"
+                <img draggable="false" width="60" height="60" src="{{ comment.author.user.image.url }}"
                   alt="{{ comment.author.user.first_name }} {{ comment.author.user.last_name|slice:":1" }} profile image">
                 {% else %}
                 <div width="60" height="60" class="bg-light text-secondary 5 p-3 rounded">

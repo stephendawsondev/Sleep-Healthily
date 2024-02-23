@@ -48,7 +48,8 @@
       </form>
       <div class="card blog-post-card">
         {% if blog_post.featured_image %}
-        <img class="card-img-top rounded-0" src="{{ blog_post.featured_image.url }}" alt="{{ blog_post.title }}">
+        <img draggable="false" class="card-img-top rounded-0" src="{{ blog_post.featured_image.url }}"
+          alt="{{ blog_post.title }}">
         {% endif %}
         <div class="card-body bg-primary text-light p-4 mb-0">
           <div class="d-flex align-items-center mb-3">

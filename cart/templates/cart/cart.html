@@ -27,7 +27,7 @@
               it is decorative and does not need to be read out.
               {% endcomment %}
               {% if line_item.product.image %}
-              <img width="90" height="90" src="{{ line_item.product.image.url }}" alt=""
+              <img draggable="false" width="90" height="90" src="{{ line_item.product.image.url }}" alt=""
                 class="img-fluid mr-3 font-weight-normal">
               {% endif %}
               {{ line_item.product.name }}
