@@ -37,8 +37,16 @@
   <div class="row my-3">
     {% comment %} Blog post cards {% endcomment %}
     {% for blog_post in page %}
-    <div class="col-12 col-md-6 col-lg-4 mb-3">
-      <div class="card blog-post-card" aria-label="Navigate to {{ blog_post.title }}">
+    <div class="col-12 col-md-6 col-lg-4 mb-3 position-relative">
+      <form class="position-absolute bg-light z-index-2 p-2 rounded-circle"
+        action="{% url 'favourite_blog_post' blog_post.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn p-0 text-primary border-0">
+          <i
+            class="fa-{% if request.user.userprofile in blog_post.favourited.all %}solid{% else %}regular{% endif %} fa-xl fa-star"></i>
+        </button>
+      </form>
+      <div class="card blog-post-card">
         {% if blog_post.featured_image %}
         <img class="card-img-top rounded-0" src="{{ blog_post.featured_image.url }}" alt="{{ blog_post.title }}">
         {% endif %}

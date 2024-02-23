@@ -10,7 +10,15 @@
 
 {% comment %} Product post detail {% endcomment %}
 {% block content %}
-<section class="container py-5 px-0 blog-section" id="blog-detail-section">
+<section class="container py-5 px-0 position-relative blog-section" id="blog-detail-section">
+  <form class="position-absolute bg-light z-index-2 p-2 rounded-circle"
+    action="{% url 'favourite_blog_post' blog_post.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn p-0 text-primary border-0">
+      <i
+        class="fa-{% if request.user.userprofile in blog_post.favourited.all %}solid{% else %}regular{% endif %} fa-xl fa-star"></i>
+    </button>
+  </form>
   {% if blog_post.featured_image %}
   <div class="w-100 blog-post__featured-image-container">
     <img src="{{ blog_post.featured_image.url }}" alt="{{ blog_post.title }}"

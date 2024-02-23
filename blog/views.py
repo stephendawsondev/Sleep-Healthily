@@ -7,6 +7,8 @@ from django.core.paginator import Paginator
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 
+from django.http import HttpResponseRedirect
+
 from .models import BlogPost, Comment
 from profiles.models import UserProfile
 
@@ -125,6 +127,7 @@ def blog_posts(request):
         'search_term': query,
         'current_sorting': current_sorting,
         'total_blog_posts_number': total_blog_posts_number,
+        'on_blog_page': True,
     }
 
     return render(request, 'blog/blog_posts.html', context)
@@ -206,6 +209,32 @@ def delete_blog_post(request, blog_post_id):
     blog_post.delete()
     messages.success(request, 'Blog post deleted')
     return redirect(reverse('blog_posts'))
+
+
+@login_required
+def favourite_blog_post(request, blog_post_id):
+    """ 
+    Add a blog post to the user's favourites
+    """
+    blog_post = get_object_or_404(BlogPost, pk=blog_post_id)
+    user = request.user
+
+    if not user.is_authenticated:
+        messages.error(
+            request, "You must be logged in to favourite a blog post.")
+        return redirect('blog_posts')
+
+    if user.is_authenticated:
+        if user.userprofile in blog_post.favourited.all():
+            blog_post.favourited.remove(user.userprofile)
+            messages.success(
+                request, "You have removed this blog post from your favourites.")
+        else:
+            blog_post.favourited.add(user.userprofile)
+            messages.success(
+                request, "You have added this blog post to your favourites.")
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
 @login_required

@@ -18,7 +18,8 @@ def profile(request):
     user_form = CustomUserEditForm(instance=request.user)
     form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
-    user_blog_posts = BlogPost.objects.filter(author=profile)
+    user_favourited_blog_posts = BlogPost.objects.filter(
+        favourited=profile)
     unapproved_blog_post_comments = Comment.objects.filter(
         blog_post__author=profile, is_approved=False)
 
@@ -41,6 +42,7 @@ def profile(request):
         'on_profile_page': True,
         'orders': orders,
         'profile': profile,
+        'user_favourited_blog_posts': user_favourited_blog_posts,
         'unapproved_blog_post_comments': unapproved_blog_post_comments,
     }
 

@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -123,9 +125,9 @@
     </div>
 
     {% comment %} Order history {% endcomment %}
-    <div class="col-12 col-lg-6">
+    <div class="col-12 col-lg-6 pl-md-4">
       <div class="order-history">
-        <h2 class="h2 mb-3 pl-2">Order History</h2>
+        <h2 class="h2 mb-3">Order History</h2>
         <div class="bg-light p-0 overflow-auto">
           {% if orders %}
           <table class="table text-primary table-borderless">
@@ -155,47 +157,77 @@
           {% endif %}
         </div>
       </div>
-      {% if profile.blog_posts and unapproved_blog_post_comments %}
-      <div class="comments-pending-approval">
-        <h2 class="h2 pl-2">Comment approval</h2>
-        <div class="bg-light p-0 overflow-auto">
-          <table class="table text-primary table-borderless">
-            <thead>
-              <tr>
-                <th scope="col" class="border-0 align-middle">Approval</th>
-                <th scope="col" class="border-0 align-middle">Post</th>
-                <th scope="col" class="text-center border-0 align-middle">Comment</th>
-                <th scope="col" class="text-right border-0 align-middle">Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for comment in unapproved_blog_post_comments %}
-              <tr>
-                <th scope="row" class="font-weight-normal align-middle border-0">
-                  <form action="{% url 'approve_comment' comment.id %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary btn-sm">Approve</button>
-                  </form>
-                </th>
-                <td scope="row" class="font-weight-normal align-middle border-0">
-                  <a href="{% url 'blog_post_detail' comment.blog_post.id %}" class="order-summary__order-number"
-                    aria-label="Navigate to order">{{ comment.blog_post.title|truncatechars:9 }}
-                  </a>
-                </td>
-                <td class="align-middle font-weight-normal text-center border-0">
-                  {{ comment.content|safe|truncatechars:20 }}
-                </td>
-                <td class="align-middle font-weight-normal text-right border-0">{{ comment.created_on|date:"M d, Y" }}
-                </td>
-
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+      {% comment %} Favourited blog posts {% endcomment %}
+      {% if user_favourited_blog_posts %}
+      <div class="favourited-blog-posts">
+        <h2 class="h2">Favourited Blog Posts</h2>
+        <div class="d-flex bg-light p-0 overflow-auto mt-3">
+          {% for blog_post in user_favourited_blog_posts %}
+          <div class="col-10 pl-0 position-relative display-inline">
+            <form class="position-absolute bg-light z-index-2 p-2 rounded-circle"
+              action="{% url 'favourite_blog_post' blog_post.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn p-0 text-primary border-0">
+                <i
+                  class="fa-{% if request.user.userprofile in blog_post.favourited.all %}solid{% else %}regular{% endif %} fa-xl fa-star"></i>
+              </button>
+            </form>
+            <div class="card blog-post-card">
+              {% if blog_post.featured_image %}
+              <img class="card-img-top rounded-0" src="{{ blog_post.featured_image.url }}" alt="{{ blog_post.title }}">
+              {% endif %}
+              <div class="card-body bg-primary text-light p-4 mb-0">
+                <a href="{% url 'blog_post_detail' blog_post.id %}" class="text-light link blog-post__link">
+                  <h5 class="h6 w-100 card-title m-0"><strong>{{ blog_post.title }}</strong></h5>
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
         </div>
         {% endif %}
+        {% comment %} Comment Approval {% endcomment %}
+        {% if profile.blog_posts and unapproved_blog_post_comments %}
+        <div class="comments-pending-approval">
+          <h2 class="h2 pl-2">Comment approval</h2>
+          <div class="bg-light p-0 overflow-auto">
+            <table class="table text-primary table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col" class="border-0 align-middle">Approval</th>
+                  <th scope="col" class="border-0 align-middle">Post</th>
+                  <th scope="col" class="text-center border-0 align-middle">Comment</th>
+                  <th scope="col" class="text-right border-0 align-middle">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for comment in unapproved_blog_post_comments %}
+                <tr>
+                  <th scope="row" class="font-weight-normal align-middle border-0">
+                    <form action="{% url 'approve_comment' comment.id %}" method="post">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-primary btn-sm">Approve</button>
+                    </form>
+                  </th>
+                  <td scope="row" class="font-weight-normal align-middle border-0">
+                    <a href="{% url 'blog_post_detail' comment.blog_post.id %}" class="order-summary__order-number"
+                      aria-label="Navigate to order">{{ comment.blog_post.title|truncatechars:9 }}
+                    </a>
+                  </td>
+                  <td class="align-middle font-weight-normal text-center border-0">
+                    {{ comment.content|safe|truncatechars:20 }}
+                  </td>
+                  <td class="align-middle font-weight-normal text-right border-0">{{ comment.created_on|date:"M d, Y" }}
+                  </td>
+
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          {% endif %}
+        </div>
       </div>
-    </div>
 </section>
 {% if request.user == user %}
 {% comment %} Delete confirmation modal {% endcomment %}
