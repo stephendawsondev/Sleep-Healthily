@@ -115,11 +115,9 @@
         {% endif %}
       </form>
       {% if request.user == user %}
-      <form action="{% url 'account_delete' %}" id="profile-delete-form-{{ user.id }}" method="post"
-        class="delete-form float-right">
-        {% csrf_token %}
-        <button class="btn btn-danger text-white delete-link profile-delete-link">Delete account</button>
-      </form>
+      <a href="{% url 'account_delete' %}"
+        class="btn btn-danger text-white delete-link float-right profile-delete-link">Delete
+        account</a>
       {% endif %}
 
     </div>
@@ -165,14 +163,6 @@
           <div class="carousel-inner">
             {% for blog_post in user_favourited_blog_posts %}
             <div class="carousel-item {% if forloop.first %}active{% endif %} pl-0 position-relative">
-              <form class="position-absolute bg-light z-index-2 p-2 rounded-circle"
-                action="{% url 'favourite_blog_post' blog_post.id %}">
-                {% csrf_token %}
-                <button type="submit" class="btn p-0 text-primary border-0">
-                  <i
-                    class="fa-{% if request.user.userprofile in blog_post.favourited.all %}solid{% else %}regular{% endif %} fa-xl fa-star"></i>
-                </button>
-              </form>
               <div class="card blog-post-card">
                 {% if blog_post.featured_image %}
                 <img draggable="false" class="card-img-top rounded-0" src="{{ blog_post.featured_image.url }}"
