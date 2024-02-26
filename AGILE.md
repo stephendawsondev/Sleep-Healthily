@@ -121,7 +121,9 @@ In Sprint 3, I had a friend visiting and didn't have much time to dedicate to th
 
 > Sprint 4 focuses on ensuring any final must have and should have issues are completed, or marked as won't have. If they are completed, this will also be used as the opportunity to work on a could have issue.
 
-<!-- Screenshot of sprint 4 here -->
+In Sprint 4, I had already finished the implementation of all the core tasks. I spent most of the time going through the project and making sure there were no significant bugs. I carried out some minor UI changes and reported three of the bigger bugs I found. I was able to resolve 2 of the bugs during the sprint, but the final bug I have added as a future feature. It turns out that it would have required quite some restructuring to fix it, so I decided to leave it for now.
+
+![Screenshot of Sprint 4 closed issues](./documentation/sprints/sprint4.png)
 
 ### Testing and Documentation phase notes
 
