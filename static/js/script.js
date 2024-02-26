@@ -92,11 +92,15 @@ window.onresize = init;
  * @returns {void}
  */
 const handleDeleteButton = () => {
-  const deleteButtons = document.querySelectorAll(".delete-link");
-  const deleteModal = document.getElementById("delete-modal");
-  const deleteModalForm = deleteModal.querySelector("form");
-  const deleteModalMessage = deleteModal.querySelector("#delete-modal-message");
-  const deleteCancelButton = deleteModal.querySelector(".delete-cancel-button");
+  const deleteButtons = document?.querySelectorAll(".delete-link");
+  const deleteModal = document?.getElementById("delete-modal");
+  const deleteModalForm = deleteModal?.querySelector("form");
+  const deleteModalMessage = deleteModal?.querySelector(
+    "#delete-modal-message"
+  );
+  const deleteCancelButton = deleteModal?.querySelector(
+    ".delete-cancel-button"
+  );
 
   if (deleteButtons.length === 0 || !deleteModal) return;
 
