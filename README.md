@@ -596,9 +596,82 @@ I created a number of models for my project. I used allauth's models for authent
 | **FK** | user            | ForeignKey | FK to **User** model    |
 |        | title           | CharField  |                         |
 
+## Business Model
+
+The business model is a simple one. The site sells products to customers, so it is a B2C business. The products are added by staff members. Customers can add products to their cart and complete the checkout process. There are no subscriptions at the moment, just simple one off sales, including one product bundle. Customers can also leave reviews for products and comments on blog posts. Staff members can also create and update blog posts
+
+Mailing lists are created from collected emails from the newsletter signup form, which is above the footer on most pages of the site. This can be used for customer outreach and marketing. There is also a Facebook business page that can be used to post content for customers to see, as well as engage with customers through comments and messages.
+
+### Search Engine Optimisation (SEO) and Marketing
+
+#### Marketing
+
+The site has a number of features to help with SEO and marketing. The site has a blog, which can be used to create content that will help with SEO. You can [click here to access the blog page](https://sleep-healthily-12a12155ea31.herokuapp.com/blog/). The blog posts can be shared on social media to drive traffic to the site.
+
+The site also has a Mailchimp newsletter signup form, which can be used to collect emails for marketing purposes. You can [click here to see a screenshot of the newsletter form](./documentation/features/newsletter-signup-form.png).
+
+The site also has a Facebook business page, which can be used to post content for customers to see, as well as engage with customers through comments and messages. You can [click here to see the Sleep Healthily Facebook Business Page](https://www.facebook.com/people/Sleep-Healthily/61556902828597/). You can also [click here to see a screenshot of the Facebook Business Page](./documentation/facebook-business.png).
+
+#### Keywords
+
+The site has a number of keywords that are used in the content and meta tags to help with SEO. I used the tool [Ubersuggest](https://neilpatel.com/ubersuggest/) to find keywords. I used a combination of Short tail and long tail keywords and included them in my meta tags. Here are some of the keywords I used:
+
+- sleep
+- peaceful sleep
+- tranquil rest
+- better sleep
+- sleep improvement
+- sleep quality
+- deep sleep
+- sleep tips for adults
+- sleep advice for parents
+- restful sleep for busy professionals
+- insomnia relief
+- snoring solutions
+- sleep apnea help
+- natural sleep aids
+- meditation for sleep
+- sleep hygiene tips
+- stress reduction
+- bedtime routines
+- sleep environment
+- sleep technology
+- smart mattresses
+- sleep tracking
+- sleep clinics near me
+
+While not all of these keywords are directly related to the products on the site, they are related to the theme of the site and the blog posts. This will help with SEO and driving traffic to the site.
+
+#### Sitemap
+
+I used [XML Siteamaps](https://www.xml-sitemaps.com/) to create a sitemap for the site. The sitemap is submitted to Google Search Console to help with SEO. You can [click here to see the sitemap](https://sleep-healthily-12a12155ea31.herokuapp.com/sitemap.xml).
+
+#### Robots.txt
+
+I also added a robots.txt file to the site to help with SEO. The robots.txt file is used to tell search engines which pages to crawl and which to ignore. You can [click here to see the robots.txt file](https://sleep-healthily-12a12155ea31.herokuapp.com/robots.txt). Here is the content of the robots.txt file:
+
+```
+User-agent: *
+Disallow:
+Sitemap: https://sleep-healthily-12a12155ea31.herokuapp.com/sitemap.xml
+```
+
 ### Technologies used
 
-This will list the technologies used on the project once completed.
+#### Languages
+
+- HTML
+- CSS
+- JavaScript
+- Python
+
+#### Frameworks and Libraries
+
+- Django
+- Bootstrap
+- SCSS
+- jQuery
+- Stripe
 
 ## Deployment
 
@@ -652,7 +725,9 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 
 - [DALLE for product image generation](https://openai.com/dall-e-3)
 - [Chat GPT](https://openai.com/chatgpt) - For the blog post text content
-- [Termly for Privacy Policy](https://termly.io)
+- [Termly for Privacy and Shipping Policy](https://termly.io)
+- [Ubersuggest](https://neilpatel.com/ubersuggest/) - For keyword research
+- [XML Siteamaps](https://www.xml-sitemaps.com/) - For creating a sitemap
 
 #### Hosting and Deployment
 
