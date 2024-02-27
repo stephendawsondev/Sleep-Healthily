@@ -1,6 +1,6 @@
 # Sleep Healthily
 
-Sleep Healthily is an e-commerce website that focuses on selling products to help you sleep better.
+Sleep Healthily is a modern E-Commerce website that sells products to help you have a good night's sleep. The site has 6 main products, but staff members can also add more products to the range for customers to purchase. You can [click here to see the deployed Sleep Healthily site on Heroku](https://sleep-healthily-12a12155ea31.herokuapp.com/).
 
 ## Planning and Design
 
@@ -293,7 +293,170 @@ The user flowchart was created using [Draw.io](https://app.diagrams.net/). The f
 
 ### Site Features
 
-Site features go here when developed
+Below are the features of the site, organized by page. Click on each summary to view the associated images.
+
+<details>
+  <summary>Homepage (click to expand)</summary>
+
+The homepage is the first page that users see when they visit the site. It has a hero section with a call to action and a featured product section. The hero section has a starry sky background and a call to action to shop now. The featured product section shows the first available product.
+
+![Homepage](./documentation/features/homepage.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>Blog Post Create (click to expand)</summary>
+
+The blog post create page is where staff members can create new blog posts. It has a form with fields for the title, content, published state, the blog categories, tags and an image. The form has a submit button to create the blog post.
+
+![Blog Post Create](./documentation/features/blog-post-create.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>Blog Post Edit (click to expand)</summary>
+
+The blog post edit page is where staff members can update existing blog posts.
+
+![Blog Post Edit](./documentation/features/blog-post-edit.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>Blog Post Detail (click to expand)</summary>
+
+The blog post detail page shows the full content of a blog post. It has the title, content, author, published date, and comments. The page also has a form to add a comment to the blog post.
+
+![Blog Post Detail](./documentation/features/blog-post-detail.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>About Us (click to expand)</summary>
+
+The about us page has a section about the company.
+
+![About Us](./documentation/features/about-us.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>Blog Posts (click to expand)</summary>
+
+The blog posts page shows a list of all blog posts. Each blog post has a title, published date, and a summary of the content. The page also has a filters to sort the posts by name.
+
+![Blog Posts](./documentation/features/blog-posts.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>Cart (click to expand)</summary>
+
+The cart page shows a list of all products in the cart. Each product has a name, price, quantity, and total price. The page also has a form to update the quantity of each product and a button to remove the product from the cart.
+
+![Cart](./documentation/features/cart.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>Checkout (click to expand)</summary>
+
+The checkout page has a form to enter the shipping details and a button to complete the order. The page also has a summary of the order with the products, subtotal, shipping, and total price.
+
+![Checkout](./documentation/features/checkout.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>Order Summary (click to expand)</summary>
+
+The order summary page shows a summary of the order with the products, subtotal, shipping, and total price.
+
+![Order Summary](./documentation/features/order-summary.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>Product Add (click to expand)</summary>
+
+The product add page is where staff members can create new products. It has a form with fields for the name, description, price, quantity, and an image. The form has a submit button to create the product.
+
+![Product Add](./documentation/features/product-add.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>Product Page (click to expand)</summary>
+
+The product page shows the full details of a product. It has the name, description, price, quantity, and an image. The page also has a form to add the product to the cart. Product reviews are also display on this page and customers who have purchased the product can leave a review for it.
+
+![Product Page](./documentation/features/product-page.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>Products Page (click to expand)</summary>
+
+The products page shows a list of all products. Each product has a name, price, and an image. The page also has a filters to sort the products by name, price or review rating. The page also has a search bar to search for products by name or description.
+
+![Products Page](./documentation/features/products-page.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>Profile Page (click to expand)</summary>
+
+The profile page shows the user's personal information and order history. The page also has a form to update the user's personal information. The user can also see any blog posts they have favourited, and if they are a staff member, they can approve comments on their blog posts.
+
+![Profile Page](./documentation/features/profile-page.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>Privacy Policy (click to expand)</summary>
+
+The privacy policy page has a section about the privacy policy.
+
+![Privacy Policy](./documentation/features/privacy-policy.png)
+
+</details>
+
+<br>
+
+<details>
+  <summary>Shipping Policy (click to expand)</summary>
+
+The shipping policy page has a section about the shipping policy.
+
+![Shipping Policy](./documentation/features/shipping-policy.png)
+
+</details>
 
 ### Entity Relationship Diagram
 
