@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://sleep-healthily-12a12155ea31.herokuapp.com/sitemap.xml
