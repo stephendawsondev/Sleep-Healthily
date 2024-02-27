@@ -482,9 +482,119 @@ The Entity Relationship Diagram (ERD) was created using [Draw.io](https://app.di
 
 <details>
   <summary>Click here to view the final ERD</summary>
-  
+
 ![Entity Relationship Diagram](./documentation/design/diagrams/sleep-healthily-erd-final.png)
+
 </details>
+
+### Models
+
+I created a number of models for my project. I used allauth's models for authentication. Here are the other models and their fields:
+
+#### UserProfile
+
+| **PK** | **id** (unique)         | Type         | Notes                |
+| ------ | ----------------------- | ------------ | -------------------- |
+| **FK** | user                    | OneToOne     | FK to **User** model |
+|        | default_phone_number    | CharField    |                      |
+|        | default_street_address1 | CharField    |                      |
+|        | default_street_address2 | CharField    |                      |
+|        | default_town_or_city    | CharField    |                      |
+|        | default_county          | CharField    |                      |
+|        | default_postcode        | CharField    |                      |
+|        | default_country         | CountryField |                      |
+
+#### BlogPost
+
+| **PK**  | **id** (unique) | Type          | Notes                        |
+| ------- | --------------- | ------------- | ---------------------------- |
+| **FK**  | author          | ForeignKey    | FK to **UserProfile** model  |
+|         | title           | CharField     | Unique                       |
+|         | slug            | SlugField     | Unique                       |
+|         | content         | TextField     |                              |
+|         | excerpt         | TextField     |                              |
+| **M2M** | tags            | ManyToMany    | M2M to **Tag** model         |
+| **M2M** | category        | ManyToMany    | M2M to **Category** model    |
+| **M2M** | favourited      | ManyToMany    | M2M to **UserProfile** model |
+|         | featured_image  | ImageField    |                              |
+|         | created_on      | DateTimeField |                              |
+|         | updated_on      | DateTimeField |                              |
+|         | status          | IntegerField  |                              |
+
+#### Tag
+
+| **PK** | **id** (unique) | Type      | Notes  |
+| ------ | --------------- | --------- | ------ |
+|        | name            | CharField |        |
+|        | slug            | SlugField | Unique |
+
+#### Category
+
+| **PK** | **id** (unique) | Type      | Notes  |
+| ------ | --------------- | --------- | ------ |
+|        | name            | CharField |        |
+|        | slug            | SlugField | Unique |
+
+#### Comment
+
+| **PK** | **id** (unique) | Type          | Notes                       |
+| ------ | --------------- | ------------- | --------------------------- |
+| **FK** | blog_post       | ForeignKey    | FK to **BlogPost** model    |
+| **FK** | author          | ForeignKey    | FK to **UserProfile** model |
+|        | content         | TextField     |                             |
+|        | created_on      | DateTimeField |                             |
+|        | updated_on      | DateTimeField |                             |
+|        | is_approved     | BooleanField  |                             |
+
+#### Order
+
+| **PK** | **id** (unique) | Type         | Notes                       |
+| ------ | --------------- | ------------ | --------------------------- |
+|        | order_number    | CharField    |                             |
+| **FK** | user_profile    | ForeignKey   | FK to **UserProfile** model |
+|        | first_name      | CharField    |                             |
+|        | last_name       | CharField    |                             |
+|        | email           | EmailField   |                             |
+|        | phone_number    | CharField    |                             |
+|        | country         | CountryField |                             |
+|        | postcode        | CharField    |                             |
+|        | town_or_city    | CharField    |                             |
+|        | street_address1 | CharField    |                             |
+|        | street_address2 | CharField    |                             |
+|        | county          | CharField    |                             |
+|        | shipping_cost   | DecimalField |                             |
+|        | order_subtotal  | DecimalField |                             |
+|        | order_total     | DecimalField |                             |
+|        | original_cart   | TextField    |                             |
+|        | stripe_pid      | CharField    |                             |
+|        | order_note      | TextField    |                             |
+
+#### OrderLineItem
+
+| **PK** | **id** (unique) | Type         | Notes                   |
+| ------ | --------------- | ------------ | ----------------------- |
+| **FK** | order           | ForeignKey   | FK to **Order** model   |
+| **FK** | product         | ForeignKey   | FK to **Product** model |
+|        | quantity        | IntegerField |                         |
+|        | line_item_total | DecimalField |                         |
+
+#### Product
+
+| **PK** | **id** (unique) | Type         | Notes |
+| ------ | --------------- | ------------ | ----- |
+|        | sku             | CharField    |       |
+|        | name            | CharField    |       |
+|        | description     | TextField    |       |
+|        | price           | DecimalField |       |
+|        | image           | ImageField   |       |
+
+#### Review
+
+| **PK** | **id** (unique) | Type       | Notes                   |
+| ------ | --------------- | ---------- | ----------------------- |
+| **FK** | product         | ForeignKey | FK to **Product** model |
+| **FK** | user            | ForeignKey | FK to **User** model    |
+|        | title           | CharField  |                         |
 
 ### Technologies used
 
