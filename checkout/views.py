@@ -5,6 +5,10 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 
+from django.template.loader import render_to_string
+
+from django.core.mail import send_mail
+
 from product.models import Product
 from profiles.models import UserProfile
 from .models import Order, OrderLineItem
@@ -174,6 +178,27 @@ def order_summary(request, order_number):
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
 
+    def _send_confirmation_email(order):
+        """Send the user a confirmation email"""
+        cust_email = order.email
+        subject = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_subject.txt',
+            {'order': order})
+        body = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_body.txt',
+            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [cust_email]
+        )
+
+    messages.success(request, f'Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.')
+
     if 'cart' in request.session:
         del request.session['cart']
 
@@ -182,4 +207,5 @@ def order_summary(request, order_number):
         'order': order,
     }
 
+    _send_confirmation_email(order)
     return render(request, template, context)
