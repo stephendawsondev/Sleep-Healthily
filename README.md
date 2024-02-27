@@ -428,6 +428,17 @@ The products page shows a list of all products. Each product has a name, price, 
 <br>
 
 <details>
+  <summary>Product Search (click to expand)</summary>
+
+The product search page shows a list of products that match the search query. Each product has a name, price, and an image. The page also has a filters to sort the products by name, price or review rating.
+
+![Product Search](./documentation/features/search.png)
+
+</details>
+
+<br>
+
+<details>
   <summary>Profile Page (click to expand)</summary>
 
 The profile page shows the user's personal information and order history. The page also has a form to update the user's personal information. The user can also see any blog posts they have favourited, and if they are a staff member, they can approve comments on their blog posts.
