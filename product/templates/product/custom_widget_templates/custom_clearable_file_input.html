@@ -1,7 +1,8 @@
 {% if widget.is_initial %}
 <p>{{ widget.initial_text }}:</p>
 <a href="{{ widget.value.url }}">
-  <img draggable="false" width="150" height="150" class="rounded shadow-sm" src="{{ widget.value.url }}">
+  <img draggable="false" width="150" height="150" class="rounded shadow-sm" src="{{ widget.value.url }}"
+    alt="Previously selected image">
 </a>
 {% if not widget.required %}
 <div class="mt-2">
