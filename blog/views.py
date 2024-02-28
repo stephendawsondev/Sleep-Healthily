@@ -18,7 +18,7 @@ User = get_user_model()
 
 
 def get_user_full_name(user):
-    """ 
+    """
     A function to get the full name of a user.
     """
     first_name = user.first_name
@@ -33,7 +33,7 @@ def get_user_full_name(user):
 
 
 def blog_post_detail(request, id):
-    """ 
+    """
     A view to show a specific blog post.
     """
     blog_post = get_object_or_404(BlogPost, pk=id)
@@ -68,8 +68,8 @@ def blog_post_detail(request, id):
 
 
 def blog_posts(request):
-    """ 
-    A view to show all blog posts. Also 
+    """
+    A view to show all blog posts. Also
     includes sorting and search queries.
     """
     blog_posts = BlogPost.objects.all().filter(status=1)
@@ -115,7 +115,7 @@ def blog_posts(request):
     page = paginated.get_page(page_number)
 
     def total_blog_posts_number():
-        """ 
+        """
         A function to return the total number of blog_posts
         """
         total_blog_posts = blog_posts.count()
@@ -135,8 +135,8 @@ def blog_posts(request):
 
 @login_required
 def add_blog_post(request):
-    """ 
-    Add a blog post to the store 
+    """
+    Add a blog post to the store
     """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can access that.')
@@ -213,7 +213,7 @@ def delete_blog_post(request, blog_post_id):
 
 @login_required
 def favourite_blog_post(request, blog_post_id):
-    """ 
+    """
     Add a blog post to the user's favourites
     """
     blog_post = get_object_or_404(BlogPost, pk=blog_post_id)
@@ -228,7 +228,7 @@ def favourite_blog_post(request, blog_post_id):
         if user.userprofile in blog_post.favourited.all():
             blog_post.favourited.remove(user.userprofile)
             messages.success(
-                request, "You have removed this blog post from your favourites.")
+                request, "You have removed this blog post from favourites.")
         else:
             blog_post.favourited.add(user.userprofile)
             messages.success(
@@ -292,7 +292,10 @@ def edit_comment(request, comment_id):
 
     comment_id = comment.id
 
-    return redirect(f'{reverse("blog_post_detail", args=[blog_post.id])}?editing_comment_id={comment.id}')
+    query_string = f"editing_comment_id={comment.id}"
+
+    return redirect(
+        f'{reverse("blog_post_detail", args=[blog_post.id])}?{query_string}')
 
 
 @login_required
@@ -318,7 +321,7 @@ def delete_comment(request, comment_id):
 @login_required
 def comment_upvote(request, comment_id):
     """
-    View to toggle helpful votes on a comment. If the 
+    View to toggle helpful votes on a comment. If the
     user has already voted, the vote is removed. If the
     user hasn't voted, the vote is added.
     """

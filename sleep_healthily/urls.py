@@ -4,14 +4,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
-# <li class="list-item">
-#   <a href="{% url 'about' %}" class="text-light text-decoration-none">About us</a>
-# </li>
-# <li class="list-item">
-#   <a href="{% url 'contact' %}" class="text-light
-#     text-decoration-none">Contact</a>
-# </li>
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),

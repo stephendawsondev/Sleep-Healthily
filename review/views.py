@@ -129,7 +129,7 @@ def delete_review(request, review_id):
 @login_required
 def helpful_votes(request, review_id):
     """
-    View to toggle helpful votes on a review. If the 
+    View to toggle helpful votes on a review. If the
     user has already voted, the vote is removed. If the
     user hasn't voted, the vote is added.
     """

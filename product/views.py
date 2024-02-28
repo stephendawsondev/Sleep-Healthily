@@ -12,8 +12,8 @@ from .forms import ProductForm
 
 
 def products(request):
-    """ 
-    A view to show all products. Also 
+    """
+    A view to show all products. Also
     includes sorting and search queries.
     """
     products = Product.objects.all().annotate(
@@ -64,7 +64,7 @@ def products(request):
     current_sorting = f'{sort}_{direction}'
 
     def total_products_number():
-        """ 
+        """
         A function to return the total number of products
         """
         total_products = products.count()
@@ -81,7 +81,7 @@ def products(request):
 
 
 def product_detail(request, id):
-    """ 
+    """
     A view to show a specific product.
     """
     product = get_object_or_404(Product, pk=id)
@@ -108,8 +108,8 @@ def product_detail(request, id):
 
 @login_required
 def add_product(request):
-    """ 
-    Add a product to the store 
+    """
+    Add a product to the store
     """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can access that.')

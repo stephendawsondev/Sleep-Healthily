@@ -7,7 +7,7 @@ from product.models import Product
 
 class Review(models.Model):
     """
-    Model for a review on a product. The review is 
+    Model for a review on a product. The review is
     created by a user and includes a title, text,
     rating and helpful votes. A user must have ordered
     the product to create a review.

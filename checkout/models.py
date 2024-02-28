@@ -45,8 +45,8 @@ class Order(models.Model):
         Update grand total each time a line item is added,
         accounting for shipping costs.
         """
-        self.order_subtotal = self.line_items.aggregate(Sum('line_item_total'))[
-            'line_item_total__sum'] or 0
+        self.order_subtotal = self.line_items.aggregate(
+            Sum('line_item_total'))['line_item_total__sum'] or 0
         if self.order_subtotal < settings.FREE_SHIPPING_THRESHOLD:
             self.shipping_cost = self.order_subtotal * \
                 settings.STANDARD_SHIPPING_PERCENTAGE / 100
@@ -57,7 +57,7 @@ class Order(models.Model):
         self.save()
 
     def estimated_delivery_date(self):
-        """ 
+        """
         Calculate the estimated delivery date based on the order date.
         Date adds on three days to the order date.
         """
@@ -66,7 +66,7 @@ class Order(models.Model):
         return delivery_date.date()
 
     def save(self, *args, **kwargs):
-        """ 
+        """
         Override the original save method to add the order
         number if it hasn't already been set.
         """
@@ -79,8 +79,12 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
-    order = models.ForeignKey(Order, null=False, blank=False,
-                              on_delete=models.CASCADE, related_name='line_items')
+    order = models.ForeignKey(
+        Order,
+        null=False,
+        blank=False,
+        on_delete=models.CASCADE,
+        related_name='line_items')
     product = models.ForeignKey(
         Product, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
@@ -88,7 +92,7 @@ class OrderLineItem(models.Model):
         max_digits=6, decimal_places=2, null=False, editable=False)
 
     def save(self, *args, **kwargs):
-        """ 
+        """
         Override the original save method to add the order
         number if it hasn't already been set.
         """

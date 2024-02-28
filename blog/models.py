@@ -30,8 +30,9 @@ class BlogPost(models.Model):
     content = models.TextField()
     excerpt = models.TextField(max_length=200, blank=True)
     author = models.ForeignKey(
-        'profiles.UserProfile', on_delete=models.CASCADE, related_name='blog_posts'
-    )
+        'profiles.UserProfile',
+        on_delete=models.CASCADE,
+        related_name='blog_posts')
     featured_image = models.ImageField(null=True, blank=True)
     tags = models.ManyToManyField('Tag', related_name='blog_posts')
     category = models.ManyToManyField('Category', related_name='blog_posts')
@@ -105,8 +106,9 @@ class Comment(models.Model):
     blog_post = models.ForeignKey(
         BlogPost, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(
-        'profiles.UserProfile', on_delete=models.CASCADE, related_name='comments'
-    )
+        'profiles.UserProfile',
+        on_delete=models.CASCADE,
+        related_name='comments')
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

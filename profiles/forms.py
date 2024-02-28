@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class CustomUserEditForm(forms.ModelForm):
-    """ 
+    """
     User form to output on the profile page
     """
 
