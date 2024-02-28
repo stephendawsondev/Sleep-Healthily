@@ -32,8 +32,8 @@
       {% if show_reviews %}
       <div class="reviews-container mt-5">
         <div class="d-flex justify-content-between align-items-center reviews-title-container">
-          <h3 class="h3">Reviews</h2>
-            <a href="{% url 'create_review' product.id %}" class="btn btn-primary btn-sm">Add a review</a>
+          <h3 class="h3">Reviews</h3>
+          <a href="{% url 'create_review' product.id %}" class="btn btn-primary btn-sm">Add a review</a>
         </div>
         {% if reviews %}
         <div class="reviews">
