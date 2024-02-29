@@ -50,9 +50,9 @@ I use the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) to 
 
 I used [JSHint](https://jshint.com/) to validate my JavaScript code. Here is a table of the validated code, which shows the file validated, a screenshot and a description of any warnings:
 
-| File        | Screenshot | Description |
-| ----------- | ---------- | ----------- |
-| `script.js` |            |             |
+| File        | Screenshot                                                               | Description                                                                       |
+| ----------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------- |
+| `script.js` | ![Sleep healthily script](documentation/validation/js/jshint-script.png) | Optional chaining warning because online validator can't recognise I'm using ES11 |
 
 ### Python and Django (Pep 8)
 
@@ -102,17 +102,39 @@ I used the [Code Institute PEP8 Validator](https://pep8ci.herokuapp.com/) to che
 
 ## Performance
 
-### Mobile performance
+Performance metrics were gathered using Google's PageSpeed Insights to ensure the website operates efficiently on both mobile and desktop devices. Below are the performance results with Lighthouse screenshots from the `documentation/performance` directory.
 
-| Page URL            | Lighthouse Screenshot | Comments |
-| ------------------- | --------------------- | -------- |
-| [Homepage mobile]() |                       |          |
+### Mobile Performance
 
-### Desktop performance
+| Page            | Lighthouse Screenshot                                                           | Comments                                                                                       |
+| --------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Homepage        | ![Homepage Mobile](documentation/performance/mobile-homepage.png)               | Minor warnings                                                                                 |
+| Blog Detail     | ![Blog Detail Mobile](documentation/performance/mobile-blog-detail.png)         | Minor warnings                                                                                 |
+| Blog Posts      | ![Blog Posts Mobile](documentation/performance/mobile-blog-posts.png)           | Minor warnings                                                                                 |
+| Login           | ![Login Mobile](documentation/performance/mobile-login.png)                     | Minor warnings                                                                                 |
+| Order Summary   | ![Order Summary Mobile](documentation/performance/mobile-order-summary.png)     | Minor warnings                                                                                 |
+| Privacy Policy  | ![Privacy Policy Mobile](documentation/performance/mobile-privacy-policy.png)   | Warnings caused by using Termly code - leaving as is so that it doesn't disrupt the formatting |
+| Product Detail  | ![Product Mobile](documentation/performance/mobile-product.png)                 | Minor warnings                                                                                 |
+| Products        | ![Products Mobile](documentation/performance/mobile-products.png)               | Minor warnings                                                                                 |
+| Search          | ![Search Mobile](documentation/performance/mobile-search.png)                   | Minor warnings                                                                                 |
+| Shipping Policy | ![Shipping Policy Mobile](documentation/performance/mobile-shipping-policy.png) | Warnings caused by using Termly code - leaving as is so that it doesn't disrupt the formatting |
+| Signup          | ![Signup Mobile](documentation/performance/mobile-signup.png)                   | Minor warnings                                                                                 |
 
-| Page URL             | Lighthouse Screenshot | Comments |
-| -------------------- | --------------------- | -------- |
-| [Homepage desktop]() |                       |          |
+### Desktop Performance
+
+| Page            | Lighthouse Screenshot                                                             | Comments       |
+| --------------- | --------------------------------------------------------------------------------- | -------------- |
+| Homepage        | ![Homepage Desktop](documentation/performance/desktop-homepage.png)               | Minor warnings |
+| Blog Detail     | ![Blog Detail Desktop](documentation/performance/desktop-blog-detail.png)         | No warnings    |
+| Blog Posts      | ![Blog Posts Desktop](documentation/performance/desktop-blog-posts.png)           | Minor warnings |
+| Login           | ![Login Desktop](documentation/performance/desktop-login.png)                     | No warnings    |
+| Order Summary   | ![Order Summary Desktop](documentation/performance/desktop-order-summary.png)     | Minor warnings |
+| Privacy Policy  | ![Privacy Policy Desktop](documentation/performance/desktop-privacy-policy.png)   | Minor warnings |
+| Product Detail  | ![Product Detail Desktop](documentation/performance/desktop-product-detail.png)   | Minor warnings |
+| Products        | ![Products Desktop](documentation/performance/desktop-products.png)               | Minor warnings |
+| Search          | ![Search Desktop](documentation/performance/desktop-search.png)                   | Minor warnings |
+| Shipping Policy | ![Shipping Policy Desktop](documentation/performance/desktop-shipping-policy.png) | No warnings    |
+| Signup          | ![Signup Desktop](documentation/performance/desktop-signup.png)                   | No warnings    |
 
 ## Manual Testing
 
