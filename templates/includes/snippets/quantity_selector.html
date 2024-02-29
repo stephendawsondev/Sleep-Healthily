@@ -10,9 +10,10 @@
         </span>
       </button>
     </div>
+    <label for="quantity" class="sr-only">Quantity</label>
     <input class="form-control qty_input border-primary border-left-0 border-right-0 py-1 id_qty_{{ product.id }}"
-      type="number" name="quantity" value="{% if quantity %}{{ quantity }}{% else %}1{% endif %}" min="1" max="99"
-      data-itemid="{{ product.id }}">
+      type="number" id="quantity" name="quantity" value="{% if quantity %}{{ quantity }}{% else %}1{% endif %}" min="1"
+      max="99" data-itemid="{{ product.id }}">
     <div class="input-group-append">
       <button
         class="increment-qty btn btn-primary py-1 {% if skinny %}px-0{% endif %} px-md-2 increment-qty_{{ product.id }}"
