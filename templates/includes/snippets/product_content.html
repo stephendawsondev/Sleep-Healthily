@@ -67,9 +67,10 @@
               </div>
               <form class="d-flex flex-column align-items-center" action="{% url 'helpful_votes' review.id %}">
                 {% csrf_token %}
-                <button type="submit" class="btn text-light border-0 mt-2">
-                  <i
-                    class="fa-{% if user in review.helpful_votes.all %}solid{% else %}regular{% endif %} fa-xl fa-thumbs-up"></i>
+                <button type="submit" class="btn text-light border-0 mt-2"
+                  aria-label="{% if user in review.helpful_votes.all %}Remove helpful vote{% else %}Add helpful vote{% endif %}">
+                  <i class=" fa-{% if user in review.helpful_votes.all %}solid{% else %}regular{% endif %} fa-xl
+                  fa-thumbs-up"></i>
                 </button>
                 <small>{{ review.get_helpful_votes }} helpful</small>
               </form>

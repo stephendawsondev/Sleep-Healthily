@@ -14,7 +14,8 @@
   <form class="position-absolute bg-light z-index-2 p-2 rounded-circle"
     action="{% url 'favourite_blog_post' blog_post.id %}">
     {% csrf_token %}
-    <button type="submit" class="btn p-0 text-primary border-0">
+    <button type="submit" class="btn p-0 text-primary border-0"
+      aria-label="{% if request.user.userprofile in blog_post.favourited.all %}Remove from favourites{% else %}Add to favourites{% endif %}">
       <i
         class="fa-{% if request.user.userprofile in blog_post.favourited.all %}solid{% else %}regular{% endif %} fa-xl fa-star"></i>
     </button>
