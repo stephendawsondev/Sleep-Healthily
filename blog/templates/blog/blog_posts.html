@@ -16,6 +16,7 @@
     <h1 class="h1 mb-0 w-50">Blog</h1>
     {% comment %} Sort {% endcomment %}
     <div class="d-flex align-items-center sort-select-wrapper col-6 col-md-3 p-0">
+      <label for="sort-selector" class="sr-only">Sort by</label>
       <select id="sort-selector"
         class="custom-select custom-select-sm rounded border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
         <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
