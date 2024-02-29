@@ -44,7 +44,7 @@ In order to properly validate my HTML pages for authenticated pages, I followed 
 
 ### CSS
 
-I use the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) to validate my CSS code.
+I use the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) to validate my CSS code. You can [click here to see the validated CSS code without any errors](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fsleep-healthily-12a12155ea31.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
 
 ### JavaScript
 
