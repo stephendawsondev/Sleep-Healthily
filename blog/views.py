@@ -83,9 +83,9 @@ def blog_posts(request):
     if 'sort' in request.GET:
         sortkey = request.GET['sort']
         sort = sortkey
-        if sortkey == 'name':
-            sortkey = 'lower_name'
-            blog_posts = blog_posts.annotate(lower_name=Lower('title'))
+        if sortkey == 'title':
+            sortkey = 'lower_title'
+            blog_posts = blog_posts.annotate(lower_title=Lower('title'))
 
         if 'direction' in request.GET:
             direction = request.GET['direction']
@@ -108,11 +108,12 @@ def blog_posts(request):
 
     current_sorting = f'{sort}_{direction}'
 
-    for blog_post in blog_posts:
-        blog_post.author_name = get_user_full_name(blog_post.author.user)
-
+    paginated = Paginator(blog_posts, 6)
     page_number = request.GET.get('page')
     page = paginated.get_page(page_number)
+
+    for blog_post in page.object_list:
+        blog_post.author_name = get_user_full_name(blog_post.author.user)
 
     def total_blog_posts_number():
         """
