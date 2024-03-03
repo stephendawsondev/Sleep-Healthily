@@ -2,11 +2,52 @@
 
 Sleep Healthily is a modern E-Commerce website that sells products to help you have a good night's sleep. The site has 6 main products, but staff members can also add more products to the range for customers to purchase. You can [click here to see the deployed Sleep Healthily site on Heroku](https://sleep-healthily-12a12155ea31.herokuapp.com/).
 
+## Table of Contents
+
+1. [Planning and Design](#planning-and-design)
+
+   - [Site objective](#site-objective)
+   - [Opportunities](#opportunities)
+   - [Scope](#scope)
+   - [User stories and Epics](#user-stories-and-epics)
+   - [Wireframes](#wireframes)
+   - [Colours and Fonts](#colours-and-fonts)
+   - [User flowchart](#user-flowchart)
+
+2. [Development](#development)
+
+   - [Site Features](#site-features)
+   - [Entity Relationship Diagram](#entity-relationship-diagram)
+   - [Models](#models)
+
+3. [Business Model](#business-model)
+
+   - [Search Engine Optimisation (SEO) and Marketing](#search-engine-optimisation-seo-and-marketing)
+   - [Technologies used](#technologies-used)
+
+4. [Deployment](#deployment)
+
+   - [ElephantSQL Database](#elephantsql-database)
+   - [Amazon AWS](#amazon-aws)
+   - [Heroku](#heroku)
+
+5. [Testing and Agile notes](#testing-and-agile-notes)
+
+   - [Testing documentation](#testing-documentation)
+   - [Agile notes](#agile-notes)
+
+6. [Credits](#credits)
+
+   - [Assets](#assets)
+   - [Content](#content)
+   - [Hostng and Deployment](#hosting-and-deployment)
+   - [Acknowledgements](#acknowledgements)
+
 ## Planning and Design
 
 ###  Site objective
 
-Sleep Healthily's objective
+The objective of the site is to provide a modern and easy to use E-Commerce platform for customers to purchase products to help them have a good night's sleep. The site also has a blog, where staff members can create content to help customers with sleep tips and advice. The site also has a newsletter signup form, which can be used to collect emails for marketing purposes.
 
 ###  Opportunities
 
@@ -1055,7 +1096,15 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 
 - [Heroku](https://www.heroku.com/)
 - [Mailchimp](https://mailchimp.com/) - For the newsletter signup form
+- [Amazon AWS](https://aws.amazon.com) - For storing media and static files
+- [ElephantSQL](https://www.elephantsql.com) - For the PostgreSQL Database
+- [Gmail](https://mail.google.com) - For sending emails to users
+- [Stripe](https://stripe.com) - For handling the e-commerce payments
 
 ### Acknowledgements
 
-Acknowledgements go here when completed.
+I am happy to have completed this full stack project, but I would also like to thank those who have supported me along the way:
+
+- My mentor, **[David Bowers](https://github.com/dnlbowers)** for his consistently great feedback. He always provides alternative ways to think about a challenge and encouraged me to challenge myself.
+- My partner Tae who somehow managed to put up with me talking about this project for the past 2 months, as well as providing feedback on the design and user experience.
+- My colleagues at [The Code Institute](https://codeinstitute.net/) who have provided some great feedback and support.

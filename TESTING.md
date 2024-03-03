@@ -4,7 +4,20 @@
 
 ## Overview
 
-Overview of testing goes here
+This document outlines the testing process for the Sleep Healthily website. The testing process includes manual testing, performance testing and code validation. The testing process was carried out on Google Chrome, Mozilla Firefox, and Safari on MacBook.
+
+## Table of Contents
+
+- [Validation](#validation)
+  - [HTML](#html)
+  - [CSS](#css)
+  - [JavaScript](#javascript)
+  - [Python and Django (Pep 8)](#python-and-django-pep-8)
+- [Performance](#performance)
+  - [Mobile Performance](#mobile-performance)
+  - [Desktop Performance](#desktop-performance)
+- [Manual Testing](#manual-testing)
+- [Incomplete known bugs and UX improvements](#incomplete-known-bugs-and-ux-improvements)
 
 ## Validation
 
@@ -138,12 +151,37 @@ Performance metrics were gathered using Google's PageSpeed Insights to ensure th
 
 ## Manual Testing
 
-I carried out manual testing according to my user stories. I carried the tests out on Google Chrome, Mozilla Firefox and Safari on Macbook.
+I carried out manual testing according to my user stories. I carried the tests out on Google Chrome, Mozilla Firefox, and Safari on MacBook.
 
-| User story - As a user, I can...                                   | Notes | Chrome | Firefox | Safari |
-| ------------------------------------------------------------------ | ----- | ------ | ------- | ------ |
-| **create an account** so that I can **have my preferences saved**. |       |        |         |        |
+| User story - As a user, I can...                                                                                             | Notes  | Chrome | Firefox | Safari |
+| ---------------------------------------------------------------------------------------------------------------------------- | ------ | :----: | :-----: | :----: |
+| **create an account** to **access personalised features and save my preferences**.                                           | Passed |   ✅   |   ✅    |   ✅   |
+| **log into my account** to **access my personal settings and history, or prefill my details at checkout**.                   | Passed |   ✅   |   ✅    |   ✅   |
+| **log out of my account** to **ensure my account is secure when I'm not using it**.                                          | Passed |   ✅   |   ✅    |   ✅   |
+| **update my account/profile** to **keep my personal information up to date for checking out**.                               | Passed |   ✅   |   ✅    |   ✅   |
+| **delete my account** to **remove my personal data from the platform**.                                                      | Passed |   ✅   |   ✅    |   ✅   |
+| **access and view my user profile** to **see my personal information, order history, and manage my account settings**.       | Passed |   ✅   |   ✅    |   ✅   |
+| **view a summary of my orders** to **keep track of my purchases** (as a **registered customer**).                            | Passed |   ✅   |   ✅    |   ✅   |
+| **add products to a wishlist** to **save them for future consideration or purchase**.                                        | Passed |   ✅   |   ✅    |   ✅   |
+| **create new products** to **offer more choices to customers** (as a **staff member**).                                      | Passed |   ✅   |   ✅    |   ✅   |
+| **update product details** to **ensure all information about the products is current and accurate** (as a **staff member**). | Passed |   ✅   |   ✅    |   ✅   |
+| **delete products** to **remove items that are no longer available or relevant** (as a **staff member**).                    | Passed |   ✅   |   ✅    |   ✅   |
+| **add products to my cart** to **purchase them** (as a **customer**).                                                        | Passed |   ✅   |   ✅    |   ✅   |
+| **remove products from my cart** to **manage items before finalizing my purchase** (as a **customer**).                      | Passed |   ✅   |   ✅    |   ✅   |
+| **see an order summary in the cart** to **review my order before completing the purchase** (as a **customer**).              | Passed |   ✅   |   ✅    |   ✅   |
+| **complete the checkout process and pay** to **finalise my order** (as a **customer**).                                      | Passed |   ✅   |   ✅    |   ✅   |
+| **create reviews for products** to **share my experience with others** (as a **registered customer**).                       | Passed |   ✅   |   ✅    |   ✅   |
+| **update my reviews** to **modify my feedback if my opinion changes** (as a **registered customer**).                        | Passed |   ✅   |   ✅    |   ✅   |
+| **delete my reviews** to **remove my feedback if I no longer wish it to be displayed** (as a **registered customer**).       | Passed |   ✅   |   ✅    |   ✅   |
+| **create blog posts** to **provide valuable content to customers and visitors** (as a **staff member**).                     | Passed |   ✅   |   ✅    |   ✅   |
+| **update blog posts** to **keep the content current and relevant** (as a **staff member**).                                  | Passed |   ✅   |   ✅    |   ✅   |
+| **delete blog posts** to **remove outdated or irrelevant content** (as a **staff member**).                                  | Passed |   ✅   |   ✅    |   ✅   |
+| **create comments on blog posts** to **engage in discussions and share my thoughts** (as a **registered customer**).         | Passed |   ✅   |   ✅    |   ✅   |
+| **update my comments** to **change my input or correct mistakes** (as a **registered customer**).                            | Passed |   ✅   |   ✅    |   ✅   |
+| **delete my comments** to remove my input if I change my mind (as a registered customer).                                    | Passed |   ✅   |   ✅    |   ✅   |
 
 ## Incomplete known bugs and UX improvements
 
 The below are known bugs and possible areas of UX improvement I came across during testing.
+
+1. Order note is not addable even though the field exists on the model. I explained this a bit more in the [project board issue](https://github.com/users/stephendawsondev/projects/6/views/1?pane=issue&itemId=54188655), but basically it turned out to be too complex to implement with the way I set it up. I removed the text input from the cart to mitigate this issue, but will revisit in the future.

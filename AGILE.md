@@ -6,6 +6,23 @@
 
 For my project, I am using a Github Project board. I'm utilising Github's milestones to track my progress, as well as their `.yml` issue templates for creating templates for Bugs, User stories and Epics. I have also set up simple workflows that will automatically move issues to the appropriate columns as they are created and closed.
 
+## Table of contents
+
+- [Agile Tools](#agile-tools)
+  - [Project Board](#project-board)
+  - [Milestones](#milestones)
+  - [Issues](#issues)
+  - [Labels](#labels)
+  - [Story Points](#story-points)
+  - [Workflows](#workflows)
+  - [Project Statuses](#project-statuses)
+- [Sprints - Notes and learnings](#sprints---notes-and-learnings)
+  - [Sprint 1 notes](#sprint-1-notes)
+  - [Sprint 2 notes](#sprint-2-notes)
+  - [Sprint 3 notes](#sprint-3-notes)
+  - [Sprint 4 notes](#sprint-4-notes)
+  - [Testing and Documentation phase notes](#testing-and-documentation-phase-notes)
+
 ## Agile Tools
 
 ### Project Board
@@ -128,5 +145,3 @@ In Sprint 4, I had already finished the implementation of all the core tasks. I 
 ### Testing and Documentation phase notes
 
 > While testing and documenting should be done throughout the project, this phase focuses on carrying out final manual tests and fixing up the documentation.
-
-<!-- Screenshot of testing and dev phase here -->
