@@ -185,3 +185,5 @@ I carried out manual testing according to my user stories. I carried the tests o
 The below are known bugs and possible areas of UX improvement I came across during testing.
 
 1. Order note is not addable even though the field exists on the model. I explained this a bit more in the [project board issue](https://github.com/users/stephendawsondev/projects/6/views/1?pane=issue&itemId=54188655), but basically it turned out to be too complex to implement with the way I set it up. I removed the text input from the cart to mitigate this issue, but will revisit in the future.
+2. The blog post images are cropped and the user doesn't get to see the whole image. This is intentional, but some feedback I got was that the image focus isn't what they want, or the full image should be shown but scaled down. I'll consider that in future site versions.
+3. I also received feedback that included the cart quantity on the cart icon could be a good user experience improvement. I'll consider that in future site versions.
