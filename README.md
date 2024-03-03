@@ -306,11 +306,11 @@ I have created wireframes for the main pages of the site. I have used [Figma](ht
 
 The colours used on the site are:
 
-[#572b9e] (Primary)
-[#ffeafd] (Background light, text light)
-[#8546e5] (Secondary)
-[#653d73] (Background dark)
-[#7a0ea0] (Accent)
+- #572b9e - (Primary)
+- #ffeafd - (Background light, text light)
+- #8546e5 - (Secondary)
+- #653d73 - (Background dark)
+- #7a0ea0 - (Accent)
 
 Here is a screenshot of the palette from Cooolors:
 
@@ -685,11 +685,11 @@ While not all of these keywords are directly related to the products on the site
 
 #### Sitemap
 
-I used [XML Siteamaps](https://www.xml-sitemaps.com/) to create a sitemap for the site. The sitemap is submitted to Google Search Console to help with SEO. You can [click here to see the sitemap](https://sleep-healthily-12a12155ea31.herokuapp.com/sitemap.xml).
+I used [XML Siteamaps](https://www.xml-sitemaps.com/) to create a sitemap for the site. The sitemap is submitted to Google Search Console to help with SEO.
 
 #### Robots.txt
 
-I also added a robots.txt file to the site to help with SEO. The robots.txt file is used to tell search engines which pages to crawl and which to ignore. You can [click here to see the robots.txt file](https://sleep-healthily-12a12155ea31.herokuapp.com/robots.txt). Here is the content of the robots.txt file:
+I also added a robots.txt file to the site to help with SEO. The robots.txt file is used to tell search engines which pages to crawl and which to ignore. Here is the content of the robots.txt file:
 
 ```
 User-agent: *
