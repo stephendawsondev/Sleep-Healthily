@@ -2,6 +2,11 @@
 
 Sleep Healthily is a modern E-Commerce website that sells products to help you have a good night's sleep. The site has 6 main products, but staff members can also add more products to the range for customers to purchase. You can [click here to see the deployed Sleep Healthily site on Heroku](https://sleep-healthily-12a12155ea31.herokuapp.com/).
 
+<!-- multidevice mockup image, centred width 100% -->
+<p align="center">
+  <img src="./documentation/multidevice-mockup.png" alt="Sleep Healthily on multiple devices" >
+</p>
+
 ## Table of Contents
 
 1. [Planning and Design](#planning-and-design)
