@@ -106,6 +106,25 @@ I have listed the features users will want and need in the table below, rating t
 
 ### Scope
 
+The project scope to create an E-Commerce website with 3 unique models on which a user can also complete a test payment using the Stripe payment processor. The site will also have a blog, where staff members can create content to help customers with sleep tips and advice. The site will also have a newsletter signup form, which can be used to collect emails for marketing purposes.
+
+The site will have the following features:
+
+- Account creation, login, logout, and deletion
+- Account/Profile update
+- User profile
+- Summary of orders
+- Product creation, update, and deletion
+- Add product to cart
+- Remove product from cart
+- See order summary
+- Pay and complete checkout
+- Review creation, update, and deletion
+- Blog post creation, update, and deletion
+- Comment creation, update, and deletion
+
+The site will also have a newsletter signup form, which can be used to collect emails for marketing purposes. The site will also have a Facebook business page, which can be used to post content for customers to see, as well as engage with customers through comments and messages.
+
 ### User stories and Epics
 
 #### Account Features
