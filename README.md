@@ -673,9 +673,13 @@ Mailing lists are created from collected emails from the newsletter signup form,
 
 The site has a number of features to help with SEO and marketing. The site has a blog, which can be used to create content that will help with SEO. You can [click here to access the blog page](https://sleep-healthily-12a12155ea31.herokuapp.com/blog/). The blog posts can be shared on social media to drive traffic to the site.
 
-The site also has a Mailchimp newsletter signup form, which can be used to collect emails for marketing purposes. You can [click here to see a screenshot of the newsletter form](./documentation/features/newsletter-signup-form.png).
+The site also has a Mailchimp newsletter signup form, which can be used to collect emails for marketing purposes. Newsletter form:
 
-The site also has a Facebook business page, which can be used to post content for customers to see, as well as engage with customers through comments and messages. You can [click here to see the Sleep Healthily Facebook Business Page](https://www.facebook.com/people/Sleep-Healthily/61556902828597/). You can also [click here to see a screenshot of the Facebook Business Page](./documentation/facebook-business.png).
+![newsletter form](./documentation/features/newsletter-signup-form.png).
+
+The site also has a Facebook business page, which can be used to post content for customers to see, as well as engage with customers through comments and messages. You can [click here to see the Sleep Healthily Facebook Business Page](https://www.facebook.com/people/Sleep-Healthily/61556902828597/). Here is a screenshot of the Facebook Business Page:
+
+![Facebook Business Page](./documentation/facebook-business.png).
 
 #### Keywords
 
