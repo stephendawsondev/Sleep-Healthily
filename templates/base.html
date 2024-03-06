@@ -96,8 +96,8 @@
               {% if request.user.is_authenticated %}
               {% if request.user.is_superuser %}
               <a href="{% url 'admin:index' %}" class="dropdown-item py-3">Admin Panel</a>
-              <a href="{% url 'add_product' %}" class="dropdown-item py-3">Product Management</a>
-              <a href="{% url 'add_blog_post' %}" class="dropdown-item py-3">Blog Management</a>
+              <a href="{% url 'add_product' %}" class="dropdown-item py-3">Add Product</a>
+              <a href="{% url 'add_blog_post' %}" class="dropdown-item py-3">Add Blog</a>
               <hr class="border-primary py-1 w-50">
               {% endif %}
               <a href="{% url 'profile' %}" class="dropdown-item py-3">My Profile</a>
