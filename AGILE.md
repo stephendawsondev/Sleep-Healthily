@@ -145,3 +145,7 @@ In Sprint 4, I had already finished the implementation of all the core tasks. I 
 ### Testing and Documentation phase notes
 
 > While testing and documenting should be done throughout the project, this phase focuses on carrying out final manual tests and fixing up the documentation.
+
+I spent this sprint going though the site and testing its functionality. I also went through the code and made sure it was well documented. I also added some final touches to the site, such asa 500 error page. I found some small UI/UX improvements that I fixed and also one larger bug with the filters that I added to the project board and fixed.
+
+![Screenshot of Testing and Documentation phase closed issues](./documentation/sprints/testing-and-doc-phase.png)
