@@ -354,6 +354,24 @@ The user flowchart was created using [Draw.io](https://app.diagrams.net/). The f
 
 ![User flowchart](./documentation/design/diagrams/sleep-healthily-flowchart.png)
 
+### Entity Relationship Diagram
+
+The Entity Relationship Diagram (ERD) was created using [Draw.io](https://app.diagrams.net/). The ERD is a visual representation of the database structure. It shows the tables, the columns in each table, and the relationships between the tables. Here is the ERD from my planning:
+
+<details>
+  <summary>Click here to view the planning ERD</summary>
+
+![Entity Relationship Diagram](./documentation/design/diagrams/sleep-healthily-erd.png)
+
+</details>
+
+<details>
+  <summary>Click here to view the final ERD</summary>
+
+![Entity Relationship Diagram](./documentation/design/diagrams/sleep-healthily-erd-final.png)
+
+</details>
+
 ## Development
 
 ### Site Features
@@ -534,24 +552,6 @@ The shipping policy page has a section about the shipping policy.
 
 </details>
 
-### Entity Relationship Diagram
-
-The Entity Relationship Diagram (ERD) was created using [Draw.io](https://app.diagrams.net/). The ERD is a visual representation of the database structure. It shows the tables, the columns in each table, and the relationships between the tables. Here is the ERD from my planning:
-
-<details>
-  <summary>Click here to view the planning ERD</summary>
-
-![Entity Relationship Diagram](./documentation/design/diagrams/sleep-healthily-erd.png)
-
-</details>
-
-<details>
-  <summary>Click here to view the final ERD</summary>
-
-![Entity Relationship Diagram](./documentation/design/diagrams/sleep-healthily-erd-final.png)
-
-</details>
-
 ### Models
 
 I created a number of models for my project. I used allauth's models for authentication. Here are the other models and their fields:
@@ -679,7 +679,7 @@ The site also has a Mailchimp newsletter signup form, which can be used to colle
 
 The site also has a Facebook business page, which can be used to post content for customers to see, as well as engage with customers through comments and messages. You can [click here to see the Sleep Healthily Facebook Business Page](https://www.facebook.com/people/Sleep-Healthily/61556902828597/). Here is a screenshot of the Facebook Business Page:
 
-![Facebook Business Page](./documentation/facebook-business.png).
+![Facebook Business Page](./documentation/facebook-business.png)
 
 #### Keywords
 
