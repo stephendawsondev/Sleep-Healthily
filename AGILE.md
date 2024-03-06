@@ -116,13 +116,13 @@ This was my first Sprint and I was cautious about the number of issues I thought
 
 > "This Sprint also focuses on doing the must have tasks, as well as also taking on some should have tasks if possible."
 
-I made good progress with Sprint 2, starting with finishing off the Account Management Epics. I also got ot added the **Reviews** functionality so that a user can add, update or delete a review on a product page. Additionally, other registered users can like a review, so the review score increases based on the numberof likes.
+I made good progress with Sprint 2, starting with finishing off the Account Management Epics. I also got ot added the **Reviews** functionality so that a user can add, update or delete a review on a product page. Additionally, other registered users can like a review, so the review score increases based on the number of likes.
 
 On of the big challenges I had with my **Reviews** was related to migrations. I had already migrated some reviews, but then realised I needed to add or update some fields. When I did that, it broke my migrations. Luckily, I was able to resolve the issue and learned a lot about migrations in the process.
 
 In Sprint 2, I also completed the blog posts part of my **Blog** app. I was able to add the blog list and blog detail pages. I also added the blog management page, which allows a staff member to add a blog post.
 
-Between the main tasks, I also made some small UI/UX improvement on the site, which allowed me to visualise the larger tasks better.
+Between the main tasks, I also made some small UI/UX improvements on the site, which allowed me to visualise the larger tasks better.
 
 ![Screenshot of Sprint 2 closed issues](./documentation/sprints/sprint2.png)
 
@@ -130,7 +130,7 @@ Between the main tasks, I also made some small UI/UX improvement on the site, wh
 
 > "Sprint 3 will focus on coding, but it will be used to finishing up and must haves or should haves from previous sprints, while also tackling could haves if time allows."
 
-In Sprint 3, I had a friend visiting and didn't have much time to dedicate to the project, but that was predicted and I got what I needed to get done finished. I completed the Blog and Comment User stories and Epics. I still have some final touches to do, but I will do that in Sprint 4.
+In Sprint 3, I had a friend visiting and didn't have much time to dedicate to the project, but that was predicted and I got what I needed to get done. I completed the Blog and Comment User stories and Epics. I still have some final touches to do, but I will do that in Sprint 4.
 
 ![Screenshot of Sprint 3 closed issues](./documentation/sprints/sprint3.png)
 
@@ -146,6 +146,6 @@ In Sprint 4, I had already finished the implementation of all the core tasks. I 
 
 > While testing and documenting should be done throughout the project, this phase focuses on carrying out final manual tests and fixing up the documentation.
 
-I spent this sprint going though the site and testing its functionality. I also went through the code and made sure it was well documented. I also added some final touches to the site, such asa 500 error page. I found some small UI/UX improvements that I fixed and also one larger bug with the filters that I added to the project board and fixed.
+I spent this sprint going through the site and testing its functionality. I also went through the code and made sure it was well documented. I also added some final touches to the site, such as a 500 error page. I found some small UI/UX improvements that I fixed and also one larger bug with the filters that I added to the project board and fixed.
 
 ![Screenshot of Testing and Documentation phase closed issues](./documentation/sprints/testing-and-doc-phase.png)

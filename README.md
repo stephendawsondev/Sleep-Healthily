@@ -45,14 +45,14 @@ Sleep Healthily is a modern E-Commerce website that sells products to help you h
 
    - [Assets](#assets)
    - [Content](#content)
-   - [Hostng and Deployment](#hosting-and-deployment)
+   - [Hosting and Deployment](#hosting-and-deployment)
    - [Acknowledgements](#acknowledgements)
 
 ## Planning and Design
 
 ###  Site objective
 
-The objective of the site is to provide a modern and easy to use E-Commerce platform for customers to purchase products to help them have a good night's sleep. The site also has a blog, where staff members can create content to help customers with sleep tips and advice. The site also has a newsletter signup form, which can be used to collect emails for marketing purposes.
+The objective of the site is to provide a modern and easy-to-use E-Commerce platform for customers to purchase products to help them have a good night's sleep. The site also has a blog, where staff members can create content to help customers with sleep tips and advice. The site also has a newsletter signup form, which can be used to collect emails for marketing purposes.
 
 ###  Opportunities
 
@@ -342,7 +342,7 @@ Here is a screenshot of the palette from Cooolors:
 
 #### Fonts
 
-**Ingrid Darling** is chosen as the main title font for its elegant and inviting appearance. It embodies a sense of comfort and tranquility, which is perfectly suited for a sleepy theme. It sets a calming tone right from the first glance to encourage rest and relaxation.
+**Ingrid Darling** is chosen as the main title font for its elegant and inviting appearance. It embodies a sense of comfort and tranquillity, which is perfectly suited for a sleepy theme. It sets a calming tone right from the first glance to encourage rest and relaxation.
 
 **Inter** is used for headings. It is a highly readable typeface designed specifically for user interfaces. Its clean and neutral design ensures that headings are clear and easy to navigate, enhancing the usability of the site.Inter allows for a balance between aesthetic appeal and clarity.
 
@@ -663,7 +663,7 @@ I created a number of models for my project. I used allauth's models for authent
 
 ## Business Model
 
-The business model is a simple one. The site sells products to customers, so it is a B2C business. The products are added by staff members. Customers can add products to their cart and complete the checkout process. There are no subscriptions at the moment, just simple one off sales, including one product bundle. Customers can also leave reviews for products and comments on blog posts. Staff members can also create and update blog posts
+The business model is a simple one. The site sells products to customers, so it is a B2C business. The products are added by staff members. Customers can add products to their cart and complete the checkout process. There are no subscriptions at the moment, just simple one-off sales, including one product bundle. Customers can also leave reviews for products and comments on blog posts. Staff members can also create and update blog posts
 
 Mailing lists are created from collected emails from the newsletter signup form, which is above the footer on most pages of the site. This can be used for customer outreach and marketing. There is also a Facebook business page that can be used to post content for customers to see, as well as engage with customers through comments and messages.
 
@@ -683,7 +683,7 @@ The site also has a Facebook business page, which can be used to post content fo
 
 #### Keywords
 
-The site has a number of keywords that are used in the content and meta tags to help with SEO. I used the tool [Ubersuggest](https://neilpatel.com/ubersuggest/) to find keywords. I used a combination of Short tail and long tail keywords and included them in my meta tags. Here are some of the keywords I used:
+The site has a number of keywords that are used in the content and meta tags to help with SEO. I used the tool [Ubersuggest](https://neilpatel.com/ubersuggest/) to find keywords. I used a combination of short-tail and long-tail keywords and included them in my meta tags. Here are some of the keywords I used:
 
 - sleep
 - peaceful sleep
@@ -763,7 +763,7 @@ To obtain your own Postgres Database, sign-up with your GitHub account, then fol
 
 This project uses [AWS](https://aws.amazon.com) to store media and static files online, due to the fact that Heroku doesn't persist this type of data.
 
-Once you've created an AWS account and logged-in, follow these series of steps to get your project connected.
+Once you've created an AWS account and logged in, follow these series of steps to get your project connected.
 Make sure you're on the **AWS Management Console** page.
 
 #### S3 Bucket
@@ -1007,7 +1007,7 @@ For either method, you will need to install any applicable packages found within
 
 - `pip3 install -r requirements.txt`.
 
-You will need to create a new file called `env.py` at the root-level,
+You will need to create a new file called `env.py` at the root level,
 and include the same environment variables listed above from the Heroku deployment steps.
 
 Sample `env.py` file:
@@ -1015,15 +1015,14 @@ Sample `env.py` file:
 ```python
 import os
 
-os.environ.setdefault("AWS_ACCESS_KEY_ID", "user's own value")
-os.environ.setdefault("AWS_SECRET_ACCESS_KEY", "user's own value")
-os.environ.setdefault("DATABASE_URL", "user's own value")
-os.environ.setdefault("EMAIL_HOST_PASS", "user's own value")
-os.environ.setdefault("EMAIL_HOST_USER", "user's own value")
-os.environ.setdefault("SECRET_KEY", "user's own value")
-os.environ.setdefault("STRIPE_PUBLIC_KEY", "user's own value")
-os.environ.setdefault("STRIPE_SECRET_KEY", "user's own value")
-os.environ.setdefault("STRIPE_WH_SECRET", "user's own value")
+os.environ.setdefault("AWS_ACCESS_KEY_ID", "user's value")
+os.environ.setdefault("AWS_SECRET_ACCESS_KEY", "user's value")
+os.environ.setdefault("DATABASE_URL", "user's value")
+os.environ.setdefault("EMAIL_HOST_USER", "user's value")
+os.environ.setdefault("SECRET_KEY", "user's value")
+os.environ.setdefault("STRIPE_PUBLIC_KEY", "user's value")
+os.environ.setdefault("STRIPE_SECRET_KEY", "user's value")
+os.environ.setdefault("STRIPE_WH_SECRET", "user's value")
 
 # local environment only (do not include these in production/deployment!)
 os.environ.setdefault("DEBUG", "True")
@@ -1065,7 +1064,7 @@ By forking the GitHub Repository, we make a copy of the original repository on o
 You can fork this repository by using the following steps:
 
 1. Log in to GitHub and locate the [GitHub Repository](https://github.com/stephendawsondev/sleep-healthily)
-2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+2. At the top of the Repository (not at the top of the page) just above the "Settings" Button on the menu, locate the "Fork" Button.
 3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
 
 ## Testing and Agile notes
@@ -1133,6 +1132,6 @@ I documented each Sprint and the notes on Agile in the [AGILE.md](./AGILE.md) fi
 
 I am happy to have completed this full stack project, but I would also like to thank those who have supported me along the way:
 
-- My mentor, **[David Bowers](https://github.com/dnlbowers)** for his consistently great feedback. He always provides alternative ways to think about a challenge and encouraged me to challenge myself.
-- My partner Tae who somehow managed to put up with me talking about this project for the past 2 months, as well as providing feedback on the design and user experience.
+- My mentor, **[David Bowers](https://github.com/dnlbowers)** for his consistently great feedback. He always provides alternative ways to think about a challenge and encourages me to challenge myself.
+- My partner Tae somehow managed to put up with me talking about this project for the past 2 months, as well as providing feedback on the design and user experience.
 - My colleagues at [The Code Institute](https://codeinstitute.net/) who have provided some great feedback and support.
