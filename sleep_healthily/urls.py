@@ -23,3 +23,4 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'sleep_healthily.views.handler404'
+handler500 = 'sleep_healthily.views.handler500'
