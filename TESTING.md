@@ -151,7 +151,7 @@ Performance metrics were gathered using Google's PageSpeed Insights to ensure th
 
 ## Manual Testing
 
-I carried out manual testing according to my user stories. I carried the tests out on Google Chrome, Mozilla Firefox, and Safari on MacBook.
+I carried out manual testing according to my user stories. To be considered a pass, it needs to have met the acceptance criteria. I carried the tests out on Google Chrome, Mozilla Firefox, and Safari on MacBook.
 
 | User story - As a user, I can...                                                                                             | Notes  | Chrome | Firefox | Safari |
 | ---------------------------------------------------------------------------------------------------------------------------- | ------ | :----: | :-----: | :----: |
