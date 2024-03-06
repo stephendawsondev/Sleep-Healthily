@@ -30,14 +30,20 @@ def create_review(request, product_id):
     # check if the user has orders and the product is in
     # one of the orders, if not then the user can't review
     orders = user_profile.orders.all()
+    product_purchased = False
+
     for order in orders:
         for item in order.line_items.all():
             if item.product == product:
+                product_purchased = True
                 break
-        else:
-            messages.error(
-                request, "You must have purchased this product to review it.")
-            return redirect('product_detail', product_id)
+        if product_purchased:
+            break
+
+    if not product_purchased:
+        messages.error(
+            request, "You must have purchased this product to review it.")
+        return redirect('product_detail', product_id)
 
     # check if the user has already reviewed the product
     # if they have, then they can't review it again
