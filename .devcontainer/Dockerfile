@@ -15,11 +15,11 @@ RUN mkdir -p /var/log/django
 # Copy the current directory contents into the container at /sleep_healthily
 COPY . /sleep_healthily/
 
+# Install Node.js dependencies
+RUN npm install
+
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Install Node.js dependencies if package.json exists
-RUN npm install
 
 # Make port 3004 available to the world outside this container
 EXPOSE 3004
