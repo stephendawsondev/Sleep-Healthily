@@ -1,0 +1,71 @@
+$primary: #572b9e;
+$secondary: #8546e5;
+$light: #ffeafd;
+$dark: #653d73;
+
+/* Tables */
+
+table.table th,
+table.table td {
+  border-top-color: $primary;
+}
+
+/* Buttons */
+
+.btn {
+  display: inline-flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-lg {
+  padding: 16px 24px;
+}
+
+.btn.btn-primary {
+  &:focus,
+  &.focus {
+    border-color: $secondary;
+    background-color: $secondary;
+  }
+
+  &:hover {
+    background-color: $secondary;
+    border-color: $secondary;
+  }
+}
+
+.btn.btn-secondary {
+  &:focus,
+  &.focus {
+    border-color: $primary;
+    background-color: $primary;
+  }
+
+  &:hover {
+    background-color: $primary;
+    border-color: $primary;
+  }
+}
+
+.fa-bars,
+.fa-times {
+  color: $primary;
+  border-color: $primary;
+}
+
+/* Dropdown items */
+.dropdown-menu {
+  border-radius: 3%;
+  .dropdown-item {
+    color: $primary;
+    &:hover {
+      background-color: $primary;
+      color: $light;
+    }
+  }
+}
+
+@import "bootstrap_scss/bootstrap";

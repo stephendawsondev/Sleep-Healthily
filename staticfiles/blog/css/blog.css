@@ -1,0 +1,36 @@
+.blog-post__featured-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 150px;
+}
+
+.blog-post__featured-image {
+  object-fit: fill;
+}
+
+.blog-post-card {
+  min-height: 600px;
+}
+
+.blog-post__link {
+  text-decoration: underline;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.comment-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 0.15rem 0.85rem;
+  font-size: 0.75rem;
+  z-index: 2;
+}
+
+@media screen and (min-width: 768px) {
+  .blog-post__featured-image-container {
+    height: 300px;
+  }
+}
