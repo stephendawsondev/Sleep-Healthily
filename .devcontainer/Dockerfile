@@ -19,7 +19,7 @@ COPY . /sleep_healthily/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Install Node.js dependencies if package.json exists
-RUN if [ -f package.json ]; then npm install; fi
+RUN npm install; fi
 
 # Make port 3004 available to the world outside this container
 EXPOSE 3004
